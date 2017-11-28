@@ -1,27 +1,10 @@
 # bojiu swagger-api 
 
-## 使用方法 - web 端
-1. 进入到web项目的根目录，执行
-git submodule add git@gitsvr.0lz.net:yijie.l/bojiu-swagger-api.git swagger-api
-2. 执行git submodule init
-3. 执行git submodule update --remote
-4. 使用swagger-client 解析 swagger-api/jsclient/swagger.json
-
-每次api有更新，重复步骤2-3.
-
-
 ## 使用方法 - server 端
-
 1. 修改main.yaml
-2. 执行 generateSpring.bat 生成服务端接口
+2. 执行 generate.sh 生成服务端接口
 3. 其余脚本尚未完成
-### 安装npm和npm
-sudo apt-get install npm
-sudo npm install -g cnpm --registry=https://registry.npm.taobao.org
-sudo ln -s /usr/bin/nodejs /usr/bin/node
-sudo npm -g n
-sudo n stable
-sudo cnpm install -g typescript
+
 ## client 端使用方法
 
 1. clone 本工程
