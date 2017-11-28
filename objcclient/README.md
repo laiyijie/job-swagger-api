@@ -42,9 +42,14 @@ Import the following:
 #import <LJob/LJobDefaultConfiguration.h>
 // load models
 #import <LJob/LJobErrorInfo.h>
+#import <LJob/LJobExecutor.h>
+#import <LJob/LJobExecutorGroup.h>
+#import <LJob/LJobJobGroup.h>
 #import <LJob/LJobTestResponse.h>
+#import <LJob/LJobWorkFlow.h>
 // load API classes for accessing endpoints
 #import <LJob/LJobAdminApi.h>
+#import <LJob/LJobDefaultApi.h>
 #import <LJob/LJobTestApi.h>
 
 ```
@@ -87,13 +92,23 @@ All URIs are relative to *http://58.87.75.73:8888/job/api/v1/*
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *LJobAdminApi* | [**adminUserInfoUserIdPut**](docs/LJobAdminApi.md#adminuserinfouseridput) | **PUT** /admin/userInfo/{userId} | 管理员修改用户信息
+*LJobDefaultApi* | [**executorgroupGroupIdExecutorDelete**](docs/LJobDefaultApi.md#executorgroupgroupidexecutordelete) | **DELETE** /executorgroup/{groupId}/executor | 
+*LJobDefaultApi* | [**executorgroupGroupIdExecutorPost**](docs/LJobDefaultApi.md#executorgroupgroupidexecutorpost) | **POST** /executorgroup/{groupId}/executor | 
+*LJobDefaultApi* | [**executorgroupGroupIdGet**](docs/LJobDefaultApi.md#executorgroupgroupidget) | **GET** /executorgroup/{groupId} | 
+*LJobDefaultApi* | [**executorgroupGroupIdPut**](docs/LJobDefaultApi.md#executorgroupgroupidput) | **PUT** /executorgroup/{groupId} | 
+*LJobDefaultApi* | [**executorgroupsGet**](docs/LJobDefaultApi.md#executorgroupsget) | **GET** /executorgroups | 
+*LJobDefaultApi* | [**executorgroupsPost**](docs/LJobDefaultApi.md#executorgroupspost) | **POST** /executorgroups | 
 *LJobTestApi* | [**testInfoGet**](docs/LJobTestApi.md#testinfoget) | **GET** /test/info | 测试接口
 
 
 ## Documentation For Models
 
  - [LJobErrorInfo](docs/LJobErrorInfo.md)
+ - [LJobExecutor](docs/LJobExecutor.md)
+ - [LJobExecutorGroup](docs/LJobExecutorGroup.md)
+ - [LJobJobGroup](docs/LJobJobGroup.md)
  - [LJobTestResponse](docs/LJobTestResponse.md)
+ - [LJobWorkFlow](docs/LJobWorkFlow.md)
 
 
 ## Documentation For Authorization

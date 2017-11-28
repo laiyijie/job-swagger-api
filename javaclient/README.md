@@ -93,13 +93,23 @@ All URIs are relative to *http://58.87.75.73:8888/job/api/v1/*
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *AdminApi* | [**adminUserInfoUserIdPut**](docs/AdminApi.md#adminUserInfoUserIdPut) | **PUT** /admin/userInfo/{userId} | 管理员修改用户信息
+*DefaultApi* | [**executorgroupGroupIdExecutorDelete**](docs/DefaultApi.md#executorgroupGroupIdExecutorDelete) | **DELETE** /executorgroup/{groupId}/executor | 
+*DefaultApi* | [**executorgroupGroupIdExecutorPost**](docs/DefaultApi.md#executorgroupGroupIdExecutorPost) | **POST** /executorgroup/{groupId}/executor | 
+*DefaultApi* | [**executorgroupGroupIdGet**](docs/DefaultApi.md#executorgroupGroupIdGet) | **GET** /executorgroup/{groupId} | 
+*DefaultApi* | [**executorgroupGroupIdPut**](docs/DefaultApi.md#executorgroupGroupIdPut) | **PUT** /executorgroup/{groupId} | 
+*DefaultApi* | [**executorgroupsGet**](docs/DefaultApi.md#executorgroupsGet) | **GET** /executorgroups | 
+*DefaultApi* | [**executorgroupsPost**](docs/DefaultApi.md#executorgroupsPost) | **POST** /executorgroups | 
 *TestApi* | [**testInfoGet**](docs/TestApi.md#testInfoGet) | **GET** /test/info | 测试接口
 
 
 ## Documentation for Models
 
  - [ErrorInfo](docs/ErrorInfo.md)
+ - [Executor](docs/Executor.md)
+ - [ExecutorGroup](docs/ExecutorGroup.md)
+ - [JobGroup](docs/JobGroup.md)
  - [TestResponse](docs/TestResponse.md)
+ - [WorkFlow](docs/WorkFlow.md)
 
 
 ## Documentation for Authorization

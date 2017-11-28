@@ -82,8 +82,148 @@ paths:
       responses:
         200:
           description: ok，修改成功
-     
+  
+  /executorgroups:
+    get:
+      responses:
+        200:
+          description: ok
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/ExecutorGroup'
+   
+    post:
+      responses:
+        200:
+          description: ok
+          schema:
+            type: integer
+            description: executor group id
+         
+  /executorgroup/{groupId}:
+    get:
+      parameters:
+        - name: groupId
+          in: path
+          required: true
+          type: integer
+      responses:
+        200:
+          description: ok
+          schema:
+            $ref: '#/definitions/ExecutorGroup'
+          
+    put:
+      consumes:
+        - application/x-www-form-urlencoded
+      parameters:
+        - name: groupId
+          in: path
+          required: true
+          type: integer
+        - name: name
+          in: formData
+          required: false
+          type: string
+        - name: description
+          in: formData
+          required: false
+          type: string
+      responses:
+        200:
+          description: ok
+  
+  /executorgroup/{groupId}/executor:
+    post:
+      parameters:
+        - name: groupId
+          in: path
+          required: true
+          type: integer
+        - name: executorId
+          in: query
+          type: integer
+          required: true
+          description: executorId
+      responses:
+        200:
+          description: ok
+      
+    delete:
+      parameters:
+        - name: groupId
+          in: path
+          required: true
+          type: integer
+        - name: executorId
+          in: query
+          type: integer
+          required: true
+          description: executorId
+      responses:
+        200:
+          description: ok
+          
+          
+            
 definitions:
+  Executor:
+    type: object
+    properties:
+      id:
+        type: integer
+      name:
+        type: string
+      ipAddress:
+        type: string
+      onlineStatus:
+        type: string
+        
+  ExecutorGroup:
+    type: object
+    properties:
+      id:
+        type: integer
+      name:
+        type: string
+      description:
+        type: string
+      executors:
+        type: array
+        items: 
+          $ref: '#/definitions/Executor'
+          
+  WorkFlow:
+    type: object
+    properties:
+      id:
+        type: integer
+      name:
+        type: string
+      description:
+        type: string
+      runInterval:
+        type: integer
+      status:
+        type: string
+      
+  
+  JobGroup:
+    type: object
+    properties:
+      id:
+        type: integer
+      name:
+        type: string
+      description:
+        type: string
+      status:
+        type: string
+      preJobGroup:
+        $ref: '#/definitions/JobGroup'
+  
+
   ErrorInfo:
     type: object
     properties:
