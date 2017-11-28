@@ -1,0 +1,9 @@
+{
+    "coreData":"false",
+    "classPrefix": "LJob",
+    "podName": "LJob",
+    "podVersion":"1.0.0",
+    "authorName":"swagger",
+    "authorEmail":"apiteam@swagger.io",
+    "hideGenerationTimestamp":true
+}

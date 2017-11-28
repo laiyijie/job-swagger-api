@@ -1,0 +1,94 @@
+swagger: '2.0'
+
+info:
+  version: "0.0.1"
+  title: 调度器管理后端
+  description: |
+    ## 错误规则
+
+    ###    401 - 未登录，如果出现这个错误，请调用 登录/自动登录 接口刷新session或者requresttoken
+    ###    403 - 权限不足， 一般不会出现这个错误
+    ###    417 - 碰到这个错误请将response的body解析为ErrorInfo一般情况是直接将ErrorInfo中的errorMessage 直接展现给用户
+    
+host: 58.87.75.73:8888
+basePath: /job/api/v1/
+
+produces:
+  - application/json
+  - text/plain; charset=utf-8
+consumes:
+  - application/x-www-form-urlencoded
+  - application/json
+  - multipart/form-data
+  - text/plain; charset=utf-8
+  - "*/*"
+schemes:
+  - http
+tags:
+    - name: Test
+      description: 测试接口
+
+paths:
+  /test/info:
+    get:
+      tags:
+        - Test
+      summary: 测试接口
+      parameters:
+        - name: word
+          in: query
+          description: 你想说的话
+          required: true
+          type: string
+      responses:
+        200:
+          description: 回复你的信息
+          schema:
+            title: TestResponse
+            type: object
+            properties:
+              myWord:
+                type: string
+                description: 返回你说的话
+              count:
+                type: integer
+                format: int64
+                description: 返回一个计数          
+           
+  /admin/userInfo/{userId}:
+    put:
+      consumes:
+        - application/x-www-form-urlencoded
+      tags:
+        - Admin
+      summary: 管理员修改用户信息
+      parameters:
+        - name: userId
+          in: path
+          required: true
+          type: integer
+        - name: name
+          in: formData
+          required: false
+          type: string
+        - name: headImagePath
+          in: formData
+          required: false
+          type: string
+        - name: status
+          in: formData
+          required: false
+          type: string  
+      responses:
+        200:
+          description: ok，修改成功
+     
+definitions:
+  ErrorInfo:
+    type: object
+    properties:
+      code:
+        type: integer
+      message:
+        type: string
+

@@ -1,0 +1,15 @@
+{
+    "modelPackage": "me.laiyijie.job.swagger.model",
+    "apiPackage": "me.laiyijie.job.swagger.api",
+    "invokerPackage": "me.laiyijie.job.swagger",
+    "groupId":"net.bojiu",
+    "artifactId":"server.swagger",
+    "artifactVersion":"1.0.0",
+    "sourceFolder":"src/main/java",
+    "configPackage" : "me.laiyijie.job.swagger.config",
+    "basePackage":"me.laiyijie.job.swagger",
+    "interfaceOnly":true,
+    "library":"spring-mvc",
+    "hideGenerationTimestamp":true,
+    "serializableModel":true
+}

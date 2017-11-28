@@ -1,0 +1,15 @@
+{
+    "modelPackage": "me.laiyijie.job.android.io.swagger.model",
+    "apiPackage": "me.laiyijie.job.android.io.swagger.api",
+    "invokerPackage": "me.laiyijie.job.android.io.swagger",
+    "groupId":"me.laiyijie.job",
+    "artifactId":"android.swagger",
+    "artifactVersion":"0.0.24-snapshot",
+    "sourceFolder":"src/main/java",
+    "configPackage" : "me.laiyijie.job.android.io.swagger.config",
+    "basePackage":"me.laiyijie.job.android.io.swagger",
+    "hideGenerationTimestamp":true,
+    "serializableModel":true,
+    "parcelableModel":false,
+    "library":"okhttp-gson"
+}
