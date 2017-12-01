@@ -34,14 +34,14 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class AdminApi {
+public class UserApi {
     private ApiClient apiClient;
 
-    public AdminApi() {
+    public UserApi() {
         this(Configuration.getDefaultApiClient());
     }
 
-    public AdminApi(ApiClient apiClient) {
+    public UserApi(ApiClient apiClient) {
         this.apiClient = apiClient;
     }
 
@@ -54,34 +54,29 @@ public class AdminApi {
     }
 
     /**
-     * Build call for adminUserInfoUserIdPut
-     * @param userId  (required)
-     * @param name  (optional)
-     * @param headImagePath  (optional)
-     * @param status  (optional)
+     * Build call for userLoginPost
+     * @param username  (required)
+     * @param password  (required)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call adminUserInfoUserIdPutCall(Integer userId, String name, String headImagePath, String status, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call userLoginPostCall(String username, String password, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
         
         // create path and map variables
-        String localVarPath = "/admin/userInfo/{userId}"
-            .replaceAll("\\{" + "userId" + "\\}", apiClient.escapeString(userId.toString()));
+        String localVarPath = "/user/login";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-        if (name != null)
-        localVarFormParams.put("name", name);
-        if (headImagePath != null)
-        localVarFormParams.put("headImagePath", headImagePath);
-        if (status != null)
-        localVarFormParams.put("status", status);
+        if (username != null)
+        localVarFormParams.put("username", username);
+        if (password != null)
+        localVarFormParams.put("password", password);
 
         final String[] localVarAccepts = {
             "application/json", "text/plain; charset=utf-8"
@@ -108,19 +103,24 @@ public class AdminApi {
         }
 
         String[] localVarAuthNames = new String[] {  };
-        return apiClient.buildCall(localVarPath, "PUT", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+        return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
     
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call adminUserInfoUserIdPutValidateBeforeCall(Integer userId, String name, String headImagePath, String status, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call userLoginPostValidateBeforeCall(String username, String password, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
-        // verify the required parameter 'userId' is set
-        if (userId == null) {
-            throw new ApiException("Missing the required parameter 'userId' when calling adminUserInfoUserIdPut(Async)");
+        // verify the required parameter 'username' is set
+        if (username == null) {
+            throw new ApiException("Missing the required parameter 'username' when calling userLoginPost(Async)");
+        }
+        
+        // verify the required parameter 'password' is set
+        if (password == null) {
+            throw new ApiException("Missing the required parameter 'password' when calling userLoginPost(Async)");
         }
         
         
-        com.squareup.okhttp.Call call = adminUserInfoUserIdPutCall(userId, name, headImagePath, status, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = userLoginPostCall(username, password, progressListener, progressRequestListener);
         return call;
 
         
@@ -130,45 +130,39 @@ public class AdminApi {
     }
 
     /**
-     * 管理员修改用户信息
      * 
-     * @param userId  (required)
-     * @param name  (optional)
-     * @param headImagePath  (optional)
-     * @param status  (optional)
+     * 
+     * @param username  (required)
+     * @param password  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void adminUserInfoUserIdPut(Integer userId, String name, String headImagePath, String status) throws ApiException {
-        adminUserInfoUserIdPutWithHttpInfo(userId, name, headImagePath, status);
+    public void userLoginPost(String username, String password) throws ApiException {
+        userLoginPostWithHttpInfo(username, password);
     }
 
     /**
-     * 管理员修改用户信息
      * 
-     * @param userId  (required)
-     * @param name  (optional)
-     * @param headImagePath  (optional)
-     * @param status  (optional)
+     * 
+     * @param username  (required)
+     * @param password  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> adminUserInfoUserIdPutWithHttpInfo(Integer userId, String name, String headImagePath, String status) throws ApiException {
-        com.squareup.okhttp.Call call = adminUserInfoUserIdPutValidateBeforeCall(userId, name, headImagePath, status, null, null);
+    public ApiResponse<Void> userLoginPostWithHttpInfo(String username, String password) throws ApiException {
+        com.squareup.okhttp.Call call = userLoginPostValidateBeforeCall(username, password, null, null);
         return apiClient.execute(call);
     }
 
     /**
-     * 管理员修改用户信息 (asynchronously)
+     *  (asynchronously)
      * 
-     * @param userId  (required)
-     * @param name  (optional)
-     * @param headImagePath  (optional)
-     * @param status  (optional)
+     * @param username  (required)
+     * @param password  (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call adminUserInfoUserIdPutAsync(Integer userId, String name, String headImagePath, String status, final ApiCallback<Void> callback) throws ApiException {
+    public com.squareup.okhttp.Call userLoginPostAsync(String username, String password, final ApiCallback<Void> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -189,7 +183,7 @@ public class AdminApi {
             };
         }
 
-        com.squareup.okhttp.Call call = adminUserInfoUserIdPutValidateBeforeCall(userId, name, headImagePath, status, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = userLoginPostValidateBeforeCall(username, password, progressListener, progressRequestListener);
         apiClient.executeAsync(call, callback);
         return call;
     }

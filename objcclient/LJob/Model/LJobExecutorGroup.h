@@ -22,9 +22,8 @@
 
 @interface LJobExecutorGroup : LJobObject
 
-
-@property(nonatomic) NSNumber* _id;
-
+/* 唯一的名字，不能重复，代表唯一的执行组 [optional]
+ */
 @property(nonatomic) NSString* name;
 
 @property(nonatomic) NSString* _description;

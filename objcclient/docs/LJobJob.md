@@ -1,4 +1,4 @@
-# LJobJobGroup
+# LJobJob
 
 ## Properties
 Name | Type | Description | Notes
@@ -7,7 +7,9 @@ Name | Type | Description | Notes
 **name** | **NSString*** |  | [optional] 
 **_description** | **NSString*** |  | [optional] 
 **status** | **NSString*** |  | [optional] 
-**step** | **NSNumber*** | 根据这个数字来进行按顺序执行 | [optional] 
+**executorGroup** | [**LJobExecutorGroup***](LJobExecutorGroup.md) |  | [optional] 
+**currentExecutor** | [**LJobExecutor***](LJobExecutor.md) |  | [optional] 
+**script** | **NSString*** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

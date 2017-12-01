@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **name** | **String** |  |  [optional]
 **description** | **String** |  |  [optional]
 **status** | **String** |  |  [optional]
-**preJobGroup** | [**JobGroup**](JobGroup.md) |  |  [optional]
+**step** | **Integer** | 根据这个数字来进行按顺序执行 |  [optional]
 
 
 

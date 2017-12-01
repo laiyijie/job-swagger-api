@@ -17,7 +17,6 @@ import java.util.Objects;
 import com.google.gson.annotations.SerializedName;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import me.laiyijie.job.android.io.swagger.model.JobGroup;
 import java.io.Serializable;
 
 /**
@@ -39,8 +38,8 @@ public class JobGroup implements Serializable {
   @SerializedName("status")
   private String status = null;
 
-  @SerializedName("preJobGroup")
-  private JobGroup preJobGroup = null;
+  @SerializedName("step")
+  private Integer step = null;
 
   public JobGroup id(Integer id) {
     this.id = id;
@@ -114,22 +113,22 @@ public class JobGroup implements Serializable {
     this.status = status;
   }
 
-  public JobGroup preJobGroup(JobGroup preJobGroup) {
-    this.preJobGroup = preJobGroup;
+  public JobGroup step(Integer step) {
+    this.step = step;
     return this;
   }
 
    /**
-   * Get preJobGroup
-   * @return preJobGroup
+   * 根据这个数字来进行按顺序执行
+   * @return step
   **/
-  @ApiModelProperty(value = "")
-  public JobGroup getPreJobGroup() {
-    return preJobGroup;
+  @ApiModelProperty(value = "根据这个数字来进行按顺序执行")
+  public Integer getStep() {
+    return step;
   }
 
-  public void setPreJobGroup(JobGroup preJobGroup) {
-    this.preJobGroup = preJobGroup;
+  public void setStep(Integer step) {
+    this.step = step;
   }
 
 
@@ -146,12 +145,12 @@ public class JobGroup implements Serializable {
         Objects.equals(this.name, jobGroup.name) &&
         Objects.equals(this.description, jobGroup.description) &&
         Objects.equals(this.status, jobGroup.status) &&
-        Objects.equals(this.preJobGroup, jobGroup.preJobGroup);
+        Objects.equals(this.step, jobGroup.step);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name, description, status, preJobGroup);
+    return Objects.hash(id, name, description, status, step);
   }
 
 
@@ -164,7 +163,7 @@ public class JobGroup implements Serializable {
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
-    sb.append("    preJobGroup: ").append(toIndentedString(preJobGroup)).append("\n");
+    sb.append("    step: ").append(toIndentedString(step)).append("\n");
     sb.append("}");
     return sb.toString();
   }

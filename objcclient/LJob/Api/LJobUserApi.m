@@ -1,18 +1,18 @@
-#import "LJobAdminApi.h"
+#import "LJobUserApi.h"
 #import "LJobQueryParamCollection.h"
 #import "LJobApiClient.h"
 
 
-@interface LJobAdminApi ()
+@interface LJobUserApi ()
 
 @property (nonatomic, strong, readwrite) NSMutableDictionary *mutableDefaultHeaders;
 
 @end
 
-@implementation LJobAdminApi
+@implementation LJobUserApi
 
-NSString* kLJobAdminApiErrorDomain = @"LJobAdminApiErrorDomain";
-NSInteger kLJobAdminApiMissingParamErrorCode = 234513;
+NSString* kLJobUserApiErrorDomain = @"LJobUserApiErrorDomain";
+NSInteger kLJobUserApiMissingParamErrorCode = 234513;
 
 @synthesize apiClient = _apiClient;
 
@@ -49,40 +49,42 @@ NSInteger kLJobAdminApiMissingParamErrorCode = 234513;
 #pragma mark - Api Methods
 
 ///
-/// 管理员修改用户信息
 /// 
-///  @param userId  
+/// 
+///  @param username  
 ///
-///  @param name  (optional)
-///
-///  @param headImagePath  (optional)
-///
-///  @param status  (optional)
+///  @param password  
 ///
 ///  @returns void
 ///
--(NSURLSessionTask*) adminUserInfoUserIdPutWithUserId: (NSNumber*) userId
-    name: (NSString*) name
-    headImagePath: (NSString*) headImagePath
-    status: (NSString*) status
+-(NSURLSessionTask*) userLoginPostWithUsername: (NSString*) username
+    password: (NSString*) password
     completionHandler: (void (^)(NSError* error)) handler {
-    // verify the required parameter 'userId' is set
-    if (userId == nil) {
-        NSParameterAssert(userId);
+    // verify the required parameter 'username' is set
+    if (username == nil) {
+        NSParameterAssert(username);
         if(handler) {
-            NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"userId"] };
-            NSError* error = [NSError errorWithDomain:kLJobAdminApiErrorDomain code:kLJobAdminApiMissingParamErrorCode userInfo:userInfo];
+            NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"username"] };
+            NSError* error = [NSError errorWithDomain:kLJobUserApiErrorDomain code:kLJobUserApiMissingParamErrorCode userInfo:userInfo];
             handler(error);
         }
         return nil;
     }
 
-    NSMutableString* resourcePath = [NSMutableString stringWithFormat:@"/admin/userInfo/{userId}"];
+    // verify the required parameter 'password' is set
+    if (password == nil) {
+        NSParameterAssert(password);
+        if(handler) {
+            NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"password"] };
+            NSError* error = [NSError errorWithDomain:kLJobUserApiErrorDomain code:kLJobUserApiMissingParamErrorCode userInfo:userInfo];
+            handler(error);
+        }
+        return nil;
+    }
+
+    NSMutableString* resourcePath = [NSMutableString stringWithFormat:@"/user/login"];
 
     NSMutableDictionary *pathParams = [[NSMutableDictionary alloc] init];
-    if (userId != nil) {
-        pathParams[@"userId"] = userId;
-    }
 
     NSMutableDictionary* queryParams = [[NSMutableDictionary alloc] init];
     NSMutableDictionary* headerParams = [NSMutableDictionary dictionaryWithDictionary:self.apiClient.configuration.defaultHeaders];
@@ -105,18 +107,15 @@ NSInteger kLJobAdminApiMissingParamErrorCode = 234513;
     id bodyParam = nil;
     NSMutableDictionary *formParams = [[NSMutableDictionary alloc] init];
     NSMutableDictionary *localVarFiles = [[NSMutableDictionary alloc] init];
-    if (name) {
-        formParams[@"name"] = name;
+    if (username) {
+        formParams[@"username"] = username;
     }
-    if (headImagePath) {
-        formParams[@"headImagePath"] = headImagePath;
-    }
-    if (status) {
-        formParams[@"status"] = status;
+    if (password) {
+        formParams[@"password"] = password;
     }
 
     return [self.apiClient requestWithPath: resourcePath
-                                    method: @"PUT"
+                                    method: @"POST"
                                 pathParams: pathParams
                                queryParams: queryParams
                                 formParams: formParams

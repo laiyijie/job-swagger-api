@@ -3,8 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**_id** | **NSNumber*** |  | [optional] 
-**name** | **NSString*** |  | [optional] 
+**name** | **NSString*** | 唯一的名字，不能重复，代表不同的执行机 | [optional] 
 **ipAddress** | **NSString*** |  | [optional] 
 **onlineStatus** | **NSString*** |  | [optional] 
 

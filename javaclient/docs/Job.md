@@ -1,5 +1,5 @@
 
-# WorkFlow
+# Job
 
 ## Properties
 Name | Type | Description | Notes
@@ -7,8 +7,10 @@ Name | Type | Description | Notes
 **id** | **Integer** |  |  [optional]
 **name** | **String** |  |  [optional]
 **description** | **String** |  |  [optional]
-**runInterval** | **Integer** |  |  [optional]
 **status** | **String** |  |  [optional]
+**executorGroup** | [**ExecutorGroup**](ExecutorGroup.md) |  |  [optional]
+**currentExecutor** | [**Executor**](Executor.md) |  |  [optional]
+**script** | **String** |  |  [optional]
 
 
 

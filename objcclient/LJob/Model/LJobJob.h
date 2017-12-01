@@ -14,12 +14,14 @@
 */
 
 
+#import "LJobExecutor.h"
+#import "LJobExecutorGroup.h"
 
 
-@protocol LJobJobGroup
+@protocol LJobJob
 @end
 
-@interface LJobJobGroup : LJobObject
+@interface LJobJob : LJobObject
 
 
 @property(nonatomic) NSNumber* _id;
@@ -29,8 +31,11 @@
 @property(nonatomic) NSString* _description;
 
 @property(nonatomic) NSString* status;
-/* 根据这个数字来进行按顺序执行 [optional]
- */
-@property(nonatomic) NSNumber* step;
+
+@property(nonatomic) LJobExecutorGroup* executorGroup;
+
+@property(nonatomic) LJobExecutor* currentExecutor;
+
+@property(nonatomic) NSString* script;
 
 @end

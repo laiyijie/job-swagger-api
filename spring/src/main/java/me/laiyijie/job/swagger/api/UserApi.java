@@ -18,17 +18,17 @@ import java.util.List;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
-@Api(value = "admin", description = "the admin API")
-public interface AdminApi {
+@Api(value = "user", description = "the user API")
+public interface UserApi {
 
-    @ApiOperation(value = "管理员修改用户信息", notes = "", response = Void.class, tags={ "Admin", })
+    @ApiOperation(value = "", notes = "", response = Void.class, tags={ "User", })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "ok，修改成功", response = Void.class) })
+        @ApiResponse(code = 200, message = "ok", response = Void.class) })
     
-    @RequestMapping(value = "/admin/userInfo/{userId}",
+    @RequestMapping(value = "/user/login",
         produces = { "application/json", "text/plain; charset=utf-8" }, 
         consumes = { "application/x-www-form-urlencoded" },
-        method = RequestMethod.PUT)
-    ResponseEntity<Void> adminUserInfoUserIdPut(@ApiParam(value = "",required=true ) @PathVariable("userId") Integer userId,@ApiParam(value = "") @RequestParam(value="name", required=false)  String name,@ApiParam(value = "") @RequestParam(value="headImagePath", required=false)  String headImagePath,@ApiParam(value = "") @RequestParam(value="status", required=false)  String status, HttpServletRequest request, HttpServletResponse response) throws Exception;
+        method = RequestMethod.POST)
+    ResponseEntity<Void> userLoginPost(@ApiParam(value = "", required=true) @RequestParam(value="username", required=true)  String username,@ApiParam(value = "", required=true) @RequestParam(value="password", required=true)  String password, HttpServletRequest request, HttpServletResponse response) throws Exception;
 
 }

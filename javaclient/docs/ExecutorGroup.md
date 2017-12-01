@@ -4,8 +4,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **Integer** |  |  [optional]
-**name** | **String** |  |  [optional]
+**name** | **String** | 唯一的名字，不能重复，代表唯一的执行组 |  [optional]
 **description** | **String** |  |  [optional]
 **executors** | [**List&lt;Executor&gt;**](Executor.md) |  |  [optional]
 

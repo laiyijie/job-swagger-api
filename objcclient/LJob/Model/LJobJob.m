@@ -1,6 +1,6 @@
-#import "LJobExecutor.h"
+#import "LJobJob.h"
 
-@implementation LJobExecutor
+@implementation LJobJob
 
 - (instancetype)init {
   self = [super init];
@@ -17,7 +17,7 @@
  * This method is used by `JSONModel`.
  */
 + (JSONKeyMapper *)keyMapper {
-  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"name": @"name", @"ipAddress": @"ipAddress", @"onlineStatus": @"onlineStatus" }];
+  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"_id": @"id", @"name": @"name", @"_description": @"description", @"status": @"status", @"executorGroup": @"executorGroup", @"currentExecutor": @"currentExecutor", @"script": @"script" }];
 }
 
 /**
@@ -27,7 +27,7 @@
  */
 + (BOOL)propertyIsOptional:(NSString *)propertyName {
 
-  NSArray *optionalProperties = @[@"name", @"ipAddress", @"onlineStatus"];
+  NSArray *optionalProperties = @[@"_id", @"name", @"_description", @"status", @"executorGroup", @"currentExecutor", @"script"];
   return [optionalProperties containsObject:propertyName];
 }
 

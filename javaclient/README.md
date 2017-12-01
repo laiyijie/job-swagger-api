@@ -61,24 +61,21 @@ Please follow the [installation](#installation) instruction and execute the foll
 import me.laiyijie.job.android.io.swagger.*;
 import me.laiyijie.job.android.io.swagger.auth.*;
 import me.laiyijie.job.android.io.swagger.model.*;
-import me.laiyijie.job.android.io.swagger.api.AdminApi;
+import me.laiyijie.job.android.io.swagger.api.ExecutorGroupApi;
 
 import java.io.File;
 import java.util.*;
 
-public class AdminApiExample {
+public class ExecutorGroupApiExample {
 
     public static void main(String[] args) {
         
-        AdminApi apiInstance = new AdminApi();
-        Integer userId = 56; // Integer | 
-        String name = "name_example"; // String | 
-        String headImagePath = "headImagePath_example"; // String | 
-        String status = "status_example"; // String | 
+        ExecutorGroupApi apiInstance = new ExecutorGroupApi();
         try {
-            apiInstance.adminUserInfoUserIdPut(userId, name, headImagePath, status);
+            List<ExecutorGroup> result = apiInstance.executorGroupsGet();
+            System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling AdminApi#adminUserInfoUserIdPut");
+            System.err.println("Exception when calling ExecutorGroupApi#executorGroupsGet");
             e.printStackTrace();
         }
     }
@@ -92,14 +89,30 @@ All URIs are relative to *http://58.87.75.73:8888/job/api/v1/*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*AdminApi* | [**adminUserInfoUserIdPut**](docs/AdminApi.md#adminUserInfoUserIdPut) | **PUT** /admin/userInfo/{userId} | 管理员修改用户信息
-*DefaultApi* | [**executorgroupGroupIdExecutorDelete**](docs/DefaultApi.md#executorgroupGroupIdExecutorDelete) | **DELETE** /executorgroup/{groupId}/executor | 
-*DefaultApi* | [**executorgroupGroupIdExecutorPost**](docs/DefaultApi.md#executorgroupGroupIdExecutorPost) | **POST** /executorgroup/{groupId}/executor | 
-*DefaultApi* | [**executorgroupGroupIdGet**](docs/DefaultApi.md#executorgroupGroupIdGet) | **GET** /executorgroup/{groupId} | 
-*DefaultApi* | [**executorgroupGroupIdPut**](docs/DefaultApi.md#executorgroupGroupIdPut) | **PUT** /executorgroup/{groupId} | 
-*DefaultApi* | [**executorgroupsGet**](docs/DefaultApi.md#executorgroupsGet) | **GET** /executorgroups | 
-*DefaultApi* | [**executorgroupsPost**](docs/DefaultApi.md#executorgroupsPost) | **POST** /executorgroups | 
+*ExecutorGroupApi* | [**executorGroupsGet**](docs/ExecutorGroupApi.md#executorGroupsGet) | **GET** /executor/groups | 
+*ExecutorGroupApi* | [**executorGroupsGroupNameDelete**](docs/ExecutorGroupApi.md#executorGroupsGroupNameDelete) | **DELETE** /executor/groups/{groupName} | 删除整个group，但是还在运行的执行机还是会重新生成这个group，会清空当前group下的所有执行机记录
+*ExecutorGroupApi* | [**executorGroupsGroupNameGet**](docs/ExecutorGroupApi.md#executorGroupsGroupNameGet) | **GET** /executor/groups/{groupName} | 
+*ExecutorGroupApi* | [**executorGroupsGroupNamePut**](docs/ExecutorGroupApi.md#executorGroupsGroupNamePut) | **PUT** /executor/groups/{groupName} | 
+*ExecutorGroupApi* | [**executorGroupsPost**](docs/ExecutorGroupApi.md#executorGroupsPost) | **POST** /executor/groups | 添加执行机组，可以不用手动添加，执行机注册会自动注册
+*JobApi* | [**jobGroupsGroupIdDelete**](docs/JobApi.md#jobGroupsGroupIdDelete) | **DELETE** /job/groups/{groupId} | 删除jobgroup
+*JobApi* | [**jobGroupsGroupIdGet**](docs/JobApi.md#jobGroupsGroupIdGet) | **GET** /job/groups/{groupId} | 获取单个执行组的信息
+*JobApi* | [**jobGroupsGroupIdJobsGet**](docs/JobApi.md#jobGroupsGroupIdJobsGet) | **GET** /job/groups/{groupId}/jobs | 
+*JobApi* | [**jobGroupsGroupIdPost**](docs/JobApi.md#jobGroupsGroupIdPost) | **POST** /job/groups/{groupId} | 修改jobgroup信息
+*JobApi* | [**jobsJobIdDelete**](docs/JobApi.md#jobsJobIdDelete) | **DELETE** /jobs/{jobId} | 
+*JobApi* | [**jobsJobIdGet**](docs/JobApi.md#jobsJobIdGet) | **GET** /jobs/{jobId} | 
+*JobApi* | [**jobsJobIdPost**](docs/JobApi.md#jobsJobIdPost) | **POST** /jobs/{jobId} | 
+*JobApi* | [**jobsJobIdRunPost**](docs/JobApi.md#jobsJobIdRunPost) | **POST** /jobs/{jobId}/run | 
+*JobApi* | [**jobsPost**](docs/JobApi.md#jobsPost) | **POST** /jobs | 
+*JobApi* | [**workflowsGet**](docs/JobApi.md#workflowsGet) | **GET** /workflows | 获取工作流列表
+*JobApi* | [**workflowsPost**](docs/JobApi.md#workflowsPost) | **POST** /workflows | 创建一个工作流
+*JobApi* | [**workflowsWorkFlowIdDelete**](docs/JobApi.md#workflowsWorkFlowIdDelete) | **DELETE** /workflows/{workFlowId} | 删除这个工作流
+*JobApi* | [**workflowsWorkFlowIdGet**](docs/JobApi.md#workflowsWorkFlowIdGet) | **GET** /workflows/{workFlowId} | 获取单个工作流信息
+*JobApi* | [**workflowsWorkFlowIdJobGroupsGet**](docs/JobApi.md#workflowsWorkFlowIdJobGroupsGet) | **GET** /workflows/{workFlowId}/job/groups | 获取工作流下的所有执行组
+*JobApi* | [**workflowsWorkFlowIdPost**](docs/JobApi.md#workflowsWorkFlowIdPost) | **POST** /workflows/{workFlowId} | 修改这个工作流信息
+*JobApi* | [**workflowsWorkFlowIdResumePost**](docs/JobApi.md#workflowsWorkFlowIdResumePost) | **POST** /workflows/{workFlowId}/resume | 从失败处执行这个workflow
+*JobApi* | [**workflowsWorkFlowIdRunPost**](docs/JobApi.md#workflowsWorkFlowIdRunPost) | **POST** /workflows/{workFlowId}/run | 从头执行这个workflow
 *TestApi* | [**testInfoGet**](docs/TestApi.md#testInfoGet) | **GET** /test/info | 测试接口
+*UserApi* | [**userLoginPost**](docs/UserApi.md#userLoginPost) | **POST** /user/login | 
 
 
 ## Documentation for Models
@@ -107,6 +120,7 @@ Class | Method | HTTP request | Description
  - [ErrorInfo](docs/ErrorInfo.md)
  - [Executor](docs/Executor.md)
  - [ExecutorGroup](docs/ExecutorGroup.md)
+ - [Job](docs/Job.md)
  - [JobGroup](docs/JobGroup.md)
  - [TestResponse](docs/TestResponse.md)
  - [WorkFlow](docs/WorkFlow.md)

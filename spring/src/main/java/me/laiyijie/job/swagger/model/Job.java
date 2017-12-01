@@ -5,13 +5,15 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import me.laiyijie.job.swagger.model.Executor;
+import me.laiyijie.job.swagger.model.ExecutorGroup;
 import java.io.Serializable;
 import javax.validation.constraints.*;
 /**
- * WorkFlow
+ * Job
  */
 
-public class WorkFlow  implements Serializable {
+public class Job  implements Serializable {
   private static final long serialVersionUID = 1L;
 
   @JsonProperty("id")
@@ -23,13 +25,19 @@ public class WorkFlow  implements Serializable {
   @JsonProperty("description")
   private String description = null;
 
-  @JsonProperty("runInterval")
-  private Integer runInterval = null;
-
   @JsonProperty("status")
   private String status = null;
 
-  public WorkFlow id(Integer id) {
+  @JsonProperty("executorGroup")
+  private ExecutorGroup executorGroup = null;
+
+  @JsonProperty("currentExecutor")
+  private Executor currentExecutor = null;
+
+  @JsonProperty("script")
+  private String script = null;
+
+  public Job id(Integer id) {
     this.id = id;
     return this;
   }
@@ -47,7 +55,7 @@ public class WorkFlow  implements Serializable {
     this.id = id;
   }
 
-  public WorkFlow name(String name) {
+  public Job name(String name) {
     this.name = name;
     return this;
   }
@@ -65,7 +73,7 @@ public class WorkFlow  implements Serializable {
     this.name = name;
   }
 
-  public WorkFlow description(String description) {
+  public Job description(String description) {
     this.description = description;
     return this;
   }
@@ -83,25 +91,7 @@ public class WorkFlow  implements Serializable {
     this.description = description;
   }
 
-  public WorkFlow runInterval(Integer runInterval) {
-    this.runInterval = runInterval;
-    return this;
-  }
-
-   /**
-   * Get runInterval
-   * @return runInterval
-  **/
-  @ApiModelProperty(value = "")
-  public Integer getRunInterval() {
-    return runInterval;
-  }
-
-  public void setRunInterval(Integer runInterval) {
-    this.runInterval = runInterval;
-  }
-
-  public WorkFlow status(String status) {
+  public Job status(String status) {
     this.status = status;
     return this;
   }
@@ -119,6 +109,60 @@ public class WorkFlow  implements Serializable {
     this.status = status;
   }
 
+  public Job executorGroup(ExecutorGroup executorGroup) {
+    this.executorGroup = executorGroup;
+    return this;
+  }
+
+   /**
+   * Get executorGroup
+   * @return executorGroup
+  **/
+  @ApiModelProperty(value = "")
+  public ExecutorGroup getExecutorGroup() {
+    return executorGroup;
+  }
+
+  public void setExecutorGroup(ExecutorGroup executorGroup) {
+    this.executorGroup = executorGroup;
+  }
+
+  public Job currentExecutor(Executor currentExecutor) {
+    this.currentExecutor = currentExecutor;
+    return this;
+  }
+
+   /**
+   * Get currentExecutor
+   * @return currentExecutor
+  **/
+  @ApiModelProperty(value = "")
+  public Executor getCurrentExecutor() {
+    return currentExecutor;
+  }
+
+  public void setCurrentExecutor(Executor currentExecutor) {
+    this.currentExecutor = currentExecutor;
+  }
+
+  public Job script(String script) {
+    this.script = script;
+    return this;
+  }
+
+   /**
+   * Get script
+   * @return script
+  **/
+  @ApiModelProperty(value = "")
+  public String getScript() {
+    return script;
+  }
+
+  public void setScript(String script) {
+    this.script = script;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -128,29 +172,33 @@ public class WorkFlow  implements Serializable {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    WorkFlow workFlow = (WorkFlow) o;
-    return Objects.equals(this.id, workFlow.id) &&
-        Objects.equals(this.name, workFlow.name) &&
-        Objects.equals(this.description, workFlow.description) &&
-        Objects.equals(this.runInterval, workFlow.runInterval) &&
-        Objects.equals(this.status, workFlow.status);
+    Job job = (Job) o;
+    return Objects.equals(this.id, job.id) &&
+        Objects.equals(this.name, job.name) &&
+        Objects.equals(this.description, job.description) &&
+        Objects.equals(this.status, job.status) &&
+        Objects.equals(this.executorGroup, job.executorGroup) &&
+        Objects.equals(this.currentExecutor, job.currentExecutor) &&
+        Objects.equals(this.script, job.script);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name, description, runInterval, status);
+    return Objects.hash(id, name, description, status, executorGroup, currentExecutor, script);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class WorkFlow {\n");
+    sb.append("class Job {\n");
     
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
-    sb.append("    runInterval: ").append(toIndentedString(runInterval)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
+    sb.append("    executorGroup: ").append(toIndentedString(executorGroup)).append("\n");
+    sb.append("    currentExecutor: ").append(toIndentedString(currentExecutor)).append("\n");
+    sb.append("    script: ").append(toIndentedString(script)).append("\n");
     sb.append("}");
     return sb.toString();
   }

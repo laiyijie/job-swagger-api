@@ -26,9 +26,6 @@ import java.io.Serializable;
 public class Executor implements Serializable {
   private static final long serialVersionUID = 1L;
 
-  @SerializedName("id")
-  private Integer id = null;
-
   @SerializedName("name")
   private String name = null;
 
@@ -38,34 +35,16 @@ public class Executor implements Serializable {
   @SerializedName("onlineStatus")
   private String onlineStatus = null;
 
-  public Executor id(Integer id) {
-    this.id = id;
-    return this;
-  }
-
-   /**
-   * Get id
-   * @return id
-  **/
-  @ApiModelProperty(value = "")
-  public Integer getId() {
-    return id;
-  }
-
-  public void setId(Integer id) {
-    this.id = id;
-  }
-
   public Executor name(String name) {
     this.name = name;
     return this;
   }
 
    /**
-   * Get name
+   * 唯一的名字，不能重复，代表不同的执行机
    * @return name
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "唯一的名字，不能重复，代表不同的执行机")
   public String getName() {
     return name;
   }
@@ -120,15 +99,14 @@ public class Executor implements Serializable {
       return false;
     }
     Executor executor = (Executor) o;
-    return Objects.equals(this.id, executor.id) &&
-        Objects.equals(this.name, executor.name) &&
+    return Objects.equals(this.name, executor.name) &&
         Objects.equals(this.ipAddress, executor.ipAddress) &&
         Objects.equals(this.onlineStatus, executor.onlineStatus);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name, ipAddress, onlineStatus);
+    return Objects.hash(name, ipAddress, onlineStatus);
   }
 
 
@@ -137,7 +115,6 @@ public class Executor implements Serializable {
     StringBuilder sb = new StringBuilder();
     sb.append("class Executor {\n");
     
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    ipAddress: ").append(toIndentedString(ipAddress)).append("\n");
     sb.append("    onlineStatus: ").append(toIndentedString(onlineStatus)).append("\n");

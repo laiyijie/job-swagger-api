@@ -44,13 +44,15 @@ Import the following:
 #import <LJob/LJobErrorInfo.h>
 #import <LJob/LJobExecutor.h>
 #import <LJob/LJobExecutorGroup.h>
+#import <LJob/LJobJob.h>
 #import <LJob/LJobJobGroup.h>
 #import <LJob/LJobTestResponse.h>
 #import <LJob/LJobWorkFlow.h>
 // load API classes for accessing endpoints
-#import <LJob/LJobAdminApi.h>
-#import <LJob/LJobDefaultApi.h>
+#import <LJob/LJobExecutorGroupApi.h>
+#import <LJob/LJobJobApi.h>
 #import <LJob/LJobTestApi.h>
+#import <LJob/LJobUserApi.h>
 
 ```
 
@@ -65,19 +67,14 @@ Please follow the [installation procedure](#installation--usage) and then run th
 ```objc
 
 
-NSNumber* *userId = @56; // 
-NSString* *name = @"name_example"; //  (optional)
-NSString* *headImagePath = @"headImagePath_example"; //  (optional)
-NSString* *status = @"status_example"; //  (optional)
 
-LJobAdminApi *apiInstance = [[LJobAdminApi alloc] init];
+LJobExecutorGroupApi *apiInstance = [[LJobExecutorGroupApi alloc] init];
 
-// 管理员修改用户信息
-[apiInstance adminUserInfoUserIdPutWithUserId:userId
-    name:name
-    headImagePath:headImagePath
-    status:status
-              completionHandler: ^(NSError* error) {
+[apiInstance executorGroupsGetWithCompletionHandler: 
+              ^(NSArray<LJobExecutorGroup>* output, NSError* error) {
+                            if (output) {
+                                NSLog(@"%@", output);
+                            }
                             if (error) {
                                 NSLog(@"Error: %@", error);
                             }
@@ -91,14 +88,30 @@ All URIs are relative to *http://58.87.75.73:8888/job/api/v1/*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*LJobAdminApi* | [**adminUserInfoUserIdPut**](docs/LJobAdminApi.md#adminuserinfouseridput) | **PUT** /admin/userInfo/{userId} | 管理员修改用户信息
-*LJobDefaultApi* | [**executorgroupGroupIdExecutorDelete**](docs/LJobDefaultApi.md#executorgroupgroupidexecutordelete) | **DELETE** /executorgroup/{groupId}/executor | 
-*LJobDefaultApi* | [**executorgroupGroupIdExecutorPost**](docs/LJobDefaultApi.md#executorgroupgroupidexecutorpost) | **POST** /executorgroup/{groupId}/executor | 
-*LJobDefaultApi* | [**executorgroupGroupIdGet**](docs/LJobDefaultApi.md#executorgroupgroupidget) | **GET** /executorgroup/{groupId} | 
-*LJobDefaultApi* | [**executorgroupGroupIdPut**](docs/LJobDefaultApi.md#executorgroupgroupidput) | **PUT** /executorgroup/{groupId} | 
-*LJobDefaultApi* | [**executorgroupsGet**](docs/LJobDefaultApi.md#executorgroupsget) | **GET** /executorgroups | 
-*LJobDefaultApi* | [**executorgroupsPost**](docs/LJobDefaultApi.md#executorgroupspost) | **POST** /executorgroups | 
+*LJobExecutorGroupApi* | [**executorGroupsGet**](docs/LJobExecutorGroupApi.md#executorgroupsget) | **GET** /executor/groups | 
+*LJobExecutorGroupApi* | [**executorGroupsGroupNameDelete**](docs/LJobExecutorGroupApi.md#executorgroupsgroupnamedelete) | **DELETE** /executor/groups/{groupName} | 删除整个group，但是还在运行的执行机还是会重新生成这个group，会清空当前group下的所有执行机记录
+*LJobExecutorGroupApi* | [**executorGroupsGroupNameGet**](docs/LJobExecutorGroupApi.md#executorgroupsgroupnameget) | **GET** /executor/groups/{groupName} | 
+*LJobExecutorGroupApi* | [**executorGroupsGroupNamePut**](docs/LJobExecutorGroupApi.md#executorgroupsgroupnameput) | **PUT** /executor/groups/{groupName} | 
+*LJobExecutorGroupApi* | [**executorGroupsPost**](docs/LJobExecutorGroupApi.md#executorgroupspost) | **POST** /executor/groups | 添加执行机组，可以不用手动添加，执行机注册会自动注册
+*LJobJobApi* | [**jobGroupsGroupIdDelete**](docs/LJobJobApi.md#jobgroupsgroupiddelete) | **DELETE** /job/groups/{groupId} | 删除jobgroup
+*LJobJobApi* | [**jobGroupsGroupIdGet**](docs/LJobJobApi.md#jobgroupsgroupidget) | **GET** /job/groups/{groupId} | 获取单个执行组的信息
+*LJobJobApi* | [**jobGroupsGroupIdJobsGet**](docs/LJobJobApi.md#jobgroupsgroupidjobsget) | **GET** /job/groups/{groupId}/jobs | 
+*LJobJobApi* | [**jobGroupsGroupIdPost**](docs/LJobJobApi.md#jobgroupsgroupidpost) | **POST** /job/groups/{groupId} | 修改jobgroup信息
+*LJobJobApi* | [**jobsJobIdDelete**](docs/LJobJobApi.md#jobsjobiddelete) | **DELETE** /jobs/{jobId} | 
+*LJobJobApi* | [**jobsJobIdGet**](docs/LJobJobApi.md#jobsjobidget) | **GET** /jobs/{jobId} | 
+*LJobJobApi* | [**jobsJobIdPost**](docs/LJobJobApi.md#jobsjobidpost) | **POST** /jobs/{jobId} | 
+*LJobJobApi* | [**jobsJobIdRunPost**](docs/LJobJobApi.md#jobsjobidrunpost) | **POST** /jobs/{jobId}/run | 
+*LJobJobApi* | [**jobsPost**](docs/LJobJobApi.md#jobspost) | **POST** /jobs | 
+*LJobJobApi* | [**workflowsGet**](docs/LJobJobApi.md#workflowsget) | **GET** /workflows | 获取工作流列表
+*LJobJobApi* | [**workflowsPost**](docs/LJobJobApi.md#workflowspost) | **POST** /workflows | 创建一个工作流
+*LJobJobApi* | [**workflowsWorkFlowIdDelete**](docs/LJobJobApi.md#workflowsworkflowiddelete) | **DELETE** /workflows/{workFlowId} | 删除这个工作流
+*LJobJobApi* | [**workflowsWorkFlowIdGet**](docs/LJobJobApi.md#workflowsworkflowidget) | **GET** /workflows/{workFlowId} | 获取单个工作流信息
+*LJobJobApi* | [**workflowsWorkFlowIdJobGroupsGet**](docs/LJobJobApi.md#workflowsworkflowidjobgroupsget) | **GET** /workflows/{workFlowId}/job/groups | 获取工作流下的所有执行组
+*LJobJobApi* | [**workflowsWorkFlowIdPost**](docs/LJobJobApi.md#workflowsworkflowidpost) | **POST** /workflows/{workFlowId} | 修改这个工作流信息
+*LJobJobApi* | [**workflowsWorkFlowIdResumePost**](docs/LJobJobApi.md#workflowsworkflowidresumepost) | **POST** /workflows/{workFlowId}/resume | 从失败处执行这个workflow
+*LJobJobApi* | [**workflowsWorkFlowIdRunPost**](docs/LJobJobApi.md#workflowsworkflowidrunpost) | **POST** /workflows/{workFlowId}/run | 从头执行这个workflow
 *LJobTestApi* | [**testInfoGet**](docs/LJobTestApi.md#testinfoget) | **GET** /test/info | 测试接口
+*LJobUserApi* | [**userLoginPost**](docs/LJobUserApi.md#userloginpost) | **POST** /user/login | 
 
 
 ## Documentation For Models
@@ -106,6 +119,7 @@ Class | Method | HTTP request | Description
  - [LJobErrorInfo](docs/LJobErrorInfo.md)
  - [LJobExecutor](docs/LJobExecutor.md)
  - [LJobExecutorGroup](docs/LJobExecutorGroup.md)
+ - [LJobJob](docs/LJobJob.md)
  - [LJobJobGroup](docs/LJobJobGroup.md)
  - [LJobTestResponse](docs/LJobTestResponse.md)
  - [LJobWorkFlow](docs/LJobWorkFlow.md)

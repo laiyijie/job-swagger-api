@@ -15,28 +15,24 @@
 
 
 
-@interface LJobAdminApi: NSObject <LJobApi>
+@interface LJobUserApi: NSObject <LJobApi>
 
-extern NSString* kLJobAdminApiErrorDomain;
-extern NSInteger kLJobAdminApiMissingParamErrorCode;
+extern NSString* kLJobUserApiErrorDomain;
+extern NSInteger kLJobUserApiMissingParamErrorCode;
 
 -(instancetype) initWithApiClient:(LJobApiClient *)apiClient NS_DESIGNATED_INITIALIZER;
 
-/// 管理员修改用户信息
+/// 
 /// 
 ///
-/// @param userId 
-/// @param name  (optional)
-/// @param headImagePath  (optional)
-/// @param status  (optional)
+/// @param username 
+/// @param password 
 /// 
-///  code:200 message:"ok，修改成功"
+///  code:200 message:"ok"
 ///
 /// @return 
--(NSURLSessionTask*) adminUserInfoUserIdPutWithUserId: (NSNumber*) userId
-    name: (NSString*) name
-    headImagePath: (NSString*) headImagePath
-    status: (NSString*) status
+-(NSURLSessionTask*) userLoginPostWithUsername: (NSString*) username
+    password: (NSString*) password
     completionHandler: (void (^)(NSError* error)) handler;
 
 

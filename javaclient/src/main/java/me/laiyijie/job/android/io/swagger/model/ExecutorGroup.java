@@ -29,9 +29,6 @@ import java.io.Serializable;
 public class ExecutorGroup implements Serializable {
   private static final long serialVersionUID = 1L;
 
-  @SerializedName("id")
-  private Integer id = null;
-
   @SerializedName("name")
   private String name = null;
 
@@ -41,34 +38,16 @@ public class ExecutorGroup implements Serializable {
   @SerializedName("executors")
   private List<Executor> executors = null;
 
-  public ExecutorGroup id(Integer id) {
-    this.id = id;
-    return this;
-  }
-
-   /**
-   * Get id
-   * @return id
-  **/
-  @ApiModelProperty(value = "")
-  public Integer getId() {
-    return id;
-  }
-
-  public void setId(Integer id) {
-    this.id = id;
-  }
-
   public ExecutorGroup name(String name) {
     this.name = name;
     return this;
   }
 
    /**
-   * Get name
+   * 唯一的名字，不能重复，代表唯一的执行组
    * @return name
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "唯一的名字，不能重复，代表唯一的执行组")
   public String getName() {
     return name;
   }
@@ -131,15 +110,14 @@ public class ExecutorGroup implements Serializable {
       return false;
     }
     ExecutorGroup executorGroup = (ExecutorGroup) o;
-    return Objects.equals(this.id, executorGroup.id) &&
-        Objects.equals(this.name, executorGroup.name) &&
+    return Objects.equals(this.name, executorGroup.name) &&
         Objects.equals(this.description, executorGroup.description) &&
         Objects.equals(this.executors, executorGroup.executors);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name, description, executors);
+    return Objects.hash(name, description, executors);
   }
 
 
@@ -148,7 +126,6 @@ public class ExecutorGroup implements Serializable {
     StringBuilder sb = new StringBuilder();
     sb.append("class ExecutorGroup {\n");
     
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    executors: ").append(toIndentedString(executors)).append("\n");

@@ -3,8 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**_id** | **NSNumber*** |  | [optional] 
-**name** | **NSString*** |  | [optional] 
+**name** | **NSString*** | 唯一的名字，不能重复，代表唯一的执行组 | [optional] 
 **_description** | **NSString*** |  | [optional] 
 **executors** | [**NSArray&lt;LJobExecutor&gt;***](LJobExecutor.md) |  | [optional] 
 

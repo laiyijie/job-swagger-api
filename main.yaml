@@ -27,6 +27,9 @@ schemes:
 tags:
     - name: Test
       description: 测试接口
+    - name: ExecutorGroup
+      description: 执行组
+    - name: Job
 
 paths:
   /test/info:
@@ -55,36 +58,29 @@ paths:
                 format: int64
                 description: 返回一个计数          
            
-  /admin/userInfo/{userId}:
-    put:
+  /user/login:
+    post:
       consumes:
         - application/x-www-form-urlencoded
       tags:
-        - Admin
-      summary: 管理员修改用户信息
+        - User
       parameters:
-        - name: userId
-          in: path
+        - name: username
+          in: formData
+          type: string
           required: true
-          type: integer
-        - name: name
+        - name: password
           in: formData
-          required: false
           type: string
-        - name: headImagePath
-          in: formData
-          required: false
-          type: string
-        - name: status
-          in: formData
-          required: false
-          type: string  
+          required: true
       responses:
-        200:
-          description: ok，修改成功
+        200: 
+          description: ok
   
-  /executorgroups:
+  /executor/groups:
     get:
+      tags:
+        - ExecutorGroup
       responses:
         200:
           description: ok
@@ -94,87 +90,318 @@ paths:
               $ref: '#/definitions/ExecutorGroup'
    
     post:
+      tags:
+        - ExecutorGroup
+      summary: 添加执行机组，可以不用手动添加，执行机注册会自动注册
+      parameters:
+        - name: executorGroup
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/ExecutorGroup'
       responses:
         200:
           description: ok
           schema:
-            type: integer
-            description: executor group id
+            type: string
+            description: executor group name
          
-  /executorgroup/{groupId}:
+  /executor/groups/{groupName}:
     get:
+      tags:
+        - ExecutorGroup
       parameters:
-        - name: groupId
+        - name: groupName
           in: path
           required: true
-          type: integer
+          type: string
       responses:
         200:
           description: ok
           schema:
             $ref: '#/definitions/ExecutorGroup'
-          
+            
     put:
-      consumes:
-        - application/x-www-form-urlencoded
+      tags:
+        - ExecutorGroup
       parameters:
-        - name: groupId
+        - name: groupName
           in: path
           required: true
-          type: integer
+          type: string
         - name: name
-          in: formData
-          required: false
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/ExecutorGroup'
+      responses:
+        200:
+          description: ok
+    
+    delete:
+      summary: 删除整个group，但是还在运行的执行机还是会重新生成这个group，会清空当前group下的所有执行机记录
+      tags:
+        - ExecutorGroup
+      parameters:
+        - name: groupName
+          in: path
           type: string
-        - name: description
-          in: formData
-          required: false
-          type: string
+          required: true
+      responses:
+        200:
+          description: ok
+
+  /workflows:
+    get:
+      tags:
+        - Job
+      summary: 获取工作流列表
+      responses:
+        200:
+          description: ok
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/WorkFlow'
+    post:
+      tags:
+        - Job
+      summary: 创建一个工作流
+      parameters:
+        - name: workFlow
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/WorkFlow'
+      responses:
+        200: 
+          description: ok
+          schema:
+            type: integer
+  
+  /workflows/{workFlowId}:
+    get:
+      tags:
+        - Job
+      summary: 获取单个工作流信息
+      parameters:
+        - name: workFlowId
+          in: path
+          type: integer
+          required: true
+      responses:
+        200:
+          description: ok
+          schema:
+            $ref: '#/definitions/WorkFlow'
+    post:
+      tags:
+        - Job
+      summary: 修改这个工作流信息
+      parameters:
+        - name: workFlowId
+          in: path
+          type: integer
+          required: true
+        - name: workFlow
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/WorkFlow'
+      responses:
+        200: 
+          description: ok
+          
+    delete:
+      tags:
+        - Job
+      summary: 删除这个工作流
+      parameters:
+        - name: workFlowId
+          in: path
+          type: integer
+          required: true
       responses:
         200:
           description: ok
   
-  /executorgroup/{groupId}/executor:
+  /workflows/{workFlowId}/run:
     post:
+      tags:
+        - Job
+      summary: 从头执行这个workflow
       parameters:
-        - name: groupId
+        - name: workFlowId
           in: path
-          required: true
-          type: integer
-        - name: executorId
-          in: query
           type: integer
           required: true
-          description: executorId
       responses:
         200:
           description: ok
-      
+  
+  /workflows/{workFlowId}/resume:
+    post:
+      tags:
+        - Job
+      summary: 从失败处执行这个workflow
+      parameters:
+        - name: workFlowId
+          in: path
+          type: integer
+          required: true
+      responses:
+        200:
+          description: ok  
+  
+  /workflows/{workFlowId}/job/groups:
+    get:
+      tags:
+        - Job
+      summary: 获取工作流下的所有执行组
+      parameters:
+        - name: workFlowId
+          in: path
+          type: integer
+          required: true
+      responses:
+        200:
+          description: ok
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/JobGroup'
+  
+  /job/groups/{groupId}:
+    get:
+      tags:
+        - Job
+      summary: 获取单个执行组的信息
+      parameters:
+        - name: groupId
+          in: path
+          type: integer
+          required: true
+      responses:
+        200:
+          description: ok
+          schema:
+            $ref: '#/definitions/JobGroup'
+    post:
+      tags:
+        - Job
+      summary: 修改jobgroup信息
+      parameters:
+        - name: groupId
+          in: path
+          type: integer
+          required: true
+        - name: jobGroup
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/JobGroup'
+      responses:
+        200:
+          description: ok
     delete:
+      tags:
+        - Job
+      summary: 删除jobgroup
       parameters:
         - name: groupId
           in: path
-          required: true
           type: integer
-        - name: executorId
-          in: query
+          required: true      
+      responses:
+        200:
+          description: ok
+  /job/groups/{groupId}/jobs:
+    get:
+      tags:
+        - Job
+      parameters:
+        - name: groupId
           type: integer
           required: true
-          description: executorId
+          in: path
+      responses:
+        200:
+          description: ok
+          schema:
+            $ref: '#/definitions/Job'
+            
+  /jobs:
+    post:
+      tags:
+        - Job
+      parameters:
+        - name: job
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/Job'
+            
       responses:
         200:
           description: ok
           
-          
-            
+  /jobs/{jobId}:
+    get:
+      tags:
+        - Job
+      parameters:
+        - name: jobId
+          type: integer
+          required: true
+          in: path
+      responses:
+        200:
+          description: ok
+          schema:
+            $ref: '#/definitions/Job'
+    post:
+      tags:
+        - Job
+      parameters:
+        - name: jobId
+          type: integer
+          required: true
+          in: path
+      responses:
+        200:
+          description: ok
+    
+    delete:
+      tags:
+        - Job
+      parameters:
+        - name: jobId
+          type: integer
+          required: true
+          in: path
+      responses:
+        200:
+          description: ok
+  /jobs/{jobId}/run:
+    post:
+      tags:
+        - Job
+      parameters:
+        - name: jobId
+          type: integer
+          required: true
+          in: path
+      responses:
+        200:
+          description: ok
+  
 definitions:
   Executor:
     type: object
     properties:
-      id:
-        type: integer
       name:
         type: string
+        description: 唯一的名字，不能重复，代表不同的执行机
       ipAddress:
         type: string
       onlineStatus:
@@ -183,10 +410,9 @@ definitions:
   ExecutorGroup:
     type: object
     properties:
-      id:
-        type: integer
       name:
         type: string
+        description: 唯一的名字，不能重复，代表唯一的执行组
       description:
         type: string
       executors:
@@ -220,9 +446,28 @@ definitions:
         type: string
       status:
         type: string
-      preJobGroup:
-        $ref: '#/definitions/JobGroup'
+      step:
+        type: integer 
+        description: 根据这个数字来进行按顺序执行
   
+  Job:
+    type: object
+    properties:
+      id:
+        type: integer
+      name: 
+        type: string
+      description:
+        type: string
+      status:
+        type: string
+      executorGroup:
+        $ref: "#/definitions/ExecutorGroup"
+      currentExecutor:
+        $ref: '#/definitions/Executor'
+      script:
+        type: string
+      
 
   ErrorInfo:
     type: object

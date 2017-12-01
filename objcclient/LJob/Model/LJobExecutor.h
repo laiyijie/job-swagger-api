@@ -21,9 +21,8 @@
 
 @interface LJobExecutor : LJobObject
 
-
-@property(nonatomic) NSNumber* _id;
-
+/* 唯一的名字，不能重复，代表不同的执行机 [optional]
+ */
 @property(nonatomic) NSString* name;
 
 @property(nonatomic) NSString* ipAddress;

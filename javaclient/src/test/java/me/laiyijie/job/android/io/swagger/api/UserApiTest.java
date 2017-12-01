@@ -23,16 +23,16 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * API tests for AdminApi
+ * API tests for UserApi
  */
 @Ignore
-public class AdminApiTest {
+public class UserApiTest {
 
-    private final AdminApi api = new AdminApi();
+    private final UserApi api = new UserApi();
 
     
     /**
-     * 管理员修改用户信息
+     * 
      *
      * 
      *
@@ -40,12 +40,10 @@ public class AdminApiTest {
      *          if the Api call fails
      */
     @Test
-    public void adminUserInfoUserIdPutTest() throws ApiException {
-        Integer userId = null;
-        String name = null;
-        String headImagePath = null;
-        String status = null;
-        api.adminUserInfoUserIdPut(userId, name, headImagePath, status);
+    public void userLoginPostTest() throws ApiException {
+        String username = null;
+        String password = null;
+        api.userLoginPost(username, password);
 
         // TODO: test validations
     }
