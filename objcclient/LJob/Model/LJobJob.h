@@ -32,7 +32,7 @@
 
 @property(nonatomic) NSString* status;
 
-@property(nonatomic) NSString* jobGroupName;
+@property(nonatomic) NSNumber* jobGroupId;
 
 @property(nonatomic) LJobExecutorGroup* executorGroup;
 
