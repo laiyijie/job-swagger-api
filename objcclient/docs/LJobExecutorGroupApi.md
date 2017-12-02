@@ -7,8 +7,8 @@ Method | HTTP request | Description
 [**executorGroupsGet**](LJobExecutorGroupApi.md#executorgroupsget) | **GET** /executor/groups | 
 [**executorGroupsGroupNameDelete**](LJobExecutorGroupApi.md#executorgroupsgroupnamedelete) | **DELETE** /executor/groups/{groupName} | 删除整个group，但是还在运行的执行机还是会重新生成这个group，会清空当前group下的所有执行机记录
 [**executorGroupsGroupNameGet**](LJobExecutorGroupApi.md#executorgroupsgroupnameget) | **GET** /executor/groups/{groupName} | 
-[**executorGroupsGroupNamePut**](LJobExecutorGroupApi.md#executorgroupsgroupnameput) | **PUT** /executor/groups/{groupName} | 
-[**executorGroupsPost**](LJobExecutorGroupApi.md#executorgroupspost) | **POST** /executor/groups | 添加执行机组，可以不用手动添加，执行机注册会自动注册
+[**executorGroupsGroupNamePut**](LJobExecutorGroupApi.md#executorgroupsgroupnameput) | **PUT** /executor/groups/{groupName} | 只能修改描述
+[**executorGroupsPost**](LJobExecutorGroupApi.md#executorgroupspost) | **POST** /executor/groups | 添加执行机组
 
 
 # **executorGroupsGet**
@@ -149,22 +149,23 @@ No authorization required
 # **executorGroupsGroupNamePut**
 ```objc
 -(NSURLSessionTask*) executorGroupsGroupNamePutWithGroupName: (NSString*) groupName
-    name: (LJobExecutorGroup*) name
+    executorGroup: (LJobExecutorGroup*) executorGroup
         completionHandler: (void (^)(NSError* error)) handler;
 ```
 
-
+只能修改描述
 
 ### Example 
 ```objc
 
 NSString* groupName = @"groupName_example"; // 
-LJobExecutorGroup* name = [[LJobExecutorGroup alloc] init]; // 
+LJobExecutorGroup* executorGroup = [[LJobExecutorGroup alloc] init]; // 
 
 LJobExecutorGroupApi*apiInstance = [[LJobExecutorGroupApi alloc] init];
 
+// 只能修改描述
 [apiInstance executorGroupsGroupNamePutWithGroupName:groupName
-              name:name
+              executorGroup:executorGroup
           completionHandler: ^(NSError* error) {
                         if (error) {
                             NSLog(@"Error calling LJobExecutorGroupApi->executorGroupsGroupNamePut: %@", error);
@@ -177,7 +178,7 @@ LJobExecutorGroupApi*apiInstance = [[LJobExecutorGroupApi alloc] init];
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **groupName** | **NSString***|  | 
- **name** | [**LJobExecutorGroup***](LJobExecutorGroup*.md)|  | 
+ **executorGroup** | [**LJobExecutorGroup***](LJobExecutorGroup*.md)|  | 
 
 ### Return type
 
@@ -200,7 +201,7 @@ No authorization required
         completionHandler: (void (^)(NSString* output, NSError* error)) handler;
 ```
 
-添加执行机组，可以不用手动添加，执行机注册会自动注册
+添加执行机组
 
 ### Example 
 ```objc
@@ -209,7 +210,7 @@ LJobExecutorGroup* executorGroup = [[LJobExecutorGroup alloc] init]; //
 
 LJobExecutorGroupApi*apiInstance = [[LJobExecutorGroupApi alloc] init];
 
-// 添加执行机组，可以不用手动添加，执行机注册会自动注册
+// 添加执行机组
 [apiInstance executorGroupsPostWithExecutorGroup:executorGroup
           completionHandler: ^(NSString* output, NSError* error) {
                         if (output) {

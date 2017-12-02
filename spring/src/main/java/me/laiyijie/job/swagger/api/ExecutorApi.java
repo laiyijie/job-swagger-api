@@ -55,7 +55,7 @@ public interface ExecutorApi {
     ResponseEntity<ExecutorGroup> executorGroupsGroupNameGet(@ApiParam(value = "",required=true ) @PathVariable("groupName") String groupName, HttpServletRequest request, HttpServletResponse response) throws Exception;
 
 
-    @ApiOperation(value = "", notes = "", response = Void.class, tags={ "ExecutorGroup", })
+    @ApiOperation(value = "只能修改描述", notes = "", response = Void.class, tags={ "ExecutorGroup", })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "ok", response = Void.class) })
     
@@ -63,10 +63,10 @@ public interface ExecutorApi {
         produces = { "application/json", "text/plain; charset=utf-8" }, 
         consumes = { "application/x-www-form-urlencoded", "application/json", "multipart/form-data", "text/plain; charset=utf-8", "*/*" },
         method = RequestMethod.PUT)
-    ResponseEntity<Void> executorGroupsGroupNamePut(@ApiParam(value = "",required=true ) @PathVariable("groupName") String groupName,@ApiParam(value = "" ,required=true )  @Valid @RequestBody ExecutorGroup name, HttpServletRequest request, HttpServletResponse response) throws Exception;
+    ResponseEntity<Void> executorGroupsGroupNamePut(@ApiParam(value = "",required=true ) @PathVariable("groupName") String groupName,@ApiParam(value = "" ,required=true )  @Valid @RequestBody ExecutorGroup executorGroup, HttpServletRequest request, HttpServletResponse response) throws Exception;
 
 
-    @ApiOperation(value = "添加执行机组，可以不用手动添加，执行机注册会自动注册", notes = "", response = String.class, tags={ "ExecutorGroup", })
+    @ApiOperation(value = "添加执行机组", notes = "", response = String.class, tags={ "ExecutorGroup", })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "ok", response = String.class) })
     

@@ -56,7 +56,7 @@ public interface JobApi {
     ResponseEntity<Job> jobGroupsGroupIdJobsGet(@ApiParam(value = "",required=true ) @PathVariable("groupId") Integer groupId, HttpServletRequest request, HttpServletResponse response) throws Exception;
 
 
-    @ApiOperation(value = "修改jobgroup信息", notes = "", response = Void.class, tags={ "Job", })
+    @ApiOperation(value = "修改jobgroup信息 只能修改 名字、第几步、描述", notes = "", response = Void.class, tags={ "Job", })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "ok", response = Void.class) })
     

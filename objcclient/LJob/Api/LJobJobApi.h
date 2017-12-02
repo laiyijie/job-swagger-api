@@ -61,7 +61,7 @@ extern NSInteger kLJobJobApiMissingParamErrorCode;
     completionHandler: (void (^)(LJobJob* output, NSError* error)) handler;
 
 
-/// 修改jobgroup信息
+/// 修改jobgroup信息 只能修改 名字、第几步、描述
 /// 
 ///
 /// @param groupId 
@@ -99,15 +99,17 @@ extern NSInteger kLJobJobApiMissingParamErrorCode;
     completionHandler: (void (^)(LJobJob* output, NSError* error)) handler;
 
 
-/// 
+/// 修改job 信息 只能修改 名字、描述、脚本、使用的执行机组
 /// 
 ///
 /// @param jobId 
+/// @param job 
 /// 
 ///  code:200 message:"ok"
 ///
 /// @return 
 -(NSURLSessionTask*) jobsJobIdPostWithJobId: (NSNumber*) jobId
+    job: (LJobJob*) job
     completionHandler: (void (^)(NSError* error)) handler;
 
 
@@ -194,7 +196,7 @@ extern NSInteger kLJobJobApiMissingParamErrorCode;
     completionHandler: (void (^)(NSArray<LJobJobGroup>* output, NSError* error)) handler;
 
 
-/// 修改这个工作流信息
+/// 修改这个工作流信息，只能修改 名字、描述、执行间隔
 /// 
 ///
 /// @param workFlowId 

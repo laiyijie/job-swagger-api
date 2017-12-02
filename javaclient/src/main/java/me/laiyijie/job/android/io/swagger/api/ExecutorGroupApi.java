@@ -421,14 +421,14 @@ public class ExecutorGroupApi {
     /**
      * Build call for executorGroupsGroupNamePut
      * @param groupName  (required)
-     * @param name  (required)
+     * @param executorGroup  (required)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call executorGroupsGroupNamePutCall(String groupName, ExecutorGroup name, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        Object localVarPostBody = name;
+    public com.squareup.okhttp.Call executorGroupsGroupNamePutCall(String groupName, ExecutorGroup executorGroup, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = executorGroup;
         
         // create path and map variables
         String localVarPath = "/executor/groups/{groupName}"
@@ -469,20 +469,20 @@ public class ExecutorGroupApi {
     }
     
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call executorGroupsGroupNamePutValidateBeforeCall(String groupName, ExecutorGroup name, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call executorGroupsGroupNamePutValidateBeforeCall(String groupName, ExecutorGroup executorGroup, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'groupName' is set
         if (groupName == null) {
             throw new ApiException("Missing the required parameter 'groupName' when calling executorGroupsGroupNamePut(Async)");
         }
         
-        // verify the required parameter 'name' is set
-        if (name == null) {
-            throw new ApiException("Missing the required parameter 'name' when calling executorGroupsGroupNamePut(Async)");
+        // verify the required parameter 'executorGroup' is set
+        if (executorGroup == null) {
+            throw new ApiException("Missing the required parameter 'executorGroup' when calling executorGroupsGroupNamePut(Async)");
         }
         
         
-        com.squareup.okhttp.Call call = executorGroupsGroupNamePutCall(groupName, name, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = executorGroupsGroupNamePutCall(groupName, executorGroup, progressListener, progressRequestListener);
         return call;
 
         
@@ -492,39 +492,39 @@ public class ExecutorGroupApi {
     }
 
     /**
-     * 
+     * 只能修改描述
      * 
      * @param groupName  (required)
-     * @param name  (required)
+     * @param executorGroup  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void executorGroupsGroupNamePut(String groupName, ExecutorGroup name) throws ApiException {
-        executorGroupsGroupNamePutWithHttpInfo(groupName, name);
+    public void executorGroupsGroupNamePut(String groupName, ExecutorGroup executorGroup) throws ApiException {
+        executorGroupsGroupNamePutWithHttpInfo(groupName, executorGroup);
     }
 
     /**
-     * 
+     * 只能修改描述
      * 
      * @param groupName  (required)
-     * @param name  (required)
+     * @param executorGroup  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> executorGroupsGroupNamePutWithHttpInfo(String groupName, ExecutorGroup name) throws ApiException {
-        com.squareup.okhttp.Call call = executorGroupsGroupNamePutValidateBeforeCall(groupName, name, null, null);
+    public ApiResponse<Void> executorGroupsGroupNamePutWithHttpInfo(String groupName, ExecutorGroup executorGroup) throws ApiException {
+        com.squareup.okhttp.Call call = executorGroupsGroupNamePutValidateBeforeCall(groupName, executorGroup, null, null);
         return apiClient.execute(call);
     }
 
     /**
-     *  (asynchronously)
+     * 只能修改描述 (asynchronously)
      * 
      * @param groupName  (required)
-     * @param name  (required)
+     * @param executorGroup  (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call executorGroupsGroupNamePutAsync(String groupName, ExecutorGroup name, final ApiCallback<Void> callback) throws ApiException {
+    public com.squareup.okhttp.Call executorGroupsGroupNamePutAsync(String groupName, ExecutorGroup executorGroup, final ApiCallback<Void> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -545,7 +545,7 @@ public class ExecutorGroupApi {
             };
         }
 
-        com.squareup.okhttp.Call call = executorGroupsGroupNamePutValidateBeforeCall(groupName, name, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = executorGroupsGroupNamePutValidateBeforeCall(groupName, executorGroup, progressListener, progressRequestListener);
         apiClient.executeAsync(call, callback);
         return call;
     }
@@ -616,7 +616,7 @@ public class ExecutorGroupApi {
     }
 
     /**
-     * 添加执行机组，可以不用手动添加，执行机注册会自动注册
+     * 添加执行机组
      * 
      * @param executorGroup  (required)
      * @return String
@@ -628,7 +628,7 @@ public class ExecutorGroupApi {
     }
 
     /**
-     * 添加执行机组，可以不用手动添加，执行机注册会自动注册
+     * 添加执行机组
      * 
      * @param executorGroup  (required)
      * @return ApiResponse&lt;String&gt;
@@ -641,7 +641,7 @@ public class ExecutorGroupApi {
     }
 
     /**
-     * 添加执行机组，可以不用手动添加，执行机注册会自动注册 (asynchronously)
+     * 添加执行机组 (asynchronously)
      * 
      * @param executorGroup  (required)
      * @param callback The callback to be executed when the API call finishes

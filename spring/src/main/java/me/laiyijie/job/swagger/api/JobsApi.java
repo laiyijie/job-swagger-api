@@ -44,7 +44,7 @@ public interface JobsApi {
     ResponseEntity<Job> jobsJobIdGet(@ApiParam(value = "",required=true ) @PathVariable("jobId") Integer jobId, HttpServletRequest request, HttpServletResponse response) throws Exception;
 
 
-    @ApiOperation(value = "", notes = "", response = Void.class, tags={ "Job", })
+    @ApiOperation(value = "修改job 信息 只能修改 名字、描述、脚本、使用的执行机组", notes = "", response = Void.class, tags={ "Job", })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "ok", response = Void.class) })
     
@@ -52,7 +52,7 @@ public interface JobsApi {
         produces = { "application/json", "text/plain; charset=utf-8" }, 
         consumes = { "application/x-www-form-urlencoded", "application/json", "multipart/form-data", "text/plain; charset=utf-8", "*/*" },
         method = RequestMethod.POST)
-    ResponseEntity<Void> jobsJobIdPost(@ApiParam(value = "",required=true ) @PathVariable("jobId") Integer jobId, HttpServletRequest request, HttpServletResponse response) throws Exception;
+    ResponseEntity<Void> jobsJobIdPost(@ApiParam(value = "",required=true ) @PathVariable("jobId") Integer jobId,@ApiParam(value = "" ,required=true )  @Valid @RequestBody Job job, HttpServletRequest request, HttpServletResponse response) throws Exception;
 
 
     @ApiOperation(value = "", notes = "", response = Void.class, tags={ "Job", })

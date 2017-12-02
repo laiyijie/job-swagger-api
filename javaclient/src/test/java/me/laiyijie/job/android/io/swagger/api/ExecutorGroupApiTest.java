@@ -80,7 +80,7 @@ public class ExecutorGroupApiTest {
     }
     
     /**
-     * 
+     * 只能修改描述
      *
      * 
      *
@@ -90,14 +90,14 @@ public class ExecutorGroupApiTest {
     @Test
     public void executorGroupsGroupNamePutTest() throws ApiException {
         String groupName = null;
-        ExecutorGroup name = null;
-        api.executorGroupsGroupNamePut(groupName, name);
+        ExecutorGroup executorGroup = null;
+        api.executorGroupsGroupNamePut(groupName, executorGroup);
 
         // TODO: test validations
     }
     
     /**
-     * 添加执行机组，可以不用手动添加，执行机注册会自动注册
+     * 添加执行机组
      *
      * 
      *

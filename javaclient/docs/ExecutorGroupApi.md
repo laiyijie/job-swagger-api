@@ -7,8 +7,8 @@ Method | HTTP request | Description
 [**executorGroupsGet**](ExecutorGroupApi.md#executorGroupsGet) | **GET** /executor/groups | 
 [**executorGroupsGroupNameDelete**](ExecutorGroupApi.md#executorGroupsGroupNameDelete) | **DELETE** /executor/groups/{groupName} | 删除整个group，但是还在运行的执行机还是会重新生成这个group，会清空当前group下的所有执行机记录
 [**executorGroupsGroupNameGet**](ExecutorGroupApi.md#executorGroupsGroupNameGet) | **GET** /executor/groups/{groupName} | 
-[**executorGroupsGroupNamePut**](ExecutorGroupApi.md#executorGroupsGroupNamePut) | **PUT** /executor/groups/{groupName} | 
-[**executorGroupsPost**](ExecutorGroupApi.md#executorGroupsPost) | **POST** /executor/groups | 添加执行机组，可以不用手动添加，执行机注册会自动注册
+[**executorGroupsGroupNamePut**](ExecutorGroupApi.md#executorGroupsGroupNamePut) | **PUT** /executor/groups/{groupName} | 只能修改描述
+[**executorGroupsPost**](ExecutorGroupApi.md#executorGroupsPost) | **POST** /executor/groups | 添加执行机组
 
 
 <a name="executorGroupsGet"></a>
@@ -137,9 +137,9 @@ No authorization required
 
 <a name="executorGroupsGroupNamePut"></a>
 # **executorGroupsGroupNamePut**
-> executorGroupsGroupNamePut(groupName, name)
+> executorGroupsGroupNamePut(groupName, executorGroup)
 
-
+只能修改描述
 
 ### Example
 ```java
@@ -150,9 +150,9 @@ No authorization required
 
 ExecutorGroupApi apiInstance = new ExecutorGroupApi();
 String groupName = "groupName_example"; // String | 
-ExecutorGroup name = new ExecutorGroup(); // ExecutorGroup | 
+ExecutorGroup executorGroup = new ExecutorGroup(); // ExecutorGroup | 
 try {
-    apiInstance.executorGroupsGroupNamePut(groupName, name);
+    apiInstance.executorGroupsGroupNamePut(groupName, executorGroup);
 } catch (ApiException e) {
     System.err.println("Exception when calling ExecutorGroupApi#executorGroupsGroupNamePut");
     e.printStackTrace();
@@ -164,7 +164,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **groupName** | **String**|  |
- **name** | [**ExecutorGroup**](ExecutorGroup.md)|  |
+ **executorGroup** | [**ExecutorGroup**](ExecutorGroup.md)|  |
 
 ### Return type
 
@@ -183,7 +183,7 @@ No authorization required
 # **executorGroupsPost**
 > String executorGroupsPost(executorGroup)
 
-添加执行机组，可以不用手动添加，执行机注册会自动注册
+添加执行机组
 
 ### Example
 ```java

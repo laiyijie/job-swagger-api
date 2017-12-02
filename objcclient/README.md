@@ -92,15 +92,15 @@ Class | Method | HTTP request | Description
 *LJobExecutorGroupApi* | [**executorGroupsGet**](docs/LJobExecutorGroupApi.md#executorgroupsget) | **GET** /executor/groups | 
 *LJobExecutorGroupApi* | [**executorGroupsGroupNameDelete**](docs/LJobExecutorGroupApi.md#executorgroupsgroupnamedelete) | **DELETE** /executor/groups/{groupName} | 删除整个group，但是还在运行的执行机还是会重新生成这个group，会清空当前group下的所有执行机记录
 *LJobExecutorGroupApi* | [**executorGroupsGroupNameGet**](docs/LJobExecutorGroupApi.md#executorgroupsgroupnameget) | **GET** /executor/groups/{groupName} | 
-*LJobExecutorGroupApi* | [**executorGroupsGroupNamePut**](docs/LJobExecutorGroupApi.md#executorgroupsgroupnameput) | **PUT** /executor/groups/{groupName} | 
-*LJobExecutorGroupApi* | [**executorGroupsPost**](docs/LJobExecutorGroupApi.md#executorgroupspost) | **POST** /executor/groups | 添加执行机组，可以不用手动添加，执行机注册会自动注册
+*LJobExecutorGroupApi* | [**executorGroupsGroupNamePut**](docs/LJobExecutorGroupApi.md#executorgroupsgroupnameput) | **PUT** /executor/groups/{groupName} | 只能修改描述
+*LJobExecutorGroupApi* | [**executorGroupsPost**](docs/LJobExecutorGroupApi.md#executorgroupspost) | **POST** /executor/groups | 添加执行机组
 *LJobJobApi* | [**jobGroupsGroupIdDelete**](docs/LJobJobApi.md#jobgroupsgroupiddelete) | **DELETE** /job/groups/{groupId} | 删除jobgroup
 *LJobJobApi* | [**jobGroupsGroupIdGet**](docs/LJobJobApi.md#jobgroupsgroupidget) | **GET** /job/groups/{groupId} | 获取单个执行组的信息
 *LJobJobApi* | [**jobGroupsGroupIdJobsGet**](docs/LJobJobApi.md#jobgroupsgroupidjobsget) | **GET** /job/groups/{groupId}/jobs | 
-*LJobJobApi* | [**jobGroupsGroupIdPost**](docs/LJobJobApi.md#jobgroupsgroupidpost) | **POST** /job/groups/{groupId} | 修改jobgroup信息
+*LJobJobApi* | [**jobGroupsGroupIdPost**](docs/LJobJobApi.md#jobgroupsgroupidpost) | **POST** /job/groups/{groupId} | 修改jobgroup信息 只能修改 名字、第几步、描述
 *LJobJobApi* | [**jobsJobIdDelete**](docs/LJobJobApi.md#jobsjobiddelete) | **DELETE** /jobs/{jobId} | 
 *LJobJobApi* | [**jobsJobIdGet**](docs/LJobJobApi.md#jobsjobidget) | **GET** /jobs/{jobId} | 
-*LJobJobApi* | [**jobsJobIdPost**](docs/LJobJobApi.md#jobsjobidpost) | **POST** /jobs/{jobId} | 
+*LJobJobApi* | [**jobsJobIdPost**](docs/LJobJobApi.md#jobsjobidpost) | **POST** /jobs/{jobId} | 修改job 信息 只能修改 名字、描述、脚本、使用的执行机组
 *LJobJobApi* | [**jobsJobIdRunPost**](docs/LJobJobApi.md#jobsjobidrunpost) | **POST** /jobs/{jobId}/run | 
 *LJobJobApi* | [**jobsPost**](docs/LJobJobApi.md#jobspost) | **POST** /jobs | 
 *LJobJobApi* | [**workflowsGet**](docs/LJobJobApi.md#workflowsget) | **GET** /workflows | 获取工作流列表
@@ -108,7 +108,7 @@ Class | Method | HTTP request | Description
 *LJobJobApi* | [**workflowsWorkFlowIdDelete**](docs/LJobJobApi.md#workflowsworkflowiddelete) | **DELETE** /workflows/{workFlowId} | 删除这个工作流
 *LJobJobApi* | [**workflowsWorkFlowIdGet**](docs/LJobJobApi.md#workflowsworkflowidget) | **GET** /workflows/{workFlowId} | 获取单个工作流信息
 *LJobJobApi* | [**workflowsWorkFlowIdJobGroupsGet**](docs/LJobJobApi.md#workflowsworkflowidjobgroupsget) | **GET** /workflows/{workFlowId}/job/groups | 获取工作流下的所有执行组
-*LJobJobApi* | [**workflowsWorkFlowIdPost**](docs/LJobJobApi.md#workflowsworkflowidpost) | **POST** /workflows/{workFlowId} | 修改这个工作流信息
+*LJobJobApi* | [**workflowsWorkFlowIdPost**](docs/LJobJobApi.md#workflowsworkflowidpost) | **POST** /workflows/{workFlowId} | 修改这个工作流信息，只能修改 名字、描述、执行间隔
 *LJobJobApi* | [**workflowsWorkFlowIdResumePost**](docs/LJobJobApi.md#workflowsworkflowidresumepost) | **POST** /workflows/{workFlowId}/resume | 从失败处执行这个workflow
 *LJobJobApi* | [**workflowsWorkFlowIdRunPost**](docs/LJobJobApi.md#workflowsworkflowidrunpost) | **POST** /workflows/{workFlowId}/run | 从头执行这个workflow
 *LJobTestApi* | [**testInfoGet**](docs/LJobTestApi.md#testinfoget) | **GET** /test/info | 测试接口

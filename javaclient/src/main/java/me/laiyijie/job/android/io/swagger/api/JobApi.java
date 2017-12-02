@@ -504,7 +504,7 @@ public class JobApi {
     }
 
     /**
-     * 修改jobgroup信息
+     * 修改jobgroup信息 只能修改 名字、第几步、描述
      * 
      * @param groupId  (required)
      * @param jobGroup  (required)
@@ -515,7 +515,7 @@ public class JobApi {
     }
 
     /**
-     * 修改jobgroup信息
+     * 修改jobgroup信息 只能修改 名字、第几步、描述
      * 
      * @param groupId  (required)
      * @param jobGroup  (required)
@@ -528,7 +528,7 @@ public class JobApi {
     }
 
     /**
-     * 修改jobgroup信息 (asynchronously)
+     * 修改jobgroup信息 只能修改 名字、第几步、描述 (asynchronously)
      * 
      * @param groupId  (required)
      * @param jobGroup  (required)
@@ -812,13 +812,14 @@ public class JobApi {
     /**
      * Build call for jobsJobIdPost
      * @param jobId  (required)
+     * @param job  (required)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call jobsJobIdPostCall(Integer jobId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        Object localVarPostBody = null;
+    public com.squareup.okhttp.Call jobsJobIdPostCall(Integer jobId, Job job, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = job;
         
         // create path and map variables
         String localVarPath = "/jobs/{jobId}"
@@ -859,15 +860,20 @@ public class JobApi {
     }
     
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call jobsJobIdPostValidateBeforeCall(Integer jobId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call jobsJobIdPostValidateBeforeCall(Integer jobId, Job job, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'jobId' is set
         if (jobId == null) {
             throw new ApiException("Missing the required parameter 'jobId' when calling jobsJobIdPost(Async)");
         }
         
+        // verify the required parameter 'job' is set
+        if (job == null) {
+            throw new ApiException("Missing the required parameter 'job' when calling jobsJobIdPost(Async)");
+        }
         
-        com.squareup.okhttp.Call call = jobsJobIdPostCall(jobId, progressListener, progressRequestListener);
+        
+        com.squareup.okhttp.Call call = jobsJobIdPostCall(jobId, job, progressListener, progressRequestListener);
         return call;
 
         
@@ -877,36 +883,39 @@ public class JobApi {
     }
 
     /**
-     * 
+     * 修改job 信息 只能修改 名字、描述、脚本、使用的执行机组
      * 
      * @param jobId  (required)
+     * @param job  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void jobsJobIdPost(Integer jobId) throws ApiException {
-        jobsJobIdPostWithHttpInfo(jobId);
+    public void jobsJobIdPost(Integer jobId, Job job) throws ApiException {
+        jobsJobIdPostWithHttpInfo(jobId, job);
     }
 
     /**
-     * 
+     * 修改job 信息 只能修改 名字、描述、脚本、使用的执行机组
      * 
      * @param jobId  (required)
+     * @param job  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> jobsJobIdPostWithHttpInfo(Integer jobId) throws ApiException {
-        com.squareup.okhttp.Call call = jobsJobIdPostValidateBeforeCall(jobId, null, null);
+    public ApiResponse<Void> jobsJobIdPostWithHttpInfo(Integer jobId, Job job) throws ApiException {
+        com.squareup.okhttp.Call call = jobsJobIdPostValidateBeforeCall(jobId, job, null, null);
         return apiClient.execute(call);
     }
 
     /**
-     *  (asynchronously)
+     * 修改job 信息 只能修改 名字、描述、脚本、使用的执行机组 (asynchronously)
      * 
      * @param jobId  (required)
+     * @param job  (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call jobsJobIdPostAsync(Integer jobId, final ApiCallback<Void> callback) throws ApiException {
+    public com.squareup.okhttp.Call jobsJobIdPostAsync(Integer jobId, Job job, final ApiCallback<Void> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -927,7 +936,7 @@ public class JobApi {
             };
         }
 
-        com.squareup.okhttp.Call call = jobsJobIdPostValidateBeforeCall(jobId, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = jobsJobIdPostValidateBeforeCall(jobId, job, progressListener, progressRequestListener);
         apiClient.executeAsync(call, callback);
         return call;
     }
@@ -1863,7 +1872,7 @@ public class JobApi {
     }
 
     /**
-     * 修改这个工作流信息
+     * 修改这个工作流信息，只能修改 名字、描述、执行间隔
      * 
      * @param workFlowId  (required)
      * @param workFlow  (required)
@@ -1874,7 +1883,7 @@ public class JobApi {
     }
 
     /**
-     * 修改这个工作流信息
+     * 修改这个工作流信息，只能修改 名字、描述、执行间隔
      * 
      * @param workFlowId  (required)
      * @param workFlow  (required)
@@ -1887,7 +1896,7 @@ public class JobApi {
     }
 
     /**
-     * 修改这个工作流信息 (asynchronously)
+     * 修改这个工作流信息，只能修改 名字、描述、执行间隔 (asynchronously)
      * 
      * @param workFlowId  (required)
      * @param workFlow  (required)

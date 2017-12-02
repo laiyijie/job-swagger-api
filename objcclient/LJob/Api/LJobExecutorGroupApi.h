@@ -58,21 +58,21 @@ extern NSInteger kLJobExecutorGroupApiMissingParamErrorCode;
     completionHandler: (void (^)(LJobExecutorGroup* output, NSError* error)) handler;
 
 
-/// 
+/// 只能修改描述
 /// 
 ///
 /// @param groupName 
-/// @param name 
+/// @param executorGroup 
 /// 
 ///  code:200 message:"ok"
 ///
 /// @return 
 -(NSURLSessionTask*) executorGroupsGroupNamePutWithGroupName: (NSString*) groupName
-    name: (LJobExecutorGroup*) name
+    executorGroup: (LJobExecutorGroup*) executorGroup
     completionHandler: (void (^)(NSError* error)) handler;
 
 
-/// 添加执行机组，可以不用手动添加，执行机注册会自动注册
+/// 添加执行机组
 /// 
 ///
 /// @param executorGroup 

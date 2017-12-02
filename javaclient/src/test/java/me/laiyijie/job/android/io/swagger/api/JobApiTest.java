@@ -83,7 +83,7 @@ public class JobApiTest {
     }
     
     /**
-     * 修改jobgroup信息
+     * 修改jobgroup信息 只能修改 名字、第几步、描述
      *
      * 
      *
@@ -132,7 +132,7 @@ public class JobApiTest {
     }
     
     /**
-     * 
+     * 修改job 信息 只能修改 名字、描述、脚本、使用的执行机组
      *
      * 
      *
@@ -142,7 +142,8 @@ public class JobApiTest {
     @Test
     public void jobsJobIdPostTest() throws ApiException {
         Integer jobId = null;
-        api.jobsJobIdPost(jobId);
+        Job job = null;
+        api.jobsJobIdPost(jobId, job);
 
         // TODO: test validations
     }
@@ -259,7 +260,7 @@ public class JobApiTest {
     }
     
     /**
-     * 修改这个工作流信息
+     * 修改这个工作流信息，只能修改 名字、描述、执行间隔
      *
      * 
      *

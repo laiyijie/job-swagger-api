@@ -256,7 +256,7 @@ NSInteger kLJobJobApiMissingParamErrorCode = 234513;
 }
 
 ///
-/// 修改jobgroup信息
+/// 修改jobgroup信息 只能修改 名字、第几步、描述
 /// 
 ///  @param groupId  
 ///
@@ -475,19 +475,33 @@ NSInteger kLJobJobApiMissingParamErrorCode = 234513;
 }
 
 ///
-/// 
+/// 修改job 信息 只能修改 名字、描述、脚本、使用的执行机组
 /// 
 ///  @param jobId  
+///
+///  @param job  
 ///
 ///  @returns void
 ///
 -(NSURLSessionTask*) jobsJobIdPostWithJobId: (NSNumber*) jobId
+    job: (LJobJob*) job
     completionHandler: (void (^)(NSError* error)) handler {
     // verify the required parameter 'jobId' is set
     if (jobId == nil) {
         NSParameterAssert(jobId);
         if(handler) {
             NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"jobId"] };
+            NSError* error = [NSError errorWithDomain:kLJobJobApiErrorDomain code:kLJobJobApiMissingParamErrorCode userInfo:userInfo];
+            handler(error);
+        }
+        return nil;
+    }
+
+    // verify the required parameter 'job' is set
+    if (job == nil) {
+        NSParameterAssert(job);
+        if(handler) {
+            NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"job"] };
             NSError* error = [NSError errorWithDomain:kLJobJobApiErrorDomain code:kLJobJobApiMissingParamErrorCode userInfo:userInfo];
             handler(error);
         }
@@ -522,6 +536,7 @@ NSInteger kLJobJobApiMissingParamErrorCode = 234513;
     id bodyParam = nil;
     NSMutableDictionary *formParams = [[NSMutableDictionary alloc] init];
     NSMutableDictionary *localVarFiles = [[NSMutableDictionary alloc] init];
+    bodyParam = job;
 
     return [self.apiClient requestWithPath: resourcePath
                                     method: @"POST"
@@ -999,7 +1014,7 @@ NSInteger kLJobJobApiMissingParamErrorCode = 234513;
 }
 
 ///
-/// 修改这个工作流信息
+/// 修改这个工作流信息，只能修改 名字、描述、执行间隔
 /// 
 ///  @param workFlowId  
 ///

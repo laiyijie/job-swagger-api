@@ -238,16 +238,16 @@ NSInteger kLJobExecutorGroupApiMissingParamErrorCode = 234513;
 }
 
 ///
-/// 
+/// 只能修改描述
 /// 
 ///  @param groupName  
 ///
-///  @param name  
+///  @param executorGroup  
 ///
 ///  @returns void
 ///
 -(NSURLSessionTask*) executorGroupsGroupNamePutWithGroupName: (NSString*) groupName
-    name: (LJobExecutorGroup*) name
+    executorGroup: (LJobExecutorGroup*) executorGroup
     completionHandler: (void (^)(NSError* error)) handler {
     // verify the required parameter 'groupName' is set
     if (groupName == nil) {
@@ -260,11 +260,11 @@ NSInteger kLJobExecutorGroupApiMissingParamErrorCode = 234513;
         return nil;
     }
 
-    // verify the required parameter 'name' is set
-    if (name == nil) {
-        NSParameterAssert(name);
+    // verify the required parameter 'executorGroup' is set
+    if (executorGroup == nil) {
+        NSParameterAssert(executorGroup);
         if(handler) {
-            NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"name"] };
+            NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"executorGroup"] };
             NSError* error = [NSError errorWithDomain:kLJobExecutorGroupApiErrorDomain code:kLJobExecutorGroupApiMissingParamErrorCode userInfo:userInfo];
             handler(error);
         }
@@ -299,7 +299,7 @@ NSInteger kLJobExecutorGroupApiMissingParamErrorCode = 234513;
     id bodyParam = nil;
     NSMutableDictionary *formParams = [[NSMutableDictionary alloc] init];
     NSMutableDictionary *localVarFiles = [[NSMutableDictionary alloc] init];
-    bodyParam = name;
+    bodyParam = executorGroup;
 
     return [self.apiClient requestWithPath: resourcePath
                                     method: @"PUT"
@@ -321,7 +321,7 @@ NSInteger kLJobExecutorGroupApiMissingParamErrorCode = 234513;
 }
 
 ///
-/// 添加执行机组，可以不用手动添加，执行机注册会自动注册
+/// 添加执行机组
 /// 
 ///  @param executorGroup  
 ///

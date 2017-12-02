@@ -7,10 +7,10 @@ Method | HTTP request | Description
 [**jobGroupsGroupIdDelete**](JobApi.md#jobGroupsGroupIdDelete) | **DELETE** /job/groups/{groupId} | 删除jobgroup
 [**jobGroupsGroupIdGet**](JobApi.md#jobGroupsGroupIdGet) | **GET** /job/groups/{groupId} | 获取单个执行组的信息
 [**jobGroupsGroupIdJobsGet**](JobApi.md#jobGroupsGroupIdJobsGet) | **GET** /job/groups/{groupId}/jobs | 
-[**jobGroupsGroupIdPost**](JobApi.md#jobGroupsGroupIdPost) | **POST** /job/groups/{groupId} | 修改jobgroup信息
+[**jobGroupsGroupIdPost**](JobApi.md#jobGroupsGroupIdPost) | **POST** /job/groups/{groupId} | 修改jobgroup信息 只能修改 名字、第几步、描述
 [**jobsJobIdDelete**](JobApi.md#jobsJobIdDelete) | **DELETE** /jobs/{jobId} | 
 [**jobsJobIdGet**](JobApi.md#jobsJobIdGet) | **GET** /jobs/{jobId} | 
-[**jobsJobIdPost**](JobApi.md#jobsJobIdPost) | **POST** /jobs/{jobId} | 
+[**jobsJobIdPost**](JobApi.md#jobsJobIdPost) | **POST** /jobs/{jobId} | 修改job 信息 只能修改 名字、描述、脚本、使用的执行机组
 [**jobsJobIdRunPost**](JobApi.md#jobsJobIdRunPost) | **POST** /jobs/{jobId}/run | 
 [**jobsPost**](JobApi.md#jobsPost) | **POST** /jobs | 
 [**workflowsGet**](JobApi.md#workflowsGet) | **GET** /workflows | 获取工作流列表
@@ -18,7 +18,7 @@ Method | HTTP request | Description
 [**workflowsWorkFlowIdDelete**](JobApi.md#workflowsWorkFlowIdDelete) | **DELETE** /workflows/{workFlowId} | 删除这个工作流
 [**workflowsWorkFlowIdGet**](JobApi.md#workflowsWorkFlowIdGet) | **GET** /workflows/{workFlowId} | 获取单个工作流信息
 [**workflowsWorkFlowIdJobGroupsGet**](JobApi.md#workflowsWorkFlowIdJobGroupsGet) | **GET** /workflows/{workFlowId}/job/groups | 获取工作流下的所有执行组
-[**workflowsWorkFlowIdPost**](JobApi.md#workflowsWorkFlowIdPost) | **POST** /workflows/{workFlowId} | 修改这个工作流信息
+[**workflowsWorkFlowIdPost**](JobApi.md#workflowsWorkFlowIdPost) | **POST** /workflows/{workFlowId} | 修改这个工作流信息，只能修改 名字、描述、执行间隔
 [**workflowsWorkFlowIdResumePost**](JobApi.md#workflowsWorkFlowIdResumePost) | **POST** /workflows/{workFlowId}/resume | 从失败处执行这个workflow
 [**workflowsWorkFlowIdRunPost**](JobApi.md#workflowsWorkFlowIdRunPost) | **POST** /workflows/{workFlowId}/run | 从头执行这个workflow
 
@@ -155,7 +155,7 @@ No authorization required
 # **jobGroupsGroupIdPost**
 > jobGroupsGroupIdPost(groupId, jobGroup)
 
-修改jobgroup信息
+修改jobgroup信息 只能修改 名字、第几步、描述
 
 ### Example
 ```java
@@ -282,9 +282,9 @@ No authorization required
 
 <a name="jobsJobIdPost"></a>
 # **jobsJobIdPost**
-> jobsJobIdPost(jobId)
+> jobsJobIdPost(jobId, job)
 
-
+修改job 信息 只能修改 名字、描述、脚本、使用的执行机组
 
 ### Example
 ```java
@@ -295,8 +295,9 @@ No authorization required
 
 JobApi apiInstance = new JobApi();
 Integer jobId = 56; // Integer | 
+Job job = new Job(); // Job | 
 try {
-    apiInstance.jobsJobIdPost(jobId);
+    apiInstance.jobsJobIdPost(jobId, job);
 } catch (ApiException e) {
     System.err.println("Exception when calling JobApi#jobsJobIdPost");
     e.printStackTrace();
@@ -308,6 +309,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **jobId** | **Integer**|  |
+ **job** | [**Job**](Job.md)|  |
 
 ### Return type
 
@@ -620,7 +622,7 @@ No authorization required
 # **workflowsWorkFlowIdPost**
 > workflowsWorkFlowIdPost(workFlowId, workFlow)
 
-修改这个工作流信息
+修改这个工作流信息，只能修改 名字、描述、执行间隔
 
 ### Example
 ```java

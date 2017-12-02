@@ -92,7 +92,7 @@ paths:
     post:
       tags:
         - ExecutorGroup
-      summary: 添加执行机组，可以不用手动添加，执行机注册会自动注册
+      summary: 添加执行机组
       parameters:
         - name: executorGroup
           in: body
@@ -124,12 +124,13 @@ paths:
     put:
       tags:
         - ExecutorGroup
+      summary: 只能修改描述
       parameters:
         - name: groupName
           in: path
           required: true
           type: string
-        - name: name
+        - name: executorGroup
           in: body
           required: true
           schema:
@@ -197,7 +198,7 @@ paths:
     post:
       tags:
         - Job
-      summary: 修改这个工作流信息
+      summary: 修改这个工作流信息，只能修改 名字、描述、执行间隔
       parameters:
         - name: workFlowId
           in: path
@@ -289,7 +290,7 @@ paths:
     post:
       tags:
         - Job
-      summary: 修改jobgroup信息
+      summary: 修改jobgroup信息 只能修改 名字、第几步、描述
       parameters:
         - name: groupId
           in: path
@@ -362,11 +363,17 @@ paths:
     post:
       tags:
         - Job
+      summary: 修改job 信息 只能修改 名字、描述、脚本、使用的执行机组
       parameters:
         - name: jobId
           type: integer
           required: true
           in: path
+        - name: job
+          required: true
+          in: body
+          schema:
+            $ref: '#/definitions/Job'
       responses:
         200:
           description: ok

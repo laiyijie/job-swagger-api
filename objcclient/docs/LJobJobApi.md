@@ -7,10 +7,10 @@ Method | HTTP request | Description
 [**jobGroupsGroupIdDelete**](LJobJobApi.md#jobgroupsgroupiddelete) | **DELETE** /job/groups/{groupId} | 删除jobgroup
 [**jobGroupsGroupIdGet**](LJobJobApi.md#jobgroupsgroupidget) | **GET** /job/groups/{groupId} | 获取单个执行组的信息
 [**jobGroupsGroupIdJobsGet**](LJobJobApi.md#jobgroupsgroupidjobsget) | **GET** /job/groups/{groupId}/jobs | 
-[**jobGroupsGroupIdPost**](LJobJobApi.md#jobgroupsgroupidpost) | **POST** /job/groups/{groupId} | 修改jobgroup信息
+[**jobGroupsGroupIdPost**](LJobJobApi.md#jobgroupsgroupidpost) | **POST** /job/groups/{groupId} | 修改jobgroup信息 只能修改 名字、第几步、描述
 [**jobsJobIdDelete**](LJobJobApi.md#jobsjobiddelete) | **DELETE** /jobs/{jobId} | 
 [**jobsJobIdGet**](LJobJobApi.md#jobsjobidget) | **GET** /jobs/{jobId} | 
-[**jobsJobIdPost**](LJobJobApi.md#jobsjobidpost) | **POST** /jobs/{jobId} | 
+[**jobsJobIdPost**](LJobJobApi.md#jobsjobidpost) | **POST** /jobs/{jobId} | 修改job 信息 只能修改 名字、描述、脚本、使用的执行机组
 [**jobsJobIdRunPost**](LJobJobApi.md#jobsjobidrunpost) | **POST** /jobs/{jobId}/run | 
 [**jobsPost**](LJobJobApi.md#jobspost) | **POST** /jobs | 
 [**workflowsGet**](LJobJobApi.md#workflowsget) | **GET** /workflows | 获取工作流列表
@@ -18,7 +18,7 @@ Method | HTTP request | Description
 [**workflowsWorkFlowIdDelete**](LJobJobApi.md#workflowsworkflowiddelete) | **DELETE** /workflows/{workFlowId} | 删除这个工作流
 [**workflowsWorkFlowIdGet**](LJobJobApi.md#workflowsworkflowidget) | **GET** /workflows/{workFlowId} | 获取单个工作流信息
 [**workflowsWorkFlowIdJobGroupsGet**](LJobJobApi.md#workflowsworkflowidjobgroupsget) | **GET** /workflows/{workFlowId}/job/groups | 获取工作流下的所有执行组
-[**workflowsWorkFlowIdPost**](LJobJobApi.md#workflowsworkflowidpost) | **POST** /workflows/{workFlowId} | 修改这个工作流信息
+[**workflowsWorkFlowIdPost**](LJobJobApi.md#workflowsworkflowidpost) | **POST** /workflows/{workFlowId} | 修改这个工作流信息，只能修改 名字、描述、执行间隔
 [**workflowsWorkFlowIdResumePost**](LJobJobApi.md#workflowsworkflowidresumepost) | **POST** /workflows/{workFlowId}/resume | 从失败处执行这个workflow
 [**workflowsWorkFlowIdRunPost**](LJobJobApi.md#workflowsworkflowidrunpost) | **POST** /workflows/{workFlowId}/run | 从头执行这个workflow
 
@@ -170,7 +170,7 @@ No authorization required
         completionHandler: (void (^)(NSError* error)) handler;
 ```
 
-修改jobgroup信息
+修改jobgroup信息 只能修改 名字、第几步、描述
 
 ### Example 
 ```objc
@@ -180,7 +180,7 @@ LJobJobGroup* jobGroup = [[LJobJobGroup alloc] init]; //
 
 LJobJobApi*apiInstance = [[LJobJobApi alloc] init];
 
-// 修改jobgroup信息
+// 修改jobgroup信息 只能修改 名字、第几步、描述
 [apiInstance jobGroupsGroupIdPostWithGroupId:groupId
               jobGroup:jobGroup
           completionHandler: ^(NSError* error) {
@@ -306,19 +306,23 @@ No authorization required
 # **jobsJobIdPost**
 ```objc
 -(NSURLSessionTask*) jobsJobIdPostWithJobId: (NSNumber*) jobId
+    job: (LJobJob*) job
         completionHandler: (void (^)(NSError* error)) handler;
 ```
 
-
+修改job 信息 只能修改 名字、描述、脚本、使用的执行机组
 
 ### Example 
 ```objc
 
 NSNumber* jobId = @56; // 
+LJobJob* job = [[LJobJob alloc] init]; // 
 
 LJobJobApi*apiInstance = [[LJobJobApi alloc] init];
 
+// 修改job 信息 只能修改 名字、描述、脚本、使用的执行机组
 [apiInstance jobsJobIdPostWithJobId:jobId
+              job:job
           completionHandler: ^(NSError* error) {
                         if (error) {
                             NSLog(@"Error calling LJobJobApi->jobsJobIdPost: %@", error);
@@ -331,6 +335,7 @@ LJobJobApi*apiInstance = [[LJobJobApi alloc] init];
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **jobId** | **NSNumber***|  | 
+ **job** | [**LJobJob***](LJobJob*.md)|  | 
 
 ### Return type
 
@@ -675,7 +680,7 @@ No authorization required
         completionHandler: (void (^)(NSError* error)) handler;
 ```
 
-修改这个工作流信息
+修改这个工作流信息，只能修改 名字、描述、执行间隔
 
 ### Example 
 ```objc
@@ -685,7 +690,7 @@ LJobWorkFlow* workFlow = [[LJobWorkFlow alloc] init]; //
 
 LJobJobApi*apiInstance = [[LJobJobApi alloc] init];
 
-// 修改这个工作流信息
+// 修改这个工作流信息，只能修改 名字、描述、执行间隔
 [apiInstance workflowsWorkFlowIdPostWithWorkFlowId:workFlowId
               workFlow:workFlow
           completionHandler: ^(NSError* error) {
