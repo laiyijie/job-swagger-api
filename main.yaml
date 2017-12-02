@@ -459,6 +459,8 @@ definitions:
       step:
         type: integer 
         description: 根据这个数字来进行按顺序执行
+      workFlowId:
+        type: integer
   
   Job:
     type: object

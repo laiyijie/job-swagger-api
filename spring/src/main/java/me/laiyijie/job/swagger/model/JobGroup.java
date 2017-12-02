@@ -29,6 +29,9 @@ public class JobGroup  implements Serializable {
   @JsonProperty("step")
   private Integer step = null;
 
+  @JsonProperty("workFlowId")
+  private Integer workFlowId = null;
+
   public JobGroup id(Integer id) {
     this.id = id;
     return this;
@@ -119,6 +122,24 @@ public class JobGroup  implements Serializable {
     this.step = step;
   }
 
+  public JobGroup workFlowId(Integer workFlowId) {
+    this.workFlowId = workFlowId;
+    return this;
+  }
+
+   /**
+   * Get workFlowId
+   * @return workFlowId
+  **/
+  @ApiModelProperty(value = "")
+  public Integer getWorkFlowId() {
+    return workFlowId;
+  }
+
+  public void setWorkFlowId(Integer workFlowId) {
+    this.workFlowId = workFlowId;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -133,12 +154,13 @@ public class JobGroup  implements Serializable {
         Objects.equals(this.name, jobGroup.name) &&
         Objects.equals(this.description, jobGroup.description) &&
         Objects.equals(this.status, jobGroup.status) &&
-        Objects.equals(this.step, jobGroup.step);
+        Objects.equals(this.step, jobGroup.step) &&
+        Objects.equals(this.workFlowId, jobGroup.workFlowId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name, description, status, step);
+    return Objects.hash(id, name, description, status, step, workFlowId);
   }
 
   @Override
@@ -151,6 +173,7 @@ public class JobGroup  implements Serializable {
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    step: ").append(toIndentedString(step)).append("\n");
+    sb.append("    workFlowId: ").append(toIndentedString(workFlowId)).append("\n");
     sb.append("}");
     return sb.toString();
   }

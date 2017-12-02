@@ -33,4 +33,6 @@
  */
 @property(nonatomic) NSNumber* step;
 
+@property(nonatomic) NSNumber* workFlowId;
+
 @end
