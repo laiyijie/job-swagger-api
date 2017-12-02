@@ -41,6 +41,9 @@ public class WorkFlow implements Serializable {
   @SerializedName("status")
   private String status = null;
 
+  @SerializedName("isCircleScheduled")
+  private Boolean isCircleScheduled = null;
+
   public WorkFlow id(Integer id) {
     this.id = id;
     return this;
@@ -131,6 +134,24 @@ public class WorkFlow implements Serializable {
     this.status = status;
   }
 
+  public WorkFlow isCircleScheduled(Boolean isCircleScheduled) {
+    this.isCircleScheduled = isCircleScheduled;
+    return this;
+  }
+
+   /**
+   * 是否打开循环调度
+   * @return isCircleScheduled
+  **/
+  @ApiModelProperty(value = "是否打开循环调度")
+  public Boolean getIsCircleScheduled() {
+    return isCircleScheduled;
+  }
+
+  public void setIsCircleScheduled(Boolean isCircleScheduled) {
+    this.isCircleScheduled = isCircleScheduled;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -145,12 +166,13 @@ public class WorkFlow implements Serializable {
         Objects.equals(this.name, workFlow.name) &&
         Objects.equals(this.description, workFlow.description) &&
         Objects.equals(this.runInterval, workFlow.runInterval) &&
-        Objects.equals(this.status, workFlow.status);
+        Objects.equals(this.status, workFlow.status) &&
+        Objects.equals(this.isCircleScheduled, workFlow.isCircleScheduled);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name, description, runInterval, status);
+    return Objects.hash(id, name, description, runInterval, status, isCircleScheduled);
   }
 
 
@@ -164,6 +186,7 @@ public class WorkFlow implements Serializable {
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    runInterval: ").append(toIndentedString(runInterval)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
+    sb.append("    isCircleScheduled: ").append(toIndentedString(isCircleScheduled)).append("\n");
     sb.append("}");
     return sb.toString();
   }

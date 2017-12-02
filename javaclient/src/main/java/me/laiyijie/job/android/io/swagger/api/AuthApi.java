@@ -34,14 +34,14 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class UserApi {
+public class AuthApi {
     private ApiClient apiClient;
 
-    public UserApi() {
+    public AuthApi() {
         this(Configuration.getDefaultApiClient());
     }
 
-    public UserApi(ApiClient apiClient) {
+    public AuthApi(ApiClient apiClient) {
         this.apiClient = apiClient;
     }
 
@@ -54,7 +54,7 @@ public class UserApi {
     }
 
     /**
-     * Build call for userLoginPost
+     * Build call for authLoginPost
      * @param username  (required)
      * @param password  (required)
      * @param progressListener Progress listener
@@ -62,11 +62,11 @@ public class UserApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call userLoginPostCall(String username, String password, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call authLoginPostCall(String username, String password, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
         
         // create path and map variables
-        String localVarPath = "/user/login";
+        String localVarPath = "/auth/login";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
 
@@ -107,20 +107,20 @@ public class UserApi {
     }
     
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call userLoginPostValidateBeforeCall(String username, String password, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call authLoginPostValidateBeforeCall(String username, String password, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'username' is set
         if (username == null) {
-            throw new ApiException("Missing the required parameter 'username' when calling userLoginPost(Async)");
+            throw new ApiException("Missing the required parameter 'username' when calling authLoginPost(Async)");
         }
         
         // verify the required parameter 'password' is set
         if (password == null) {
-            throw new ApiException("Missing the required parameter 'password' when calling userLoginPost(Async)");
+            throw new ApiException("Missing the required parameter 'password' when calling authLoginPost(Async)");
         }
         
         
-        com.squareup.okhttp.Call call = userLoginPostCall(username, password, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = authLoginPostCall(username, password, progressListener, progressRequestListener);
         return call;
 
         
@@ -136,8 +136,8 @@ public class UserApi {
      * @param password  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void userLoginPost(String username, String password) throws ApiException {
-        userLoginPostWithHttpInfo(username, password);
+    public void authLoginPost(String username, String password) throws ApiException {
+        authLoginPostWithHttpInfo(username, password);
     }
 
     /**
@@ -148,8 +148,8 @@ public class UserApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> userLoginPostWithHttpInfo(String username, String password) throws ApiException {
-        com.squareup.okhttp.Call call = userLoginPostValidateBeforeCall(username, password, null, null);
+    public ApiResponse<Void> authLoginPostWithHttpInfo(String username, String password) throws ApiException {
+        com.squareup.okhttp.Call call = authLoginPostValidateBeforeCall(username, password, null, null);
         return apiClient.execute(call);
     }
 
@@ -162,7 +162,7 @@ public class UserApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call userLoginPostAsync(String username, String password, final ApiCallback<Void> callback) throws ApiException {
+    public com.squareup.okhttp.Call authLoginPostAsync(String username, String password, final ApiCallback<Void> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -183,7 +183,7 @@ public class UserApi {
             };
         }
 
-        com.squareup.okhttp.Call call = userLoginPostValidateBeforeCall(username, password, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = authLoginPostValidateBeforeCall(username, password, progressListener, progressRequestListener);
         apiClient.executeAsync(call, callback);
         return call;
     }

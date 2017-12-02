@@ -49,10 +49,10 @@ Import the following:
 #import <LJob/LJobTestResponse.h>
 #import <LJob/LJobWorkFlow.h>
 // load API classes for accessing endpoints
+#import <LJob/LJobAuthApi.h>
 #import <LJob/LJobExecutorGroupApi.h>
 #import <LJob/LJobJobApi.h>
 #import <LJob/LJobTestApi.h>
-#import <LJob/LJobUserApi.h>
 
 ```
 
@@ -67,14 +67,14 @@ Please follow the [installation procedure](#installation--usage) and then run th
 ```objc
 
 
+NSString* *username = @"username_example"; // 
+NSString* *password = @"password_example"; // 
 
-LJobExecutorGroupApi *apiInstance = [[LJobExecutorGroupApi alloc] init];
+LJobAuthApi *apiInstance = [[LJobAuthApi alloc] init];
 
-[apiInstance executorGroupsGetWithCompletionHandler: 
-              ^(NSArray<LJobExecutorGroup>* output, NSError* error) {
-                            if (output) {
-                                NSLog(@"%@", output);
-                            }
+[apiInstance authLoginPostWithUsername:username
+    password:password
+              completionHandler: ^(NSError* error) {
                             if (error) {
                                 NSLog(@"Error: %@", error);
                             }
@@ -88,6 +88,7 @@ All URIs are relative to *http://58.87.75.73:8888/job/api/v1/*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
+*LJobAuthApi* | [**authLoginPost**](docs/LJobAuthApi.md#authloginpost) | **POST** /auth/login | 
 *LJobExecutorGroupApi* | [**executorGroupsGet**](docs/LJobExecutorGroupApi.md#executorgroupsget) | **GET** /executor/groups | 
 *LJobExecutorGroupApi* | [**executorGroupsGroupNameDelete**](docs/LJobExecutorGroupApi.md#executorgroupsgroupnamedelete) | **DELETE** /executor/groups/{groupName} | 删除整个group，但是还在运行的执行机还是会重新生成这个group，会清空当前group下的所有执行机记录
 *LJobExecutorGroupApi* | [**executorGroupsGroupNameGet**](docs/LJobExecutorGroupApi.md#executorgroupsgroupnameget) | **GET** /executor/groups/{groupName} | 
@@ -111,7 +112,6 @@ Class | Method | HTTP request | Description
 *LJobJobApi* | [**workflowsWorkFlowIdResumePost**](docs/LJobJobApi.md#workflowsworkflowidresumepost) | **POST** /workflows/{workFlowId}/resume | 从失败处执行这个workflow
 *LJobJobApi* | [**workflowsWorkFlowIdRunPost**](docs/LJobJobApi.md#workflowsworkflowidrunpost) | **POST** /workflows/{workFlowId}/run | 从头执行这个workflow
 *LJobTestApi* | [**testInfoGet**](docs/LJobTestApi.md#testinfoget) | **GET** /test/info | 测试接口
-*LJobUserApi* | [**userLoginPost**](docs/LJobUserApi.md#userloginpost) | **POST** /user/login | 
 
 
 ## Documentation For Models

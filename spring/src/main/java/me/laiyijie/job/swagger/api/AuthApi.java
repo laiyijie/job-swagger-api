@@ -18,17 +18,17 @@ import java.util.List;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
-@Api(value = "user", description = "the user API")
-public interface UserApi {
+@Api(value = "auth", description = "the auth API")
+public interface AuthApi {
 
-    @ApiOperation(value = "", notes = "", response = Void.class, tags={ "User", })
+    @ApiOperation(value = "", notes = "", response = Void.class, tags={ "Auth", })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "ok", response = Void.class) })
     
-    @RequestMapping(value = "/user/login",
+    @RequestMapping(value = "/auth/login",
         produces = { "application/json", "text/plain; charset=utf-8" }, 
         consumes = { "application/x-www-form-urlencoded" },
         method = RequestMethod.POST)
-    ResponseEntity<Void> userLoginPost(@ApiParam(value = "", required=true) @RequestParam(value="username", required=true)  String username,@ApiParam(value = "", required=true) @RequestParam(value="password", required=true)  String password, HttpServletRequest request, HttpServletResponse response) throws Exception;
+    ResponseEntity<Void> authLoginPost(@ApiParam(value = "", required=true) @RequestParam(value="username", required=true)  String username,@ApiParam(value = "", required=true) @RequestParam(value="password", required=true)  String password, HttpServletRequest request, HttpServletResponse response) throws Exception;
 
 }

@@ -15,10 +15,10 @@
 
 
 
-@interface LJobUserApi: NSObject <LJobApi>
+@interface LJobAuthApi: NSObject <LJobApi>
 
-extern NSString* kLJobUserApiErrorDomain;
-extern NSInteger kLJobUserApiMissingParamErrorCode;
+extern NSString* kLJobAuthApiErrorDomain;
+extern NSInteger kLJobAuthApiMissingParamErrorCode;
 
 -(instancetype) initWithApiClient:(LJobApiClient *)apiClient NS_DESIGNATED_INITIALIZER;
 
@@ -31,7 +31,7 @@ extern NSInteger kLJobUserApiMissingParamErrorCode;
 ///  code:200 message:"ok"
 ///
 /// @return 
--(NSURLSessionTask*) userLoginPostWithUsername: (NSString*) username
+-(NSURLSessionTask*) authLoginPostWithUsername: (NSString*) username
     password: (NSString*) password
     completionHandler: (void (^)(NSError* error)) handler;
 

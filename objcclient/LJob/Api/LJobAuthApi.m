@@ -1,18 +1,18 @@
-#import "LJobUserApi.h"
+#import "LJobAuthApi.h"
 #import "LJobQueryParamCollection.h"
 #import "LJobApiClient.h"
 
 
-@interface LJobUserApi ()
+@interface LJobAuthApi ()
 
 @property (nonatomic, strong, readwrite) NSMutableDictionary *mutableDefaultHeaders;
 
 @end
 
-@implementation LJobUserApi
+@implementation LJobAuthApi
 
-NSString* kLJobUserApiErrorDomain = @"LJobUserApiErrorDomain";
-NSInteger kLJobUserApiMissingParamErrorCode = 234513;
+NSString* kLJobAuthApiErrorDomain = @"LJobAuthApiErrorDomain";
+NSInteger kLJobAuthApiMissingParamErrorCode = 234513;
 
 @synthesize apiClient = _apiClient;
 
@@ -57,7 +57,7 @@ NSInteger kLJobUserApiMissingParamErrorCode = 234513;
 ///
 ///  @returns void
 ///
--(NSURLSessionTask*) userLoginPostWithUsername: (NSString*) username
+-(NSURLSessionTask*) authLoginPostWithUsername: (NSString*) username
     password: (NSString*) password
     completionHandler: (void (^)(NSError* error)) handler {
     // verify the required parameter 'username' is set
@@ -65,7 +65,7 @@ NSInteger kLJobUserApiMissingParamErrorCode = 234513;
         NSParameterAssert(username);
         if(handler) {
             NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"username"] };
-            NSError* error = [NSError errorWithDomain:kLJobUserApiErrorDomain code:kLJobUserApiMissingParamErrorCode userInfo:userInfo];
+            NSError* error = [NSError errorWithDomain:kLJobAuthApiErrorDomain code:kLJobAuthApiMissingParamErrorCode userInfo:userInfo];
             handler(error);
         }
         return nil;
@@ -76,13 +76,13 @@ NSInteger kLJobUserApiMissingParamErrorCode = 234513;
         NSParameterAssert(password);
         if(handler) {
             NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"password"] };
-            NSError* error = [NSError errorWithDomain:kLJobUserApiErrorDomain code:kLJobUserApiMissingParamErrorCode userInfo:userInfo];
+            NSError* error = [NSError errorWithDomain:kLJobAuthApiErrorDomain code:kLJobAuthApiMissingParamErrorCode userInfo:userInfo];
             handler(error);
         }
         return nil;
     }
 
-    NSMutableString* resourcePath = [NSMutableString stringWithFormat:@"/user/login"];
+    NSMutableString* resourcePath = [NSMutableString stringWithFormat:@"/auth/login"];
 
     NSMutableDictionary *pathParams = [[NSMutableDictionary alloc] init];
 

@@ -1,15 +1,15 @@
-# UserApi
+# AuthApi
 
 All URIs are relative to *http://58.87.75.73:8888/job/api/v1/*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**userLoginPost**](UserApi.md#userLoginPost) | **POST** /user/login | 
+[**authLoginPost**](AuthApi.md#authLoginPost) | **POST** /auth/login | 
 
 
-<a name="userLoginPost"></a>
-# **userLoginPost**
-> userLoginPost(username, password)
+<a name="authLoginPost"></a>
+# **authLoginPost**
+> authLoginPost(username, password)
 
 
 
@@ -17,16 +17,16 @@ Method | HTTP request | Description
 ```java
 // Import classes:
 //import me.laiyijie.job.android.io.swagger.ApiException;
-//import me.laiyijie.job.android.io.swagger.api.UserApi;
+//import me.laiyijie.job.android.io.swagger.api.AuthApi;
 
 
-UserApi apiInstance = new UserApi();
+AuthApi apiInstance = new AuthApi();
 String username = "username_example"; // String | 
 String password = "password_example"; // String | 
 try {
-    apiInstance.userLoginPost(username, password);
+    apiInstance.authLoginPost(username, password);
 } catch (ApiException e) {
-    System.err.println("Exception when calling UserApi#userLoginPost");
+    System.err.println("Exception when calling AuthApi#authLoginPost");
     e.printStackTrace();
 }
 ```

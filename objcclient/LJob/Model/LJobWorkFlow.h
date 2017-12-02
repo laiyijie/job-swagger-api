@@ -31,5 +31,8 @@
 @property(nonatomic) NSNumber* runInterval;
 
 @property(nonatomic) NSString* status;
+/* 是否打开循环调度 [optional]
+ */
+@property(nonatomic) NSNumber* isCircleScheduled;
 
 @end

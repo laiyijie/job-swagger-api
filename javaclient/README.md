@@ -61,21 +61,22 @@ Please follow the [installation](#installation) instruction and execute the foll
 import me.laiyijie.job.android.io.swagger.*;
 import me.laiyijie.job.android.io.swagger.auth.*;
 import me.laiyijie.job.android.io.swagger.model.*;
-import me.laiyijie.job.android.io.swagger.api.ExecutorGroupApi;
+import me.laiyijie.job.android.io.swagger.api.AuthApi;
 
 import java.io.File;
 import java.util.*;
 
-public class ExecutorGroupApiExample {
+public class AuthApiExample {
 
     public static void main(String[] args) {
         
-        ExecutorGroupApi apiInstance = new ExecutorGroupApi();
+        AuthApi apiInstance = new AuthApi();
+        String username = "username_example"; // String | 
+        String password = "password_example"; // String | 
         try {
-            List<ExecutorGroup> result = apiInstance.executorGroupsGet();
-            System.out.println(result);
+            apiInstance.authLoginPost(username, password);
         } catch (ApiException e) {
-            System.err.println("Exception when calling ExecutorGroupApi#executorGroupsGet");
+            System.err.println("Exception when calling AuthApi#authLoginPost");
             e.printStackTrace();
         }
     }
@@ -89,6 +90,7 @@ All URIs are relative to *http://58.87.75.73:8888/job/api/v1/*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
+*AuthApi* | [**authLoginPost**](docs/AuthApi.md#authLoginPost) | **POST** /auth/login | 
 *ExecutorGroupApi* | [**executorGroupsGet**](docs/ExecutorGroupApi.md#executorGroupsGet) | **GET** /executor/groups | 
 *ExecutorGroupApi* | [**executorGroupsGroupNameDelete**](docs/ExecutorGroupApi.md#executorGroupsGroupNameDelete) | **DELETE** /executor/groups/{groupName} | 删除整个group，但是还在运行的执行机还是会重新生成这个group，会清空当前group下的所有执行机记录
 *ExecutorGroupApi* | [**executorGroupsGroupNameGet**](docs/ExecutorGroupApi.md#executorGroupsGroupNameGet) | **GET** /executor/groups/{groupName} | 
@@ -112,7 +114,6 @@ Class | Method | HTTP request | Description
 *JobApi* | [**workflowsWorkFlowIdResumePost**](docs/JobApi.md#workflowsWorkFlowIdResumePost) | **POST** /workflows/{workFlowId}/resume | 从失败处执行这个workflow
 *JobApi* | [**workflowsWorkFlowIdRunPost**](docs/JobApi.md#workflowsWorkFlowIdRunPost) | **POST** /workflows/{workFlowId}/run | 从头执行这个workflow
 *TestApi* | [**testInfoGet**](docs/TestApi.md#testInfoGet) | **GET** /test/info | 测试接口
-*UserApi* | [**userLoginPost**](docs/UserApi.md#userLoginPost) | **POST** /user/login | 
 
 
 ## Documentation for Models

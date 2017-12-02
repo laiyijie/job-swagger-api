@@ -23,12 +23,12 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * API tests for UserApi
+ * API tests for AuthApi
  */
 @Ignore
-public class UserApiTest {
+public class AuthApiTest {
 
-    private final UserApi api = new UserApi();
+    private final AuthApi api = new AuthApi();
 
     
     /**
@@ -40,10 +40,10 @@ public class UserApiTest {
      *          if the Api call fails
      */
     @Test
-    public void userLoginPostTest() throws ApiException {
+    public void authLoginPostTest() throws ApiException {
         String username = null;
         String password = null;
-        api.userLoginPost(username, password);
+        api.authLoginPost(username, password);
 
         // TODO: test validations
     }

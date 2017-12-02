@@ -58,12 +58,12 @@ paths:
                 format: int64
                 description: 返回一个计数          
            
-  /user/login:
+  /auth/login:
     post:
       consumes:
         - application/x-www-form-urlencoded
       tags:
-        - User
+        - Auth
       parameters:
         - name: username
           in: formData
@@ -433,6 +433,9 @@ definitions:
         type: integer
       status:
         type: string
+      isCircleScheduled:
+        type: boolean
+        description: 是否打开循环调度
       
   
   JobGroup:

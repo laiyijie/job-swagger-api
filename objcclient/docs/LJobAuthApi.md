@@ -1,15 +1,15 @@
-# LJobUserApi
+# LJobAuthApi
 
 All URIs are relative to *http://58.87.75.73:8888/job/api/v1/*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**userLoginPost**](LJobUserApi.md#userloginpost) | **POST** /user/login | 
+[**authLoginPost**](LJobAuthApi.md#authloginpost) | **POST** /auth/login | 
 
 
-# **userLoginPost**
+# **authLoginPost**
 ```objc
--(NSURLSessionTask*) userLoginPostWithUsername: (NSString*) username
+-(NSURLSessionTask*) authLoginPostWithUsername: (NSString*) username
     password: (NSString*) password
         completionHandler: (void (^)(NSError* error)) handler;
 ```
@@ -22,13 +22,13 @@ Method | HTTP request | Description
 NSString* username = @"username_example"; // 
 NSString* password = @"password_example"; // 
 
-LJobUserApi*apiInstance = [[LJobUserApi alloc] init];
+LJobAuthApi*apiInstance = [[LJobAuthApi alloc] init];
 
-[apiInstance userLoginPostWithUsername:username
+[apiInstance authLoginPostWithUsername:username
               password:password
           completionHandler: ^(NSError* error) {
                         if (error) {
-                            NSLog(@"Error calling LJobUserApi->userLoginPost: %@", error);
+                            NSLog(@"Error calling LJobAuthApi->authLoginPost: %@", error);
                         }
                     }];
 ```

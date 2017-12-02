@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **description** | **String** |  |  [optional]
 **runInterval** | **Integer** |  |  [optional]
 **status** | **String** |  |  [optional]
+**isCircleScheduled** | **Boolean** | 是否打开循环调度 |  [optional]
 
 
 
