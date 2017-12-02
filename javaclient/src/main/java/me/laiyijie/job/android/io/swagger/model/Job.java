@@ -40,6 +40,9 @@ public class Job implements Serializable {
   @SerializedName("status")
   private String status = null;
 
+  @SerializedName("jobGroupName")
+  private String jobGroupName = null;
+
   @SerializedName("executorGroup")
   private ExecutorGroup executorGroup = null;
 
@@ -121,6 +124,24 @@ public class Job implements Serializable {
     this.status = status;
   }
 
+  public Job jobGroupName(String jobGroupName) {
+    this.jobGroupName = jobGroupName;
+    return this;
+  }
+
+   /**
+   * Get jobGroupName
+   * @return jobGroupName
+  **/
+  @ApiModelProperty(value = "")
+  public String getJobGroupName() {
+    return jobGroupName;
+  }
+
+  public void setJobGroupName(String jobGroupName) {
+    this.jobGroupName = jobGroupName;
+  }
+
   public Job executorGroup(ExecutorGroup executorGroup) {
     this.executorGroup = executorGroup;
     return this;
@@ -189,6 +210,7 @@ public class Job implements Serializable {
         Objects.equals(this.name, job.name) &&
         Objects.equals(this.description, job.description) &&
         Objects.equals(this.status, job.status) &&
+        Objects.equals(this.jobGroupName, job.jobGroupName) &&
         Objects.equals(this.executorGroup, job.executorGroup) &&
         Objects.equals(this.currentExecutor, job.currentExecutor) &&
         Objects.equals(this.script, job.script);
@@ -196,7 +218,7 @@ public class Job implements Serializable {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name, description, status, executorGroup, currentExecutor, script);
+    return Objects.hash(id, name, description, status, jobGroupName, executorGroup, currentExecutor, script);
   }
 
 
@@ -209,6 +231,7 @@ public class Job implements Serializable {
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
+    sb.append("    jobGroupName: ").append(toIndentedString(jobGroupName)).append("\n");
     sb.append("    executorGroup: ").append(toIndentedString(executorGroup)).append("\n");
     sb.append("    currentExecutor: ").append(toIndentedString(currentExecutor)).append("\n");
     sb.append("    script: ").append(toIndentedString(script)).append("\n");

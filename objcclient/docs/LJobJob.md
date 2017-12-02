@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **name** | **NSString*** |  | [optional] 
 **_description** | **NSString*** |  | [optional] 
 **status** | **NSString*** |  | [optional] 
+**jobGroupName** | **NSString*** |  | [optional] 
 **executorGroup** | [**LJobExecutorGroup***](LJobExecutorGroup.md) |  | [optional] 
 **currentExecutor** | [**LJobExecutor***](LJobExecutor.md) |  | [optional] 
 **script** | **NSString*** |  | [optional] 

@@ -471,6 +471,8 @@ definitions:
         type: string
       status:
         type: string
+      jobGroupName:
+        type: string
       executorGroup:
         $ref: "#/definitions/ExecutorGroup"
       currentExecutor:

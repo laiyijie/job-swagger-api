@@ -32,6 +32,8 @@
 
 @property(nonatomic) NSString* status;
 
+@property(nonatomic) NSString* jobGroupName;
+
 @property(nonatomic) LJobExecutorGroup* executorGroup;
 
 @property(nonatomic) LJobExecutor* currentExecutor;
