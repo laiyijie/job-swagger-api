@@ -108,7 +108,7 @@ Class | Method | HTTP request | Description
 *LJobJobApi* | [**workflowsWorkFlowIdDelete**](docs/LJobJobApi.md#workflowsworkflowiddelete) | **DELETE** /workflows/{workFlowId} | 删除这个工作流
 *LJobJobApi* | [**workflowsWorkFlowIdGet**](docs/LJobJobApi.md#workflowsworkflowidget) | **GET** /workflows/{workFlowId} | 获取单个工作流信息
 *LJobJobApi* | [**workflowsWorkFlowIdJobGroupsGet**](docs/LJobJobApi.md#workflowsworkflowidjobgroupsget) | **GET** /workflows/{workFlowId}/job/groups | 获取工作流下的所有执行组
-*LJobJobApi* | [**workflowsWorkFlowIdPost**](docs/LJobJobApi.md#workflowsworkflowidpost) | **POST** /workflows/{workFlowId} | 修改这个工作流信息，只能修改 名字、描述、执行间隔
+*LJobJobApi* | [**workflowsWorkFlowIdPost**](docs/LJobJobApi.md#workflowsworkflowidpost) | **POST** /workflows/{workFlowId} | 修改这个工作流信息，只能修改 名字、描述、执行间隔、是否循环执行
 *LJobJobApi* | [**workflowsWorkFlowIdResumePost**](docs/LJobJobApi.md#workflowsworkflowidresumepost) | **POST** /workflows/{workFlowId}/resume | 从失败处执行这个workflow
 *LJobJobApi* | [**workflowsWorkFlowIdRunPost**](docs/LJobJobApi.md#workflowsworkflowidrunpost) | **POST** /workflows/{workFlowId}/run | 从头执行这个workflow
 *LJobTestApi* | [**testInfoGet**](docs/LJobTestApi.md#testinfoget) | **GET** /test/info | 测试接口

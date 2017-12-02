@@ -18,7 +18,7 @@ Method | HTTP request | Description
 [**workflowsWorkFlowIdDelete**](JobApi.md#workflowsWorkFlowIdDelete) | **DELETE** /workflows/{workFlowId} | 删除这个工作流
 [**workflowsWorkFlowIdGet**](JobApi.md#workflowsWorkFlowIdGet) | **GET** /workflows/{workFlowId} | 获取单个工作流信息
 [**workflowsWorkFlowIdJobGroupsGet**](JobApi.md#workflowsWorkFlowIdJobGroupsGet) | **GET** /workflows/{workFlowId}/job/groups | 获取工作流下的所有执行组
-[**workflowsWorkFlowIdPost**](JobApi.md#workflowsWorkFlowIdPost) | **POST** /workflows/{workFlowId} | 修改这个工作流信息，只能修改 名字、描述、执行间隔
+[**workflowsWorkFlowIdPost**](JobApi.md#workflowsWorkFlowIdPost) | **POST** /workflows/{workFlowId} | 修改这个工作流信息，只能修改 名字、描述、执行间隔、是否循环执行
 [**workflowsWorkFlowIdResumePost**](JobApi.md#workflowsWorkFlowIdResumePost) | **POST** /workflows/{workFlowId}/resume | 从失败处执行这个workflow
 [**workflowsWorkFlowIdRunPost**](JobApi.md#workflowsWorkFlowIdRunPost) | **POST** /workflows/{workFlowId}/run | 从头执行这个workflow
 
@@ -622,7 +622,7 @@ No authorization required
 # **workflowsWorkFlowIdPost**
 > workflowsWorkFlowIdPost(workFlowId, workFlow)
 
-修改这个工作流信息，只能修改 名字、描述、执行间隔
+修改这个工作流信息，只能修改 名字、描述、执行间隔、是否循环执行
 
 ### Example
 ```java

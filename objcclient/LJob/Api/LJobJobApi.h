@@ -196,7 +196,7 @@ extern NSInteger kLJobJobApiMissingParamErrorCode;
     completionHandler: (void (^)(NSArray<LJobJobGroup>* output, NSError* error)) handler;
 
 
-/// 修改这个工作流信息，只能修改 名字、描述、执行间隔
+/// 修改这个工作流信息，只能修改 名字、描述、执行间隔、是否循环执行
 /// 
 ///
 /// @param workFlowId 

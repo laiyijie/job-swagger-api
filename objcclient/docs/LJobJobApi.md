@@ -18,7 +18,7 @@ Method | HTTP request | Description
 [**workflowsWorkFlowIdDelete**](LJobJobApi.md#workflowsworkflowiddelete) | **DELETE** /workflows/{workFlowId} | 删除这个工作流
 [**workflowsWorkFlowIdGet**](LJobJobApi.md#workflowsworkflowidget) | **GET** /workflows/{workFlowId} | 获取单个工作流信息
 [**workflowsWorkFlowIdJobGroupsGet**](LJobJobApi.md#workflowsworkflowidjobgroupsget) | **GET** /workflows/{workFlowId}/job/groups | 获取工作流下的所有执行组
-[**workflowsWorkFlowIdPost**](LJobJobApi.md#workflowsworkflowidpost) | **POST** /workflows/{workFlowId} | 修改这个工作流信息，只能修改 名字、描述、执行间隔
+[**workflowsWorkFlowIdPost**](LJobJobApi.md#workflowsworkflowidpost) | **POST** /workflows/{workFlowId} | 修改这个工作流信息，只能修改 名字、描述、执行间隔、是否循环执行
 [**workflowsWorkFlowIdResumePost**](LJobJobApi.md#workflowsworkflowidresumepost) | **POST** /workflows/{workFlowId}/resume | 从失败处执行这个workflow
 [**workflowsWorkFlowIdRunPost**](LJobJobApi.md#workflowsworkflowidrunpost) | **POST** /workflows/{workFlowId}/run | 从头执行这个workflow
 
@@ -680,7 +680,7 @@ No authorization required
         completionHandler: (void (^)(NSError* error)) handler;
 ```
 
-修改这个工作流信息，只能修改 名字、描述、执行间隔
+修改这个工作流信息，只能修改 名字、描述、执行间隔、是否循环执行
 
 ### Example 
 ```objc
@@ -690,7 +690,7 @@ LJobWorkFlow* workFlow = [[LJobWorkFlow alloc] init]; //
 
 LJobJobApi*apiInstance = [[LJobJobApi alloc] init];
 
-// 修改这个工作流信息，只能修改 名字、描述、执行间隔
+// 修改这个工作流信息，只能修改 名字、描述、执行间隔、是否循环执行
 [apiInstance workflowsWorkFlowIdPostWithWorkFlowId:workFlowId
               workFlow:workFlow
           completionHandler: ^(NSError* error) {

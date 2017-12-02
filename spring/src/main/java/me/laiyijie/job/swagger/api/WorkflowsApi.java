@@ -78,7 +78,7 @@ public interface WorkflowsApi {
     ResponseEntity<List<JobGroup>> workflowsWorkFlowIdJobGroupsGet(@ApiParam(value = "",required=true ) @PathVariable("workFlowId") Integer workFlowId, HttpServletRequest request, HttpServletResponse response) throws Exception;
 
 
-    @ApiOperation(value = "修改这个工作流信息，只能修改 名字、描述、执行间隔", notes = "", response = Void.class, tags={ "Job", })
+    @ApiOperation(value = "修改这个工作流信息，只能修改 名字、描述、执行间隔、是否循环执行", notes = "", response = Void.class, tags={ "Job", })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "ok", response = Void.class) })
     
