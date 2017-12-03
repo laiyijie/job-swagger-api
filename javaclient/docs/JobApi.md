@@ -8,6 +8,7 @@ Method | HTTP request | Description
 [**jobGroupsGroupIdGet**](JobApi.md#jobGroupsGroupIdGet) | **GET** /job/groups/{groupId} | 获取单个执行组的信息
 [**jobGroupsGroupIdJobsGet**](JobApi.md#jobGroupsGroupIdJobsGet) | **GET** /job/groups/{groupId}/jobs | 
 [**jobGroupsGroupIdPost**](JobApi.md#jobGroupsGroupIdPost) | **POST** /job/groups/{groupId} | 修改jobgroup信息 只能修改 名字、第几步、描述
+[**jobGroupsPost**](JobApi.md#jobGroupsPost) | **POST** /job/groups | 创建一个jobgroup 名字、第几步、描述
 [**jobsJobIdDelete**](JobApi.md#jobsJobIdDelete) | **DELETE** /jobs/{jobId} | 
 [**jobsJobIdGet**](JobApi.md#jobsJobIdGet) | **GET** /jobs/{jobId} | 
 [**jobsJobIdPost**](JobApi.md#jobsJobIdPost) | **POST** /jobs/{jobId} | 修改job 信息 只能修改 名字、描述、脚本、使用的执行机组
@@ -180,6 +181,48 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **groupId** | **Integer**|  |
+ **jobGroup** | [**JobGroup**](JobGroup.md)|  |
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/x-www-form-urlencoded, application/json, multipart/form-data, text/plain; charset=utf-8, */*
+ - **Accept**: application/json, text/plain; charset=utf-8
+
+<a name="jobGroupsPost"></a>
+# **jobGroupsPost**
+> jobGroupsPost(jobGroup)
+
+创建一个jobgroup 名字、第几步、描述
+
+### Example
+```java
+// Import classes:
+//import me.laiyijie.job.android.io.swagger.ApiException;
+//import me.laiyijie.job.android.io.swagger.api.JobApi;
+
+
+JobApi apiInstance = new JobApi();
+JobGroup jobGroup = new JobGroup(); // JobGroup | 
+try {
+    apiInstance.jobGroupsPost(jobGroup);
+} catch (ApiException e) {
+    System.err.println("Exception when calling JobApi#jobGroupsPost");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
  **jobGroup** | [**JobGroup**](JobGroup.md)|  |
 
 ### Return type

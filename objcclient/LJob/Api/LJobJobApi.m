@@ -339,6 +339,72 @@ NSInteger kLJobJobApiMissingParamErrorCode = 234513;
 }
 
 ///
+/// 创建一个jobgroup 名字、第几步、描述
+/// 
+///  @param jobGroup  
+///
+///  @returns void
+///
+-(NSURLSessionTask*) jobGroupsPostWithJobGroup: (LJobJobGroup*) jobGroup
+    completionHandler: (void (^)(NSError* error)) handler {
+    // verify the required parameter 'jobGroup' is set
+    if (jobGroup == nil) {
+        NSParameterAssert(jobGroup);
+        if(handler) {
+            NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"jobGroup"] };
+            NSError* error = [NSError errorWithDomain:kLJobJobApiErrorDomain code:kLJobJobApiMissingParamErrorCode userInfo:userInfo];
+            handler(error);
+        }
+        return nil;
+    }
+
+    NSMutableString* resourcePath = [NSMutableString stringWithFormat:@"/job/groups"];
+
+    NSMutableDictionary *pathParams = [[NSMutableDictionary alloc] init];
+
+    NSMutableDictionary* queryParams = [[NSMutableDictionary alloc] init];
+    NSMutableDictionary* headerParams = [NSMutableDictionary dictionaryWithDictionary:self.apiClient.configuration.defaultHeaders];
+    [headerParams addEntriesFromDictionary:self.defaultHeaders];
+    // HTTP header `Accept`
+    NSString *acceptHeader = [self.apiClient.sanitizer selectHeaderAccept:@[@"application/json", @"text/plain; charset=utf-8"]];
+    if(acceptHeader.length > 0) {
+        headerParams[@"Accept"] = acceptHeader;
+    }
+
+    // response content type
+    NSString *responseContentType = [[acceptHeader componentsSeparatedByString:@", "] firstObject] ?: @"";
+
+    // request content type
+    NSString *requestContentType = [self.apiClient.sanitizer selectHeaderContentType:@[@"application/x-www-form-urlencoded", @"application/json", @"multipart/form-data", @"text/plain; charset=utf-8", @"*/*"]];
+
+    // Authentication setting
+    NSArray *authSettings = @[];
+
+    id bodyParam = nil;
+    NSMutableDictionary *formParams = [[NSMutableDictionary alloc] init];
+    NSMutableDictionary *localVarFiles = [[NSMutableDictionary alloc] init];
+    bodyParam = jobGroup;
+
+    return [self.apiClient requestWithPath: resourcePath
+                                    method: @"POST"
+                                pathParams: pathParams
+                               queryParams: queryParams
+                                formParams: formParams
+                                     files: localVarFiles
+                                      body: bodyParam
+                              headerParams: headerParams
+                              authSettings: authSettings
+                        requestContentType: requestContentType
+                       responseContentType: responseContentType
+                              responseType: nil
+                           completionBlock: ^(id data, NSError *error) {
+                                if(handler) {
+                                    handler(error);
+                                }
+                            }];
+}
+
+///
 /// 
 /// 
 ///  @param jobId  

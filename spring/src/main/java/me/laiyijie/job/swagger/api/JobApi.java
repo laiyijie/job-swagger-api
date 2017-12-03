@@ -66,4 +66,15 @@ public interface JobApi {
         method = RequestMethod.POST)
     ResponseEntity<Void> jobGroupsGroupIdPost(@ApiParam(value = "",required=true ) @PathVariable("groupId") Integer groupId,@ApiParam(value = "" ,required=true )  @Valid @RequestBody JobGroup jobGroup, HttpServletRequest request, HttpServletResponse response) throws Exception;
 
+
+    @ApiOperation(value = "创建一个jobgroup 名字、第几步、描述", notes = "", response = Void.class, tags={ "Job", })
+    @ApiResponses(value = { 
+        @ApiResponse(code = 200, message = "ok", response = Void.class) })
+    
+    @RequestMapping(value = "/job/groups",
+        produces = { "application/json", "text/plain; charset=utf-8" }, 
+        consumes = { "application/x-www-form-urlencoded", "application/json", "multipart/form-data", "text/plain; charset=utf-8", "*/*" },
+        method = RequestMethod.POST)
+    ResponseEntity<Void> jobGroupsPost(@ApiParam(value = "" ,required=true )  @Valid @RequestBody JobGroup jobGroup, HttpServletRequest request, HttpServletResponse response) throws Exception;
+
 }

@@ -271,6 +271,21 @@ paths:
             type: array
             items:
               $ref: '#/definitions/JobGroup'
+              
+  /job/groups:
+    post:
+      tags:
+        - Job
+      summary: 创建一个jobgroup 名字、第几步、描述
+      parameters:
+        - name: jobGroup
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/JobGroup'
+      responses:
+        200:
+          description: ok
   
   /job/groups/{groupId}:
     get:

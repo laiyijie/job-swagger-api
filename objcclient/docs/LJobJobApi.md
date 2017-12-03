@@ -8,6 +8,7 @@ Method | HTTP request | Description
 [**jobGroupsGroupIdGet**](LJobJobApi.md#jobgroupsgroupidget) | **GET** /job/groups/{groupId} | 获取单个执行组的信息
 [**jobGroupsGroupIdJobsGet**](LJobJobApi.md#jobgroupsgroupidjobsget) | **GET** /job/groups/{groupId}/jobs | 
 [**jobGroupsGroupIdPost**](LJobJobApi.md#jobgroupsgroupidpost) | **POST** /job/groups/{groupId} | 修改jobgroup信息 只能修改 名字、第几步、描述
+[**jobGroupsPost**](LJobJobApi.md#jobgroupspost) | **POST** /job/groups | 创建一个jobgroup 名字、第几步、描述
 [**jobsJobIdDelete**](LJobJobApi.md#jobsjobiddelete) | **DELETE** /jobs/{jobId} | 
 [**jobsJobIdGet**](LJobJobApi.md#jobsjobidget) | **GET** /jobs/{jobId} | 
 [**jobsJobIdPost**](LJobJobApi.md#jobsjobidpost) | **POST** /jobs/{jobId} | 修改job 信息 只能修改 名字、描述、脚本、使用的执行机组
@@ -195,6 +196,51 @@ LJobJobApi*apiInstance = [[LJobJobApi alloc] init];
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **groupId** | **NSNumber***|  | 
+ **jobGroup** | [**LJobJobGroup***](LJobJobGroup*.md)|  | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/x-www-form-urlencoded, application/json, multipart/form-data, text/plain; charset=utf-8, */*
+ - **Accept**: application/json, text/plain; charset=utf-8
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **jobGroupsPost**
+```objc
+-(NSURLSessionTask*) jobGroupsPostWithJobGroup: (LJobJobGroup*) jobGroup
+        completionHandler: (void (^)(NSError* error)) handler;
+```
+
+创建一个jobgroup 名字、第几步、描述
+
+### Example 
+```objc
+
+LJobJobGroup* jobGroup = [[LJobJobGroup alloc] init]; // 
+
+LJobJobApi*apiInstance = [[LJobJobApi alloc] init];
+
+// 创建一个jobgroup 名字、第几步、描述
+[apiInstance jobGroupsPostWithJobGroup:jobGroup
+          completionHandler: ^(NSError* error) {
+                        if (error) {
+                            NSLog(@"Error calling LJobJobApi->jobGroupsPost: %@", error);
+                        }
+                    }];
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
  **jobGroup** | [**LJobJobGroup***](LJobJobGroup*.md)|  | 
 
 ### Return type

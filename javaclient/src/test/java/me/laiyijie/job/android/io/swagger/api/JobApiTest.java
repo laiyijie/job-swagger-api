@@ -100,6 +100,22 @@ public class JobApiTest {
     }
     
     /**
+     * 创建一个jobgroup 名字、第几步、描述
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void jobGroupsPostTest() throws ApiException {
+        JobGroup jobGroup = null;
+        api.jobGroupsPost(jobGroup);
+
+        // TODO: test validations
+    }
+    
+    /**
      * 
      *
      * 

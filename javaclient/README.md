@@ -100,6 +100,7 @@ Class | Method | HTTP request | Description
 *JobApi* | [**jobGroupsGroupIdGet**](docs/JobApi.md#jobGroupsGroupIdGet) | **GET** /job/groups/{groupId} | 获取单个执行组的信息
 *JobApi* | [**jobGroupsGroupIdJobsGet**](docs/JobApi.md#jobGroupsGroupIdJobsGet) | **GET** /job/groups/{groupId}/jobs | 
 *JobApi* | [**jobGroupsGroupIdPost**](docs/JobApi.md#jobGroupsGroupIdPost) | **POST** /job/groups/{groupId} | 修改jobgroup信息 只能修改 名字、第几步、描述
+*JobApi* | [**jobGroupsPost**](docs/JobApi.md#jobGroupsPost) | **POST** /job/groups | 创建一个jobgroup 名字、第几步、描述
 *JobApi* | [**jobsJobIdDelete**](docs/JobApi.md#jobsJobIdDelete) | **DELETE** /jobs/{jobId} | 
 *JobApi* | [**jobsJobIdGet**](docs/JobApi.md#jobsJobIdGet) | **GET** /jobs/{jobId} | 
 *JobApi* | [**jobsJobIdPost**](docs/JobApi.md#jobsJobIdPost) | **POST** /jobs/{jobId} | 修改job 信息 只能修改 名字、描述、脚本、使用的执行机组

@@ -75,6 +75,18 @@ extern NSInteger kLJobJobApiMissingParamErrorCode;
     completionHandler: (void (^)(NSError* error)) handler;
 
 
+/// 创建一个jobgroup 名字、第几步、描述
+/// 
+///
+/// @param jobGroup 
+/// 
+///  code:200 message:"ok"
+///
+/// @return 
+-(NSURLSessionTask*) jobGroupsPostWithJobGroup: (LJobJobGroup*) jobGroup
+    completionHandler: (void (^)(NSError* error)) handler;
+
+
 /// 
 /// 
 ///
