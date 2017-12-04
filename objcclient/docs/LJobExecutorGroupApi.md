@@ -198,7 +198,7 @@ No authorization required
 # **executorGroupsPost**
 ```objc
 -(NSURLSessionTask*) executorGroupsPostWithExecutorGroup: (LJobExecutorGroup*) executorGroup
-        completionHandler: (void (^)(NSString* output, NSError* error)) handler;
+        completionHandler: (void (^)(NSError* error)) handler;
 ```
 
 添加执行机组
@@ -212,10 +212,7 @@ LJobExecutorGroupApi*apiInstance = [[LJobExecutorGroupApi alloc] init];
 
 // 添加执行机组
 [apiInstance executorGroupsPostWithExecutorGroup:executorGroup
-          completionHandler: ^(NSString* output, NSError* error) {
-                        if (output) {
-                            NSLog(@"%@", output);
-                        }
+          completionHandler: ^(NSError* error) {
                         if (error) {
                             NSLog(@"Error calling LJobExecutorGroupApi->executorGroupsPost: %@", error);
                         }
@@ -230,7 +227,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**NSString***
+void (empty response body)
 
 ### Authorization
 

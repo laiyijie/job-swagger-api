@@ -79,9 +79,9 @@ extern NSInteger kLJobExecutorGroupApiMissingParamErrorCode;
 /// 
 ///  code:200 message:"ok"
 ///
-/// @return NSString*
+/// @return 
 -(NSURLSessionTask*) executorGroupsPostWithExecutorGroup: (LJobExecutorGroup*) executorGroup
-    completionHandler: (void (^)(NSString* output, NSError* error)) handler;
+    completionHandler: (void (^)(NSError* error)) handler;
 
 
 

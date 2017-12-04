@@ -325,17 +325,17 @@ NSInteger kLJobExecutorGroupApiMissingParamErrorCode = 234513;
 /// 
 ///  @param executorGroup  
 ///
-///  @returns NSString*
+///  @returns void
 ///
 -(NSURLSessionTask*) executorGroupsPostWithExecutorGroup: (LJobExecutorGroup*) executorGroup
-    completionHandler: (void (^)(NSString* output, NSError* error)) handler {
+    completionHandler: (void (^)(NSError* error)) handler {
     // verify the required parameter 'executorGroup' is set
     if (executorGroup == nil) {
         NSParameterAssert(executorGroup);
         if(handler) {
             NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"executorGroup"] };
             NSError* error = [NSError errorWithDomain:kLJobExecutorGroupApiErrorDomain code:kLJobExecutorGroupApiMissingParamErrorCode userInfo:userInfo];
-            handler(nil, error);
+            handler(error);
         }
         return nil;
     }
@@ -378,10 +378,10 @@ NSInteger kLJobExecutorGroupApiMissingParamErrorCode = 234513;
                               authSettings: authSettings
                         requestContentType: requestContentType
                        responseContentType: responseContentType
-                              responseType: @"NSString*"
+                              responseType: nil
                            completionBlock: ^(id data, NSError *error) {
                                 if(handler) {
-                                    handler((NSString*)data, error);
+                                    handler(error);
                                 }
                             }];
 }

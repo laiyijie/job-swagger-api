@@ -181,7 +181,7 @@ No authorization required
 
 <a name="executorGroupsPost"></a>
 # **executorGroupsPost**
-> String executorGroupsPost(executorGroup)
+> executorGroupsPost(executorGroup)
 
 添加执行机组
 
@@ -195,8 +195,7 @@ No authorization required
 ExecutorGroupApi apiInstance = new ExecutorGroupApi();
 ExecutorGroup executorGroup = new ExecutorGroup(); // ExecutorGroup | 
 try {
-    String result = apiInstance.executorGroupsPost(executorGroup);
-    System.out.println(result);
+    apiInstance.executorGroupsPost(executorGroup);
 } catch (ApiException e) {
     System.err.println("Exception when calling ExecutorGroupApi#executorGroupsPost");
     e.printStackTrace();
@@ -211,7 +210,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**String**
+null (empty response body)
 
 ### Authorization
 

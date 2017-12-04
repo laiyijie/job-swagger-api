@@ -102,9 +102,6 @@ paths:
       responses:
         200:
           description: ok
-          schema:
-            type: string
-            description: executor group name
          
   /executor/groups/{groupName}:
     get:

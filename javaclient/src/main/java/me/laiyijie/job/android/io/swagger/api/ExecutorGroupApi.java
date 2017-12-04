@@ -619,25 +619,22 @@ public class ExecutorGroupApi {
      * 添加执行机组
      * 
      * @param executorGroup  (required)
-     * @return String
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public String executorGroupsPost(ExecutorGroup executorGroup) throws ApiException {
-        ApiResponse<String> resp = executorGroupsPostWithHttpInfo(executorGroup);
-        return resp.getData();
+    public void executorGroupsPost(ExecutorGroup executorGroup) throws ApiException {
+        executorGroupsPostWithHttpInfo(executorGroup);
     }
 
     /**
      * 添加执行机组
      * 
      * @param executorGroup  (required)
-     * @return ApiResponse&lt;String&gt;
+     * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<String> executorGroupsPostWithHttpInfo(ExecutorGroup executorGroup) throws ApiException {
+    public ApiResponse<Void> executorGroupsPostWithHttpInfo(ExecutorGroup executorGroup) throws ApiException {
         com.squareup.okhttp.Call call = executorGroupsPostValidateBeforeCall(executorGroup, null, null);
-        Type localVarReturnType = new TypeToken<String>(){}.getType();
-        return apiClient.execute(call, localVarReturnType);
+        return apiClient.execute(call);
     }
 
     /**
@@ -648,7 +645,7 @@ public class ExecutorGroupApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call executorGroupsPostAsync(ExecutorGroup executorGroup, final ApiCallback<String> callback) throws ApiException {
+    public com.squareup.okhttp.Call executorGroupsPostAsync(ExecutorGroup executorGroup, final ApiCallback<Void> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -670,8 +667,7 @@ public class ExecutorGroupApi {
         }
 
         com.squareup.okhttp.Call call = executorGroupsPostValidateBeforeCall(executorGroup, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<String>(){}.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
+        apiClient.executeAsync(call, callback);
         return call;
     }
 }

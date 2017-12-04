@@ -107,7 +107,7 @@ public class ExecutorGroupApiTest {
     @Test
     public void executorGroupsPostTest() throws ApiException {
         ExecutorGroup executorGroup = null;
-        String response = api.executorGroupsPost(executorGroup);
+        api.executorGroupsPost(executorGroup);
 
         // TODO: test validations
     }
