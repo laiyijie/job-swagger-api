@@ -192,10 +192,10 @@ NSInteger kLJobJobApiMissingParamErrorCode = 234513;
 /// 
 ///  @param groupId  
 ///
-///  @returns LJobJob*
+///  @returns NSArray<LJobJob>*
 ///
 -(NSURLSessionTask*) jobGroupsGroupIdJobsGetWithGroupId: (NSNumber*) groupId
-    completionHandler: (void (^)(LJobJob* output, NSError* error)) handler {
+    completionHandler: (void (^)(NSArray<LJobJob>* output, NSError* error)) handler {
     // verify the required parameter 'groupId' is set
     if (groupId == nil) {
         NSParameterAssert(groupId);
@@ -247,10 +247,10 @@ NSInteger kLJobJobApiMissingParamErrorCode = 234513;
                               authSettings: authSettings
                         requestContentType: requestContentType
                        responseContentType: responseContentType
-                              responseType: @"LJobJob*"
+                              responseType: @"NSArray<LJobJob>*"
                            completionBlock: ^(id data, NSError *error) {
                                 if(handler) {
-                                    handler((LJobJob*)data, error);
+                                    handler((NSArray<LJobJob>*)data, error);
                                 }
                             }];
 }

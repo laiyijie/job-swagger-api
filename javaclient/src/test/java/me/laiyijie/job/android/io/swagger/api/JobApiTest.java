@@ -77,7 +77,7 @@ public class JobApiTest {
     @Test
     public void jobGroupsGroupIdJobsGetTest() throws ApiException {
         Integer groupId = null;
-        Job response = api.jobGroupsGroupIdJobsGet(groupId);
+        List<Job> response = api.jobGroupsGroupIdJobsGet(groupId);
 
         // TODO: test validations
     }

@@ -375,11 +375,11 @@ public class JobApi {
      * 
      * 
      * @param groupId  (required)
-     * @return Job
+     * @return List&lt;Job&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public Job jobGroupsGroupIdJobsGet(Integer groupId) throws ApiException {
-        ApiResponse<Job> resp = jobGroupsGroupIdJobsGetWithHttpInfo(groupId);
+    public List<Job> jobGroupsGroupIdJobsGet(Integer groupId) throws ApiException {
+        ApiResponse<List<Job>> resp = jobGroupsGroupIdJobsGetWithHttpInfo(groupId);
         return resp.getData();
     }
 
@@ -387,12 +387,12 @@ public class JobApi {
      * 
      * 
      * @param groupId  (required)
-     * @return ApiResponse&lt;Job&gt;
+     * @return ApiResponse&lt;List&lt;Job&gt;&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Job> jobGroupsGroupIdJobsGetWithHttpInfo(Integer groupId) throws ApiException {
+    public ApiResponse<List<Job>> jobGroupsGroupIdJobsGetWithHttpInfo(Integer groupId) throws ApiException {
         com.squareup.okhttp.Call call = jobGroupsGroupIdJobsGetValidateBeforeCall(groupId, null, null);
-        Type localVarReturnType = new TypeToken<Job>(){}.getType();
+        Type localVarReturnType = new TypeToken<List<Job>>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
@@ -404,7 +404,7 @@ public class JobApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call jobGroupsGroupIdJobsGetAsync(Integer groupId, final ApiCallback<Job> callback) throws ApiException {
+    public com.squareup.okhttp.Call jobGroupsGroupIdJobsGetAsync(Integer groupId, final ApiCallback<List<Job>> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -426,7 +426,7 @@ public class JobApi {
         }
 
         com.squareup.okhttp.Call call = jobGroupsGroupIdJobsGetValidateBeforeCall(groupId, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<Job>(){}.getType();
+        Type localVarReturnType = new TypeToken<List<Job>>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }

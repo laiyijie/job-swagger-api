@@ -56,9 +56,9 @@ extern NSInteger kLJobJobApiMissingParamErrorCode;
 /// 
 ///  code:200 message:"ok"
 ///
-/// @return LJobJob*
+/// @return NSArray<LJobJob>*
 -(NSURLSessionTask*) jobGroupsGroupIdJobsGetWithGroupId: (NSNumber*) groupId
-    completionHandler: (void (^)(LJobJob* output, NSError* error)) handler;
+    completionHandler: (void (^)(NSArray<LJobJob>* output, NSError* error)) handler;
 
 
 /// 修改jobgroup信息 只能修改 名字、第几步、描述

@@ -111,7 +111,7 @@ No authorization required
 
 <a name="jobGroupsGroupIdJobsGet"></a>
 # **jobGroupsGroupIdJobsGet**
-> Job jobGroupsGroupIdJobsGet(groupId)
+> List&lt;Job&gt; jobGroupsGroupIdJobsGet(groupId)
 
 
 
@@ -125,7 +125,7 @@ No authorization required
 JobApi apiInstance = new JobApi();
 Integer groupId = 56; // Integer | 
 try {
-    Job result = apiInstance.jobGroupsGroupIdJobsGet(groupId);
+    List<Job> result = apiInstance.jobGroupsGroupIdJobsGet(groupId);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling JobApi#jobGroupsGroupIdJobsGet");
@@ -141,7 +141,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Job**](Job.md)
+[**List&lt;Job&gt;**](Job.md)
 
 ### Authorization
 

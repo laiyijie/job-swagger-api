@@ -120,7 +120,7 @@ No authorization required
 # **jobGroupsGroupIdJobsGet**
 ```objc
 -(NSURLSessionTask*) jobGroupsGroupIdJobsGetWithGroupId: (NSNumber*) groupId
-        completionHandler: (void (^)(LJobJob* output, NSError* error)) handler;
+        completionHandler: (void (^)(NSArray<LJobJob>* output, NSError* error)) handler;
 ```
 
 
@@ -133,7 +133,7 @@ NSNumber* groupId = @56; //
 LJobJobApi*apiInstance = [[LJobJobApi alloc] init];
 
 [apiInstance jobGroupsGroupIdJobsGetWithGroupId:groupId
-          completionHandler: ^(LJobJob* output, NSError* error) {
+          completionHandler: ^(NSArray<LJobJob>* output, NSError* error) {
                         if (output) {
                             NSLog(@"%@", output);
                         }
@@ -151,7 +151,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**LJobJob***](LJobJob.md)
+[**NSArray<LJobJob>***](LJobJob.md)
 
 ### Authorization
 

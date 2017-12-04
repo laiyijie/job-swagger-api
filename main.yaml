@@ -341,7 +341,9 @@ paths:
         200:
           description: ok
           schema:
-            $ref: '#/definitions/Job'
+            type: array
+            items:
+              $ref: '#/definitions/Job'
             
   /jobs:
     post:

@@ -45,7 +45,7 @@ public interface JobApi {
     ResponseEntity<JobGroup> jobGroupsGroupIdGet(@ApiParam(value = "",required=true ) @PathVariable("groupId") Integer groupId, HttpServletRequest request, HttpServletResponse response) throws Exception;
 
 
-    @ApiOperation(value = "", notes = "", response = Job.class, tags={ "Job", })
+    @ApiOperation(value = "", notes = "", response = Job.class, responseContainer = "List", tags={ "Job", })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "ok", response = Job.class) })
     
@@ -53,7 +53,7 @@ public interface JobApi {
         produces = { "application/json", "text/plain; charset=utf-8" }, 
         consumes = { "application/x-www-form-urlencoded", "application/json", "multipart/form-data", "text/plain; charset=utf-8", "*/*" },
         method = RequestMethod.GET)
-    ResponseEntity<Job> jobGroupsGroupIdJobsGet(@ApiParam(value = "",required=true ) @PathVariable("groupId") Integer groupId, HttpServletRequest request, HttpServletResponse response) throws Exception;
+    ResponseEntity<List<Job>> jobGroupsGroupIdJobsGet(@ApiParam(value = "",required=true ) @PathVariable("groupId") Integer groupId, HttpServletRequest request, HttpServletResponse response) throws Exception;
 
 
     @ApiOperation(value = "修改jobgroup信息 只能修改 名字、第几步、描述", notes = "", response = Void.class, tags={ "Job", })
