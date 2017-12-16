@@ -4,15 +4,18 @@ All URIs are relative to *http://58.87.75.73:8888/job/api/v1/*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**jobErrorLogsGet**](JobApi.md#jobErrorLogsGet) | **GET** /job/error/logs | 所有的错误日志
 [**jobGroupsGroupIdDelete**](JobApi.md#jobGroupsGroupIdDelete) | **DELETE** /job/groups/{groupId} | 删除jobgroup
 [**jobGroupsGroupIdGet**](JobApi.md#jobGroupsGroupIdGet) | **GET** /job/groups/{groupId} | 获取单个执行组的信息
 [**jobGroupsGroupIdJobsGet**](JobApi.md#jobGroupsGroupIdJobsGet) | **GET** /job/groups/{groupId}/jobs | 
 [**jobGroupsGroupIdPost**](JobApi.md#jobGroupsGroupIdPost) | **POST** /job/groups/{groupId} | 修改jobgroup信息 只能修改 名字、第几步、描述
 [**jobGroupsPost**](JobApi.md#jobGroupsPost) | **POST** /job/groups | 创建一个jobgroup 名字、第几步、描述
 [**jobsJobIdDelete**](JobApi.md#jobsJobIdDelete) | **DELETE** /jobs/{jobId} | 
+[**jobsJobIdErrorLogGet**](JobApi.md#jobsJobIdErrorLogGet) | **GET** /jobs/{jobId}/error/log | 根据jobid来查错误日志
 [**jobsJobIdGet**](JobApi.md#jobsJobIdGet) | **GET** /jobs/{jobId} | 
 [**jobsJobIdPost**](JobApi.md#jobsJobIdPost) | **POST** /jobs/{jobId} | 修改job 信息 只能修改 名字、描述、脚本、使用的执行机组
 [**jobsJobIdRunPost**](JobApi.md#jobsJobIdRunPost) | **POST** /jobs/{jobId}/run | 
+[**jobsJobIdStopPost**](JobApi.md#jobsJobIdStopPost) | **POST** /jobs/{jobId}/stop | 
 [**jobsPost**](JobApi.md#jobsPost) | **POST** /jobs | 
 [**workflowsGet**](JobApi.md#workflowsGet) | **GET** /workflows | 获取工作流列表
 [**workflowsPost**](JobApi.md#workflowsPost) | **POST** /workflows | 创建一个工作流
@@ -22,7 +25,53 @@ Method | HTTP request | Description
 [**workflowsWorkFlowIdPost**](JobApi.md#workflowsWorkFlowIdPost) | **POST** /workflows/{workFlowId} | 修改这个工作流信息，只能修改 名字、描述、执行间隔、是否循环执行
 [**workflowsWorkFlowIdResumePost**](JobApi.md#workflowsWorkFlowIdResumePost) | **POST** /workflows/{workFlowId}/resume | 从失败处执行这个workflow
 [**workflowsWorkFlowIdRunPost**](JobApi.md#workflowsWorkFlowIdRunPost) | **POST** /workflows/{workFlowId}/run | 从头执行这个workflow
+[**workflowsWorkFlowIdStopPost**](JobApi.md#workflowsWorkFlowIdStopPost) | **POST** /workflows/{workFlowId}/stop | 停止这个workflow
 
+
+<a name="jobErrorLogsGet"></a>
+# **jobErrorLogsGet**
+> List&lt;JobErrorLog&gt; jobErrorLogsGet(pageSize, pageNum)
+
+所有的错误日志
+
+### Example
+```java
+// Import classes:
+//import me.laiyijie.job.android.io.swagger.ApiException;
+//import me.laiyijie.job.android.io.swagger.api.JobApi;
+
+
+JobApi apiInstance = new JobApi();
+Integer pageSize = 56; // Integer | 
+Integer pageNum = 56; // Integer | 
+try {
+    List<JobErrorLog> result = apiInstance.jobErrorLogsGet(pageSize, pageNum);
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling JobApi#jobErrorLogsGet");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **pageSize** | **Integer**|  |
+ **pageNum** | **Integer**|  |
+
+### Return type
+
+[**List&lt;JobErrorLog&gt;**](JobErrorLog.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/x-www-form-urlencoded, application/json, multipart/form-data, text/plain; charset=utf-8, */*
+ - **Accept**: application/json, text/plain; charset=utf-8
 
 <a name="jobGroupsGroupIdDelete"></a>
 # **jobGroupsGroupIdDelete**
@@ -280,6 +329,53 @@ No authorization required
  - **Content-Type**: application/x-www-form-urlencoded, application/json, multipart/form-data, text/plain; charset=utf-8, */*
  - **Accept**: application/json, text/plain; charset=utf-8
 
+<a name="jobsJobIdErrorLogGet"></a>
+# **jobsJobIdErrorLogGet**
+> List&lt;JobErrorLog&gt; jobsJobIdErrorLogGet(jobId, pageSize, pageNum)
+
+根据jobid来查错误日志
+
+### Example
+```java
+// Import classes:
+//import me.laiyijie.job.android.io.swagger.ApiException;
+//import me.laiyijie.job.android.io.swagger.api.JobApi;
+
+
+JobApi apiInstance = new JobApi();
+Integer jobId = 56; // Integer | 
+Integer pageSize = 56; // Integer | 
+Integer pageNum = 56; // Integer | 
+try {
+    List<JobErrorLog> result = apiInstance.jobsJobIdErrorLogGet(jobId, pageSize, pageNum);
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling JobApi#jobsJobIdErrorLogGet");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **jobId** | **Integer**|  |
+ **pageSize** | **Integer**|  |
+ **pageNum** | **Integer**|  |
+
+### Return type
+
+[**List&lt;JobErrorLog&gt;**](JobErrorLog.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/x-www-form-urlencoded, application/json, multipart/form-data, text/plain; charset=utf-8, */*
+ - **Accept**: application/json, text/plain; charset=utf-8
+
 <a name="jobsJobIdGet"></a>
 # **jobsJobIdGet**
 > Job jobsJobIdGet(jobId)
@@ -386,6 +482,48 @@ try {
     apiInstance.jobsJobIdRunPost(jobId);
 } catch (ApiException e) {
     System.err.println("Exception when calling JobApi#jobsJobIdRunPost");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **jobId** | **Integer**|  |
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/x-www-form-urlencoded, application/json, multipart/form-data, text/plain; charset=utf-8, */*
+ - **Accept**: application/json, text/plain; charset=utf-8
+
+<a name="jobsJobIdStopPost"></a>
+# **jobsJobIdStopPost**
+> jobsJobIdStopPost(jobId)
+
+
+
+### Example
+```java
+// Import classes:
+//import me.laiyijie.job.android.io.swagger.ApiException;
+//import me.laiyijie.job.android.io.swagger.api.JobApi;
+
+
+JobApi apiInstance = new JobApi();
+Integer jobId = 56; // Integer | 
+try {
+    apiInstance.jobsJobIdStopPost(jobId);
+} catch (ApiException e) {
+    System.err.println("Exception when calling JobApi#jobsJobIdStopPost");
     e.printStackTrace();
 }
 ```
@@ -766,6 +904,48 @@ try {
     apiInstance.workflowsWorkFlowIdRunPost(workFlowId);
 } catch (ApiException e) {
     System.err.println("Exception when calling JobApi#workflowsWorkFlowIdRunPost");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **workFlowId** | **Integer**|  |
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/x-www-form-urlencoded, application/json, multipart/form-data, text/plain; charset=utf-8, */*
+ - **Accept**: application/json, text/plain; charset=utf-8
+
+<a name="workflowsWorkFlowIdStopPost"></a>
+# **workflowsWorkFlowIdStopPost**
+> workflowsWorkFlowIdStopPost(workFlowId)
+
+停止这个workflow
+
+### Example
+```java
+// Import classes:
+//import me.laiyijie.job.android.io.swagger.ApiException;
+//import me.laiyijie.job.android.io.swagger.api.JobApi;
+
+
+JobApi apiInstance = new JobApi();
+Integer workFlowId = 56; // Integer | 
+try {
+    apiInstance.workflowsWorkFlowIdStopPost(workFlowId);
+} catch (ApiException e) {
+    System.err.println("Exception when calling JobApi#workflowsWorkFlowIdStopPost");
     e.printStackTrace();
 }
 ```

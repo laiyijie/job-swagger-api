@@ -28,6 +28,7 @@ import java.io.IOException;
 
 
 import me.laiyijie.job.android.io.swagger.model.Job;
+import me.laiyijie.job.android.io.swagger.model.JobErrorLog;
 import me.laiyijie.job.android.io.swagger.model.JobGroup;
 import me.laiyijie.job.android.io.swagger.model.WorkFlow;
 
@@ -56,6 +57,144 @@ public class JobApi {
         this.apiClient = apiClient;
     }
 
+    /**
+     * Build call for jobErrorLogsGet
+     * @param pageSize  (required)
+     * @param pageNum  (required)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call jobErrorLogsGetCall(Integer pageSize, Integer pageNum, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+        
+        // create path and map variables
+        String localVarPath = "/job/error/logs";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        if (pageSize != null)
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "pageSize", pageSize));
+        if (pageNum != null)
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "pageNum", pageNum));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json", "text/plain; charset=utf-8"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/x-www-form-urlencoded", "application/json", "multipart/form-data", "text/plain; charset=utf-8", "*/*"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] {  };
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+    
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call jobErrorLogsGetValidateBeforeCall(Integer pageSize, Integer pageNum, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'pageSize' is set
+        if (pageSize == null) {
+            throw new ApiException("Missing the required parameter 'pageSize' when calling jobErrorLogsGet(Async)");
+        }
+        
+        // verify the required parameter 'pageNum' is set
+        if (pageNum == null) {
+            throw new ApiException("Missing the required parameter 'pageNum' when calling jobErrorLogsGet(Async)");
+        }
+        
+        
+        com.squareup.okhttp.Call call = jobErrorLogsGetCall(pageSize, pageNum, progressListener, progressRequestListener);
+        return call;
+
+        
+        
+        
+        
+    }
+
+    /**
+     * 所有的错误日志
+     * 
+     * @param pageSize  (required)
+     * @param pageNum  (required)
+     * @return List&lt;JobErrorLog&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public List<JobErrorLog> jobErrorLogsGet(Integer pageSize, Integer pageNum) throws ApiException {
+        ApiResponse<List<JobErrorLog>> resp = jobErrorLogsGetWithHttpInfo(pageSize, pageNum);
+        return resp.getData();
+    }
+
+    /**
+     * 所有的错误日志
+     * 
+     * @param pageSize  (required)
+     * @param pageNum  (required)
+     * @return ApiResponse&lt;List&lt;JobErrorLog&gt;&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<List<JobErrorLog>> jobErrorLogsGetWithHttpInfo(Integer pageSize, Integer pageNum) throws ApiException {
+        com.squareup.okhttp.Call call = jobErrorLogsGetValidateBeforeCall(pageSize, pageNum, null, null);
+        Type localVarReturnType = new TypeToken<List<JobErrorLog>>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * 所有的错误日志 (asynchronously)
+     * 
+     * @param pageSize  (required)
+     * @param pageNum  (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call jobErrorLogsGetAsync(Integer pageSize, Integer pageNum, final ApiCallback<List<JobErrorLog>> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = jobErrorLogsGetValidateBeforeCall(pageSize, pageNum, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<List<JobErrorLog>>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
     /**
      * Build call for jobGroupsGroupIdDelete
      * @param groupId  (required)
@@ -805,6 +944,154 @@ public class JobApi {
         return call;
     }
     /**
+     * Build call for jobsJobIdErrorLogGet
+     * @param jobId  (required)
+     * @param pageSize  (required)
+     * @param pageNum  (required)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call jobsJobIdErrorLogGetCall(Integer jobId, Integer pageSize, Integer pageNum, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+        
+        // create path and map variables
+        String localVarPath = "/jobs/{jobId}/error/log"
+            .replaceAll("\\{" + "jobId" + "\\}", apiClient.escapeString(jobId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        if (pageSize != null)
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "pageSize", pageSize));
+        if (pageNum != null)
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "pageNum", pageNum));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json", "text/plain; charset=utf-8"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/x-www-form-urlencoded", "application/json", "multipart/form-data", "text/plain; charset=utf-8", "*/*"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] {  };
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+    
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call jobsJobIdErrorLogGetValidateBeforeCall(Integer jobId, Integer pageSize, Integer pageNum, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'jobId' is set
+        if (jobId == null) {
+            throw new ApiException("Missing the required parameter 'jobId' when calling jobsJobIdErrorLogGet(Async)");
+        }
+        
+        // verify the required parameter 'pageSize' is set
+        if (pageSize == null) {
+            throw new ApiException("Missing the required parameter 'pageSize' when calling jobsJobIdErrorLogGet(Async)");
+        }
+        
+        // verify the required parameter 'pageNum' is set
+        if (pageNum == null) {
+            throw new ApiException("Missing the required parameter 'pageNum' when calling jobsJobIdErrorLogGet(Async)");
+        }
+        
+        
+        com.squareup.okhttp.Call call = jobsJobIdErrorLogGetCall(jobId, pageSize, pageNum, progressListener, progressRequestListener);
+        return call;
+
+        
+        
+        
+        
+    }
+
+    /**
+     * 根据jobid来查错误日志
+     * 
+     * @param jobId  (required)
+     * @param pageSize  (required)
+     * @param pageNum  (required)
+     * @return List&lt;JobErrorLog&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public List<JobErrorLog> jobsJobIdErrorLogGet(Integer jobId, Integer pageSize, Integer pageNum) throws ApiException {
+        ApiResponse<List<JobErrorLog>> resp = jobsJobIdErrorLogGetWithHttpInfo(jobId, pageSize, pageNum);
+        return resp.getData();
+    }
+
+    /**
+     * 根据jobid来查错误日志
+     * 
+     * @param jobId  (required)
+     * @param pageSize  (required)
+     * @param pageNum  (required)
+     * @return ApiResponse&lt;List&lt;JobErrorLog&gt;&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<List<JobErrorLog>> jobsJobIdErrorLogGetWithHttpInfo(Integer jobId, Integer pageSize, Integer pageNum) throws ApiException {
+        com.squareup.okhttp.Call call = jobsJobIdErrorLogGetValidateBeforeCall(jobId, pageSize, pageNum, null, null);
+        Type localVarReturnType = new TypeToken<List<JobErrorLog>>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * 根据jobid来查错误日志 (asynchronously)
+     * 
+     * @param jobId  (required)
+     * @param pageSize  (required)
+     * @param pageNum  (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call jobsJobIdErrorLogGetAsync(Integer jobId, Integer pageSize, Integer pageNum, final ApiCallback<List<JobErrorLog>> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = jobsJobIdErrorLogGetValidateBeforeCall(jobId, pageSize, pageNum, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<List<JobErrorLog>>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
      * Build call for jobsJobIdGet
      * @param jobId  (required)
      * @param progressListener Progress listener
@@ -1180,6 +1467,128 @@ public class JobApi {
         }
 
         com.squareup.okhttp.Call call = jobsJobIdRunPostValidateBeforeCall(jobId, progressListener, progressRequestListener);
+        apiClient.executeAsync(call, callback);
+        return call;
+    }
+    /**
+     * Build call for jobsJobIdStopPost
+     * @param jobId  (required)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call jobsJobIdStopPostCall(Integer jobId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+        
+        // create path and map variables
+        String localVarPath = "/jobs/{jobId}/stop"
+            .replaceAll("\\{" + "jobId" + "\\}", apiClient.escapeString(jobId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json", "text/plain; charset=utf-8"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/x-www-form-urlencoded", "application/json", "multipart/form-data", "text/plain; charset=utf-8", "*/*"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] {  };
+        return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+    
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call jobsJobIdStopPostValidateBeforeCall(Integer jobId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'jobId' is set
+        if (jobId == null) {
+            throw new ApiException("Missing the required parameter 'jobId' when calling jobsJobIdStopPost(Async)");
+        }
+        
+        
+        com.squareup.okhttp.Call call = jobsJobIdStopPostCall(jobId, progressListener, progressRequestListener);
+        return call;
+
+        
+        
+        
+        
+    }
+
+    /**
+     * 
+     * 
+     * @param jobId  (required)
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public void jobsJobIdStopPost(Integer jobId) throws ApiException {
+        jobsJobIdStopPostWithHttpInfo(jobId);
+    }
+
+    /**
+     * 
+     * 
+     * @param jobId  (required)
+     * @return ApiResponse&lt;Void&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<Void> jobsJobIdStopPostWithHttpInfo(Integer jobId) throws ApiException {
+        com.squareup.okhttp.Call call = jobsJobIdStopPostValidateBeforeCall(jobId, null, null);
+        return apiClient.execute(call);
+    }
+
+    /**
+     *  (asynchronously)
+     * 
+     * @param jobId  (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call jobsJobIdStopPostAsync(Integer jobId, final ApiCallback<Void> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = jobsJobIdStopPostValidateBeforeCall(jobId, progressListener, progressRequestListener);
         apiClient.executeAsync(call, callback);
         return call;
     }
@@ -2291,6 +2700,128 @@ public class JobApi {
         }
 
         com.squareup.okhttp.Call call = workflowsWorkFlowIdRunPostValidateBeforeCall(workFlowId, progressListener, progressRequestListener);
+        apiClient.executeAsync(call, callback);
+        return call;
+    }
+    /**
+     * Build call for workflowsWorkFlowIdStopPost
+     * @param workFlowId  (required)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call workflowsWorkFlowIdStopPostCall(Integer workFlowId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+        
+        // create path and map variables
+        String localVarPath = "/workflows/{workFlowId}/stop"
+            .replaceAll("\\{" + "workFlowId" + "\\}", apiClient.escapeString(workFlowId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json", "text/plain; charset=utf-8"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/x-www-form-urlencoded", "application/json", "multipart/form-data", "text/plain; charset=utf-8", "*/*"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] {  };
+        return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+    
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call workflowsWorkFlowIdStopPostValidateBeforeCall(Integer workFlowId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'workFlowId' is set
+        if (workFlowId == null) {
+            throw new ApiException("Missing the required parameter 'workFlowId' when calling workflowsWorkFlowIdStopPost(Async)");
+        }
+        
+        
+        com.squareup.okhttp.Call call = workflowsWorkFlowIdStopPostCall(workFlowId, progressListener, progressRequestListener);
+        return call;
+
+        
+        
+        
+        
+    }
+
+    /**
+     * 停止这个workflow
+     * 
+     * @param workFlowId  (required)
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public void workflowsWorkFlowIdStopPost(Integer workFlowId) throws ApiException {
+        workflowsWorkFlowIdStopPostWithHttpInfo(workFlowId);
+    }
+
+    /**
+     * 停止这个workflow
+     * 
+     * @param workFlowId  (required)
+     * @return ApiResponse&lt;Void&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<Void> workflowsWorkFlowIdStopPostWithHttpInfo(Integer workFlowId) throws ApiException {
+        com.squareup.okhttp.Call call = workflowsWorkFlowIdStopPostValidateBeforeCall(workFlowId, null, null);
+        return apiClient.execute(call);
+    }
+
+    /**
+     * 停止这个workflow (asynchronously)
+     * 
+     * @param workFlowId  (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call workflowsWorkFlowIdStopPostAsync(Integer workFlowId, final ApiCallback<Void> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = workflowsWorkFlowIdStopPostValidateBeforeCall(workFlowId, progressListener, progressRequestListener);
         apiClient.executeAsync(call, callback);
         return call;
     }

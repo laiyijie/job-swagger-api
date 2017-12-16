@@ -236,7 +236,19 @@ paths:
       responses:
         200:
           description: ok
-  
+  /workflows/{workFlowId}/stop:
+    post:
+      tags:
+        - Job
+      summary: 停止这个workflow
+      parameters:
+        - name: workFlowId
+          in: path
+          type: integer
+          required: true
+      responses:
+        200:
+          description: ok
   /workflows/{workFlowId}/resume:
     post:
       tags:
@@ -415,6 +427,65 @@ paths:
       responses:
         200:
           description: ok
+  /jobs/{jobId}/stop:
+    post:
+      tags:
+        - Job
+      parameters:
+        - name: jobId
+          type: integer
+          required: true
+          in: path
+      responses:
+        200:
+          description: ok
+  /jobs/{jobId}/error/log:
+    get:
+      tags:
+        - Job
+      summary: 根据jobid来查错误日志
+      parameters:
+        - name: jobId
+          type: integer
+          required: true
+          in: path
+        - name: pageSize
+          type: integer
+          required: true
+          in: query
+        - name: pageNum
+          type: integer
+          required: true
+          in: query
+      responses:
+        200:
+          description: ok
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/JobErrorLog'
+              
+  /job/error/logs:
+    get:
+      tags:
+        - Job
+      summary: 所有的错误日志
+      parameters:
+        - name: pageSize
+          type: integer
+          required: true
+          in: query
+        - name: pageNum
+          type: integer
+          required: true
+          in: query
+      responses:
+        200:
+          description: ok
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/JobErrorLog'      
   
 definitions:
   Executor:
@@ -495,7 +566,26 @@ definitions:
         $ref: '#/definitions/Executor'
       script:
         type: string
-      
+  
+  JobErrorLog:
+    type: object
+    properties:
+      id:
+        type: integer
+      workflowId:
+        type: integer
+      jobGroupId:
+        type: integer
+      jobId:
+        type: integer
+      time:
+        type: integer
+        format: int64
+      executorName:
+        type: string
+      content:
+        type: string
+
 
   ErrorInfo:
     type: object

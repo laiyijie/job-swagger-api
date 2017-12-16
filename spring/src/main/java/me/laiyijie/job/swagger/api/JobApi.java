@@ -1,6 +1,7 @@
 package me.laiyijie.job.swagger.api;
 
 import me.laiyijie.job.swagger.model.Job;
+import me.laiyijie.job.swagger.model.JobErrorLog;
 import me.laiyijie.job.swagger.model.JobGroup;
 
 import io.swagger.annotations.*;
@@ -22,6 +23,17 @@ import javax.validation.Valid;
 
 @Api(value = "job", description = "the job API")
 public interface JobApi {
+
+    @ApiOperation(value = "所有的错误日志", notes = "", response = JobErrorLog.class, responseContainer = "List", tags={ "Job", })
+    @ApiResponses(value = { 
+        @ApiResponse(code = 200, message = "ok", response = JobErrorLog.class) })
+    
+    @RequestMapping(value = "/job/error/logs",
+        produces = { "application/json", "text/plain; charset=utf-8" }, 
+        consumes = { "application/x-www-form-urlencoded", "application/json", "multipart/form-data", "text/plain; charset=utf-8", "*/*" },
+        method = RequestMethod.GET)
+    ResponseEntity<List<JobErrorLog>> jobErrorLogsGet( @NotNull @ApiParam(value = "", required = true) @RequestParam(value = "pageSize", required = true) Integer pageSize, @NotNull @ApiParam(value = "", required = true) @RequestParam(value = "pageNum", required = true) Integer pageNum, HttpServletRequest request, HttpServletResponse response) throws Exception;
+
 
     @ApiOperation(value = "删除jobgroup", notes = "", response = Void.class, tags={ "Job", })
     @ApiResponses(value = { 

@@ -96,15 +96,18 @@ Class | Method | HTTP request | Description
 *ExecutorGroupApi* | [**executorGroupsGroupNameGet**](docs/ExecutorGroupApi.md#executorGroupsGroupNameGet) | **GET** /executor/groups/{groupName} | 
 *ExecutorGroupApi* | [**executorGroupsGroupNamePut**](docs/ExecutorGroupApi.md#executorGroupsGroupNamePut) | **PUT** /executor/groups/{groupName} | 只能修改描述
 *ExecutorGroupApi* | [**executorGroupsPost**](docs/ExecutorGroupApi.md#executorGroupsPost) | **POST** /executor/groups | 添加执行机组
+*JobApi* | [**jobErrorLogsGet**](docs/JobApi.md#jobErrorLogsGet) | **GET** /job/error/logs | 所有的错误日志
 *JobApi* | [**jobGroupsGroupIdDelete**](docs/JobApi.md#jobGroupsGroupIdDelete) | **DELETE** /job/groups/{groupId} | 删除jobgroup
 *JobApi* | [**jobGroupsGroupIdGet**](docs/JobApi.md#jobGroupsGroupIdGet) | **GET** /job/groups/{groupId} | 获取单个执行组的信息
 *JobApi* | [**jobGroupsGroupIdJobsGet**](docs/JobApi.md#jobGroupsGroupIdJobsGet) | **GET** /job/groups/{groupId}/jobs | 
 *JobApi* | [**jobGroupsGroupIdPost**](docs/JobApi.md#jobGroupsGroupIdPost) | **POST** /job/groups/{groupId} | 修改jobgroup信息 只能修改 名字、第几步、描述
 *JobApi* | [**jobGroupsPost**](docs/JobApi.md#jobGroupsPost) | **POST** /job/groups | 创建一个jobgroup 名字、第几步、描述
 *JobApi* | [**jobsJobIdDelete**](docs/JobApi.md#jobsJobIdDelete) | **DELETE** /jobs/{jobId} | 
+*JobApi* | [**jobsJobIdErrorLogGet**](docs/JobApi.md#jobsJobIdErrorLogGet) | **GET** /jobs/{jobId}/error/log | 根据jobid来查错误日志
 *JobApi* | [**jobsJobIdGet**](docs/JobApi.md#jobsJobIdGet) | **GET** /jobs/{jobId} | 
 *JobApi* | [**jobsJobIdPost**](docs/JobApi.md#jobsJobIdPost) | **POST** /jobs/{jobId} | 修改job 信息 只能修改 名字、描述、脚本、使用的执行机组
 *JobApi* | [**jobsJobIdRunPost**](docs/JobApi.md#jobsJobIdRunPost) | **POST** /jobs/{jobId}/run | 
+*JobApi* | [**jobsJobIdStopPost**](docs/JobApi.md#jobsJobIdStopPost) | **POST** /jobs/{jobId}/stop | 
 *JobApi* | [**jobsPost**](docs/JobApi.md#jobsPost) | **POST** /jobs | 
 *JobApi* | [**workflowsGet**](docs/JobApi.md#workflowsGet) | **GET** /workflows | 获取工作流列表
 *JobApi* | [**workflowsPost**](docs/JobApi.md#workflowsPost) | **POST** /workflows | 创建一个工作流
@@ -114,6 +117,7 @@ Class | Method | HTTP request | Description
 *JobApi* | [**workflowsWorkFlowIdPost**](docs/JobApi.md#workflowsWorkFlowIdPost) | **POST** /workflows/{workFlowId} | 修改这个工作流信息，只能修改 名字、描述、执行间隔、是否循环执行
 *JobApi* | [**workflowsWorkFlowIdResumePost**](docs/JobApi.md#workflowsWorkFlowIdResumePost) | **POST** /workflows/{workFlowId}/resume | 从失败处执行这个workflow
 *JobApi* | [**workflowsWorkFlowIdRunPost**](docs/JobApi.md#workflowsWorkFlowIdRunPost) | **POST** /workflows/{workFlowId}/run | 从头执行这个workflow
+*JobApi* | [**workflowsWorkFlowIdStopPost**](docs/JobApi.md#workflowsWorkFlowIdStopPost) | **POST** /workflows/{workFlowId}/stop | 停止这个workflow
 *TestApi* | [**testInfoGet**](docs/TestApi.md#testInfoGet) | **GET** /test/info | 测试接口
 
 
@@ -123,6 +127,7 @@ Class | Method | HTTP request | Description
  - [Executor](docs/Executor.md)
  - [ExecutorGroup](docs/ExecutorGroup.md)
  - [Job](docs/Job.md)
+ - [JobErrorLog](docs/JobErrorLog.md)
  - [JobGroup](docs/JobGroup.md)
  - [TestResponse](docs/TestResponse.md)
  - [WorkFlow](docs/WorkFlow.md)

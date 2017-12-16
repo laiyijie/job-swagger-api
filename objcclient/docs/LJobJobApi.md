@@ -4,15 +4,18 @@ All URIs are relative to *http://58.87.75.73:8888/job/api/v1/*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**jobErrorLogsGet**](LJobJobApi.md#joberrorlogsget) | **GET** /job/error/logs | 所有的错误日志
 [**jobGroupsGroupIdDelete**](LJobJobApi.md#jobgroupsgroupiddelete) | **DELETE** /job/groups/{groupId} | 删除jobgroup
 [**jobGroupsGroupIdGet**](LJobJobApi.md#jobgroupsgroupidget) | **GET** /job/groups/{groupId} | 获取单个执行组的信息
 [**jobGroupsGroupIdJobsGet**](LJobJobApi.md#jobgroupsgroupidjobsget) | **GET** /job/groups/{groupId}/jobs | 
 [**jobGroupsGroupIdPost**](LJobJobApi.md#jobgroupsgroupidpost) | **POST** /job/groups/{groupId} | 修改jobgroup信息 只能修改 名字、第几步、描述
 [**jobGroupsPost**](LJobJobApi.md#jobgroupspost) | **POST** /job/groups | 创建一个jobgroup 名字、第几步、描述
 [**jobsJobIdDelete**](LJobJobApi.md#jobsjobiddelete) | **DELETE** /jobs/{jobId} | 
+[**jobsJobIdErrorLogGet**](LJobJobApi.md#jobsjobiderrorlogget) | **GET** /jobs/{jobId}/error/log | 根据jobid来查错误日志
 [**jobsJobIdGet**](LJobJobApi.md#jobsjobidget) | **GET** /jobs/{jobId} | 
 [**jobsJobIdPost**](LJobJobApi.md#jobsjobidpost) | **POST** /jobs/{jobId} | 修改job 信息 只能修改 名字、描述、脚本、使用的执行机组
 [**jobsJobIdRunPost**](LJobJobApi.md#jobsjobidrunpost) | **POST** /jobs/{jobId}/run | 
+[**jobsJobIdStopPost**](LJobJobApi.md#jobsjobidstoppost) | **POST** /jobs/{jobId}/stop | 
 [**jobsPost**](LJobJobApi.md#jobspost) | **POST** /jobs | 
 [**workflowsGet**](LJobJobApi.md#workflowsget) | **GET** /workflows | 获取工作流列表
 [**workflowsPost**](LJobJobApi.md#workflowspost) | **POST** /workflows | 创建一个工作流
@@ -22,7 +25,60 @@ Method | HTTP request | Description
 [**workflowsWorkFlowIdPost**](LJobJobApi.md#workflowsworkflowidpost) | **POST** /workflows/{workFlowId} | 修改这个工作流信息，只能修改 名字、描述、执行间隔、是否循环执行
 [**workflowsWorkFlowIdResumePost**](LJobJobApi.md#workflowsworkflowidresumepost) | **POST** /workflows/{workFlowId}/resume | 从失败处执行这个workflow
 [**workflowsWorkFlowIdRunPost**](LJobJobApi.md#workflowsworkflowidrunpost) | **POST** /workflows/{workFlowId}/run | 从头执行这个workflow
+[**workflowsWorkFlowIdStopPost**](LJobJobApi.md#workflowsworkflowidstoppost) | **POST** /workflows/{workFlowId}/stop | 停止这个workflow
 
+
+# **jobErrorLogsGet**
+```objc
+-(NSURLSessionTask*) jobErrorLogsGetWithPageSize: (NSNumber*) pageSize
+    pageNum: (NSNumber*) pageNum
+        completionHandler: (void (^)(NSArray<LJobJobErrorLog>* output, NSError* error)) handler;
+```
+
+所有的错误日志
+
+### Example 
+```objc
+
+NSNumber* pageSize = @56; // 
+NSNumber* pageNum = @56; // 
+
+LJobJobApi*apiInstance = [[LJobJobApi alloc] init];
+
+// 所有的错误日志
+[apiInstance jobErrorLogsGetWithPageSize:pageSize
+              pageNum:pageNum
+          completionHandler: ^(NSArray<LJobJobErrorLog>* output, NSError* error) {
+                        if (output) {
+                            NSLog(@"%@", output);
+                        }
+                        if (error) {
+                            NSLog(@"Error calling LJobJobApi->jobErrorLogsGet: %@", error);
+                        }
+                    }];
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **pageSize** | **NSNumber***|  | 
+ **pageNum** | **NSNumber***|  | 
+
+### Return type
+
+[**NSArray<LJobJobErrorLog>***](LJobJobErrorLog.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/x-www-form-urlencoded, application/json, multipart/form-data, text/plain; charset=utf-8, */*
+ - **Accept**: application/json, text/plain; charset=utf-8
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **jobGroupsGroupIdDelete**
 ```objc
@@ -302,6 +358,62 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **jobsJobIdErrorLogGet**
+```objc
+-(NSURLSessionTask*) jobsJobIdErrorLogGetWithJobId: (NSNumber*) jobId
+    pageSize: (NSNumber*) pageSize
+    pageNum: (NSNumber*) pageNum
+        completionHandler: (void (^)(NSArray<LJobJobErrorLog>* output, NSError* error)) handler;
+```
+
+根据jobid来查错误日志
+
+### Example 
+```objc
+
+NSNumber* jobId = @56; // 
+NSNumber* pageSize = @56; // 
+NSNumber* pageNum = @56; // 
+
+LJobJobApi*apiInstance = [[LJobJobApi alloc] init];
+
+// 根据jobid来查错误日志
+[apiInstance jobsJobIdErrorLogGetWithJobId:jobId
+              pageSize:pageSize
+              pageNum:pageNum
+          completionHandler: ^(NSArray<LJobJobErrorLog>* output, NSError* error) {
+                        if (output) {
+                            NSLog(@"%@", output);
+                        }
+                        if (error) {
+                            NSLog(@"Error calling LJobJobApi->jobsJobIdErrorLogGet: %@", error);
+                        }
+                    }];
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **jobId** | **NSNumber***|  | 
+ **pageSize** | **NSNumber***|  | 
+ **pageNum** | **NSNumber***|  | 
+
+### Return type
+
+[**NSArray<LJobJobErrorLog>***](LJobJobErrorLog.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/x-www-form-urlencoded, application/json, multipart/form-data, text/plain; charset=utf-8, */*
+ - **Accept**: application/json, text/plain; charset=utf-8
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **jobsJobIdGet**
 ```objc
 -(NSURLSessionTask*) jobsJobIdGetWithJobId: (NSNumber*) jobId
@@ -417,6 +529,50 @@ LJobJobApi*apiInstance = [[LJobJobApi alloc] init];
           completionHandler: ^(NSError* error) {
                         if (error) {
                             NSLog(@"Error calling LJobJobApi->jobsJobIdRunPost: %@", error);
+                        }
+                    }];
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **jobId** | **NSNumber***|  | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/x-www-form-urlencoded, application/json, multipart/form-data, text/plain; charset=utf-8, */*
+ - **Accept**: application/json, text/plain; charset=utf-8
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **jobsJobIdStopPost**
+```objc
+-(NSURLSessionTask*) jobsJobIdStopPostWithJobId: (NSNumber*) jobId
+        completionHandler: (void (^)(NSError* error)) handler;
+```
+
+
+
+### Example 
+```objc
+
+NSNumber* jobId = @56; // 
+
+LJobJobApi*apiInstance = [[LJobJobApi alloc] init];
+
+[apiInstance jobsJobIdStopPostWithJobId:jobId
+          completionHandler: ^(NSError* error) {
+                        if (error) {
+                            NSLog(@"Error calling LJobJobApi->jobsJobIdStopPost: %@", error);
                         }
                     }];
 ```
@@ -833,6 +989,51 @@ LJobJobApi*apiInstance = [[LJobJobApi alloc] init];
           completionHandler: ^(NSError* error) {
                         if (error) {
                             NSLog(@"Error calling LJobJobApi->workflowsWorkFlowIdRunPost: %@", error);
+                        }
+                    }];
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **workFlowId** | **NSNumber***|  | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/x-www-form-urlencoded, application/json, multipart/form-data, text/plain; charset=utf-8, */*
+ - **Accept**: application/json, text/plain; charset=utf-8
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **workflowsWorkFlowIdStopPost**
+```objc
+-(NSURLSessionTask*) workflowsWorkFlowIdStopPostWithWorkFlowId: (NSNumber*) workFlowId
+        completionHandler: (void (^)(NSError* error)) handler;
+```
+
+停止这个workflow
+
+### Example 
+```objc
+
+NSNumber* workFlowId = @56; // 
+
+LJobJobApi*apiInstance = [[LJobJobApi alloc] init];
+
+// 停止这个workflow
+[apiInstance workflowsWorkFlowIdStopPostWithWorkFlowId:workFlowId
+          completionHandler: ^(NSError* error) {
+                        if (error) {
+                            NSLog(@"Error calling LJobJobApi->workflowsWorkFlowIdStopPost: %@", error);
                         }
                     }];
 ```

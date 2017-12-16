@@ -45,6 +45,7 @@ Import the following:
 #import <LJob/LJobExecutor.h>
 #import <LJob/LJobExecutorGroup.h>
 #import <LJob/LJobJob.h>
+#import <LJob/LJobJobErrorLog.h>
 #import <LJob/LJobJobGroup.h>
 #import <LJob/LJobTestResponse.h>
 #import <LJob/LJobWorkFlow.h>
@@ -94,15 +95,18 @@ Class | Method | HTTP request | Description
 *LJobExecutorGroupApi* | [**executorGroupsGroupNameGet**](docs/LJobExecutorGroupApi.md#executorgroupsgroupnameget) | **GET** /executor/groups/{groupName} | 
 *LJobExecutorGroupApi* | [**executorGroupsGroupNamePut**](docs/LJobExecutorGroupApi.md#executorgroupsgroupnameput) | **PUT** /executor/groups/{groupName} | 只能修改描述
 *LJobExecutorGroupApi* | [**executorGroupsPost**](docs/LJobExecutorGroupApi.md#executorgroupspost) | **POST** /executor/groups | 添加执行机组
+*LJobJobApi* | [**jobErrorLogsGet**](docs/LJobJobApi.md#joberrorlogsget) | **GET** /job/error/logs | 所有的错误日志
 *LJobJobApi* | [**jobGroupsGroupIdDelete**](docs/LJobJobApi.md#jobgroupsgroupiddelete) | **DELETE** /job/groups/{groupId} | 删除jobgroup
 *LJobJobApi* | [**jobGroupsGroupIdGet**](docs/LJobJobApi.md#jobgroupsgroupidget) | **GET** /job/groups/{groupId} | 获取单个执行组的信息
 *LJobJobApi* | [**jobGroupsGroupIdJobsGet**](docs/LJobJobApi.md#jobgroupsgroupidjobsget) | **GET** /job/groups/{groupId}/jobs | 
 *LJobJobApi* | [**jobGroupsGroupIdPost**](docs/LJobJobApi.md#jobgroupsgroupidpost) | **POST** /job/groups/{groupId} | 修改jobgroup信息 只能修改 名字、第几步、描述
 *LJobJobApi* | [**jobGroupsPost**](docs/LJobJobApi.md#jobgroupspost) | **POST** /job/groups | 创建一个jobgroup 名字、第几步、描述
 *LJobJobApi* | [**jobsJobIdDelete**](docs/LJobJobApi.md#jobsjobiddelete) | **DELETE** /jobs/{jobId} | 
+*LJobJobApi* | [**jobsJobIdErrorLogGet**](docs/LJobJobApi.md#jobsjobiderrorlogget) | **GET** /jobs/{jobId}/error/log | 根据jobid来查错误日志
 *LJobJobApi* | [**jobsJobIdGet**](docs/LJobJobApi.md#jobsjobidget) | **GET** /jobs/{jobId} | 
 *LJobJobApi* | [**jobsJobIdPost**](docs/LJobJobApi.md#jobsjobidpost) | **POST** /jobs/{jobId} | 修改job 信息 只能修改 名字、描述、脚本、使用的执行机组
 *LJobJobApi* | [**jobsJobIdRunPost**](docs/LJobJobApi.md#jobsjobidrunpost) | **POST** /jobs/{jobId}/run | 
+*LJobJobApi* | [**jobsJobIdStopPost**](docs/LJobJobApi.md#jobsjobidstoppost) | **POST** /jobs/{jobId}/stop | 
 *LJobJobApi* | [**jobsPost**](docs/LJobJobApi.md#jobspost) | **POST** /jobs | 
 *LJobJobApi* | [**workflowsGet**](docs/LJobJobApi.md#workflowsget) | **GET** /workflows | 获取工作流列表
 *LJobJobApi* | [**workflowsPost**](docs/LJobJobApi.md#workflowspost) | **POST** /workflows | 创建一个工作流
@@ -112,6 +116,7 @@ Class | Method | HTTP request | Description
 *LJobJobApi* | [**workflowsWorkFlowIdPost**](docs/LJobJobApi.md#workflowsworkflowidpost) | **POST** /workflows/{workFlowId} | 修改这个工作流信息，只能修改 名字、描述、执行间隔、是否循环执行
 *LJobJobApi* | [**workflowsWorkFlowIdResumePost**](docs/LJobJobApi.md#workflowsworkflowidresumepost) | **POST** /workflows/{workFlowId}/resume | 从失败处执行这个workflow
 *LJobJobApi* | [**workflowsWorkFlowIdRunPost**](docs/LJobJobApi.md#workflowsworkflowidrunpost) | **POST** /workflows/{workFlowId}/run | 从头执行这个workflow
+*LJobJobApi* | [**workflowsWorkFlowIdStopPost**](docs/LJobJobApi.md#workflowsworkflowidstoppost) | **POST** /workflows/{workFlowId}/stop | 停止这个workflow
 *LJobTestApi* | [**testInfoGet**](docs/LJobTestApi.md#testinfoget) | **GET** /test/info | 测试接口
 
 
@@ -121,6 +126,7 @@ Class | Method | HTTP request | Description
  - [LJobExecutor](docs/LJobExecutor.md)
  - [LJobExecutorGroup](docs/LJobExecutorGroup.md)
  - [LJobJob](docs/LJobJob.md)
+ - [LJobJobErrorLog](docs/LJobJobErrorLog.md)
  - [LJobJobGroup](docs/LJobJobGroup.md)
  - [LJobTestResponse](docs/LJobTestResponse.md)
  - [LJobWorkFlow](docs/LJobWorkFlow.md)

@@ -15,6 +15,7 @@ package me.laiyijie.job.android.io.swagger.api;
 
 import me.laiyijie.job.android.io.swagger.ApiException;
 import me.laiyijie.job.android.io.swagger.model.Job;
+import me.laiyijie.job.android.io.swagger.model.JobErrorLog;
 import me.laiyijie.job.android.io.swagger.model.JobGroup;
 import me.laiyijie.job.android.io.swagger.model.WorkFlow;
 import org.junit.Test;
@@ -33,6 +34,23 @@ public class JobApiTest {
 
     private final JobApi api = new JobApi();
 
+    
+    /**
+     * 所有的错误日志
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void jobErrorLogsGetTest() throws ApiException {
+        Integer pageSize = null;
+        Integer pageNum = null;
+        List<JobErrorLog> response = api.jobErrorLogsGet(pageSize, pageNum);
+
+        // TODO: test validations
+    }
     
     /**
      * 删除jobgroup
@@ -132,6 +150,24 @@ public class JobApiTest {
     }
     
     /**
+     * 根据jobid来查错误日志
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void jobsJobIdErrorLogGetTest() throws ApiException {
+        Integer jobId = null;
+        Integer pageSize = null;
+        Integer pageNum = null;
+        List<JobErrorLog> response = api.jobsJobIdErrorLogGet(jobId, pageSize, pageNum);
+
+        // TODO: test validations
+    }
+    
+    /**
      * 
      *
      * 
@@ -176,6 +212,22 @@ public class JobApiTest {
     public void jobsJobIdRunPostTest() throws ApiException {
         Integer jobId = null;
         api.jobsJobIdRunPost(jobId);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * 
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void jobsJobIdStopPostTest() throws ApiException {
+        Integer jobId = null;
+        api.jobsJobIdStopPost(jobId);
 
         // TODO: test validations
     }
@@ -320,6 +372,22 @@ public class JobApiTest {
     public void workflowsWorkFlowIdRunPostTest() throws ApiException {
         Integer workFlowId = null;
         api.workflowsWorkFlowIdRunPost(workFlowId);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * 停止这个workflow
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void workflowsWorkFlowIdStopPostTest() throws ApiException {
+        Integer workFlowId = null;
+        api.workflowsWorkFlowIdStopPost(workFlowId);
 
         // TODO: test validations
     }

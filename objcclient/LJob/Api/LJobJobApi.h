@@ -1,5 +1,6 @@
 #import <Foundation/Foundation.h>
 #import "LJobJob.h"
+#import "LJobJobErrorLog.h"
 #import "LJobJobGroup.h"
 #import "LJobWorkFlow.h"
 #import "LJobApi.h"
@@ -24,6 +25,20 @@ extern NSString* kLJobJobApiErrorDomain;
 extern NSInteger kLJobJobApiMissingParamErrorCode;
 
 -(instancetype) initWithApiClient:(LJobApiClient *)apiClient NS_DESIGNATED_INITIALIZER;
+
+/// 所有的错误日志
+/// 
+///
+/// @param pageSize 
+/// @param pageNum 
+/// 
+///  code:200 message:"ok"
+///
+/// @return NSArray<LJobJobErrorLog>*
+-(NSURLSessionTask*) jobErrorLogsGetWithPageSize: (NSNumber*) pageSize
+    pageNum: (NSNumber*) pageNum
+    completionHandler: (void (^)(NSArray<LJobJobErrorLog>* output, NSError* error)) handler;
+
 
 /// 删除jobgroup
 /// 
@@ -99,6 +114,22 @@ extern NSInteger kLJobJobApiMissingParamErrorCode;
     completionHandler: (void (^)(NSError* error)) handler;
 
 
+/// 根据jobid来查错误日志
+/// 
+///
+/// @param jobId 
+/// @param pageSize 
+/// @param pageNum 
+/// 
+///  code:200 message:"ok"
+///
+/// @return NSArray<LJobJobErrorLog>*
+-(NSURLSessionTask*) jobsJobIdErrorLogGetWithJobId: (NSNumber*) jobId
+    pageSize: (NSNumber*) pageSize
+    pageNum: (NSNumber*) pageNum
+    completionHandler: (void (^)(NSArray<LJobJobErrorLog>* output, NSError* error)) handler;
+
+
 /// 
 /// 
 ///
@@ -134,6 +165,18 @@ extern NSInteger kLJobJobApiMissingParamErrorCode;
 ///
 /// @return 
 -(NSURLSessionTask*) jobsJobIdRunPostWithJobId: (NSNumber*) jobId
+    completionHandler: (void (^)(NSError* error)) handler;
+
+
+/// 
+/// 
+///
+/// @param jobId 
+/// 
+///  code:200 message:"ok"
+///
+/// @return 
+-(NSURLSessionTask*) jobsJobIdStopPostWithJobId: (NSNumber*) jobId
     completionHandler: (void (^)(NSError* error)) handler;
 
 
@@ -243,6 +286,18 @@ extern NSInteger kLJobJobApiMissingParamErrorCode;
 ///
 /// @return 
 -(NSURLSessionTask*) workflowsWorkFlowIdRunPostWithWorkFlowId: (NSNumber*) workFlowId
+    completionHandler: (void (^)(NSError* error)) handler;
+
+
+/// 停止这个workflow
+/// 
+///
+/// @param workFlowId 
+/// 
+///  code:200 message:"ok"
+///
+/// @return 
+-(NSURLSessionTask*) workflowsWorkFlowIdStopPostWithWorkFlowId: (NSNumber*) workFlowId
     completionHandler: (void (^)(NSError* error)) handler;
 
 

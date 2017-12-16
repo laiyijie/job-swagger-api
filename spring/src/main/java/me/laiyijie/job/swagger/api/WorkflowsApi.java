@@ -110,4 +110,15 @@ public interface WorkflowsApi {
         method = RequestMethod.POST)
     ResponseEntity<Void> workflowsWorkFlowIdRunPost(@ApiParam(value = "",required=true ) @PathVariable("workFlowId") Integer workFlowId, HttpServletRequest request, HttpServletResponse response) throws Exception;
 
+
+    @ApiOperation(value = "停止这个workflow", notes = "", response = Void.class, tags={ "Job", })
+    @ApiResponses(value = { 
+        @ApiResponse(code = 200, message = "ok", response = Void.class) })
+    
+    @RequestMapping(value = "/workflows/{workFlowId}/stop",
+        produces = { "application/json", "text/plain; charset=utf-8" }, 
+        consumes = { "application/x-www-form-urlencoded", "application/json", "multipart/form-data", "text/plain; charset=utf-8", "*/*" },
+        method = RequestMethod.POST)
+    ResponseEntity<Void> workflowsWorkFlowIdStopPost(@ApiParam(value = "",required=true ) @PathVariable("workFlowId") Integer workFlowId, HttpServletRequest request, HttpServletResponse response) throws Exception;
+
 }
