@@ -34,6 +34,12 @@
 
 @property(nonatomic) NSNumber* jobGroupId;
 
+@property(nonatomic) NSString* retryRegex;
+
+@property(nonatomic) NSNumber* maxRetryTimes;
+
+@property(nonatomic) NSNumber* currentRetryTimes;
+
 @property(nonatomic) LJobExecutorGroup* executorGroup;
 
 @property(nonatomic) LJobExecutor* currentExecutor;

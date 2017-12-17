@@ -560,6 +560,12 @@ definitions:
         type: string
       jobGroupId:
         type: integer
+      retryRegex:
+        type: string
+      maxRetryTimes:
+        type: integer
+      currentRetryTimes:
+        type: integer
       executorGroup:
         $ref: "#/definitions/ExecutorGroup"
       currentExecutor:

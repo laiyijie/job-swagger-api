@@ -43,6 +43,15 @@ public class Job implements Serializable {
   @SerializedName("jobGroupId")
   private Integer jobGroupId = null;
 
+  @SerializedName("retryRegex")
+  private String retryRegex = null;
+
+  @SerializedName("maxRetryTimes")
+  private Integer maxRetryTimes = null;
+
+  @SerializedName("currentRetryTimes")
+  private Integer currentRetryTimes = null;
+
   @SerializedName("executorGroup")
   private ExecutorGroup executorGroup = null;
 
@@ -142,6 +151,60 @@ public class Job implements Serializable {
     this.jobGroupId = jobGroupId;
   }
 
+  public Job retryRegex(String retryRegex) {
+    this.retryRegex = retryRegex;
+    return this;
+  }
+
+   /**
+   * Get retryRegex
+   * @return retryRegex
+  **/
+  @ApiModelProperty(value = "")
+  public String getRetryRegex() {
+    return retryRegex;
+  }
+
+  public void setRetryRegex(String retryRegex) {
+    this.retryRegex = retryRegex;
+  }
+
+  public Job maxRetryTimes(Integer maxRetryTimes) {
+    this.maxRetryTimes = maxRetryTimes;
+    return this;
+  }
+
+   /**
+   * Get maxRetryTimes
+   * @return maxRetryTimes
+  **/
+  @ApiModelProperty(value = "")
+  public Integer getMaxRetryTimes() {
+    return maxRetryTimes;
+  }
+
+  public void setMaxRetryTimes(Integer maxRetryTimes) {
+    this.maxRetryTimes = maxRetryTimes;
+  }
+
+  public Job currentRetryTimes(Integer currentRetryTimes) {
+    this.currentRetryTimes = currentRetryTimes;
+    return this;
+  }
+
+   /**
+   * Get currentRetryTimes
+   * @return currentRetryTimes
+  **/
+  @ApiModelProperty(value = "")
+  public Integer getCurrentRetryTimes() {
+    return currentRetryTimes;
+  }
+
+  public void setCurrentRetryTimes(Integer currentRetryTimes) {
+    this.currentRetryTimes = currentRetryTimes;
+  }
+
   public Job executorGroup(ExecutorGroup executorGroup) {
     this.executorGroup = executorGroup;
     return this;
@@ -211,6 +274,9 @@ public class Job implements Serializable {
         Objects.equals(this.description, job.description) &&
         Objects.equals(this.status, job.status) &&
         Objects.equals(this.jobGroupId, job.jobGroupId) &&
+        Objects.equals(this.retryRegex, job.retryRegex) &&
+        Objects.equals(this.maxRetryTimes, job.maxRetryTimes) &&
+        Objects.equals(this.currentRetryTimes, job.currentRetryTimes) &&
         Objects.equals(this.executorGroup, job.executorGroup) &&
         Objects.equals(this.currentExecutor, job.currentExecutor) &&
         Objects.equals(this.script, job.script);
@@ -218,7 +284,7 @@ public class Job implements Serializable {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name, description, status, jobGroupId, executorGroup, currentExecutor, script);
+    return Objects.hash(id, name, description, status, jobGroupId, retryRegex, maxRetryTimes, currentRetryTimes, executorGroup, currentExecutor, script);
   }
 
 
@@ -232,6 +298,9 @@ public class Job implements Serializable {
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    jobGroupId: ").append(toIndentedString(jobGroupId)).append("\n");
+    sb.append("    retryRegex: ").append(toIndentedString(retryRegex)).append("\n");
+    sb.append("    maxRetryTimes: ").append(toIndentedString(maxRetryTimes)).append("\n");
+    sb.append("    currentRetryTimes: ").append(toIndentedString(currentRetryTimes)).append("\n");
     sb.append("    executorGroup: ").append(toIndentedString(executorGroup)).append("\n");
     sb.append("    currentExecutor: ").append(toIndentedString(currentExecutor)).append("\n");
     sb.append("    script: ").append(toIndentedString(script)).append("\n");
