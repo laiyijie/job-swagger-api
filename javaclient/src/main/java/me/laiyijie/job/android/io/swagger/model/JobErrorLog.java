@@ -27,7 +27,7 @@ public class JobErrorLog implements Serializable {
   private static final long serialVersionUID = 1L;
 
   @SerializedName("id")
-  private Integer id = null;
+  private Long id = null;
 
   @SerializedName("workflowId")
   private Integer workflowId = null;
@@ -47,7 +47,7 @@ public class JobErrorLog implements Serializable {
   @SerializedName("content")
   private String content = null;
 
-  public JobErrorLog id(Integer id) {
+  public JobErrorLog id(Long id) {
     this.id = id;
     return this;
   }
@@ -57,11 +57,11 @@ public class JobErrorLog implements Serializable {
    * @return id
   **/
   @ApiModelProperty(value = "")
-  public Integer getId() {
+  public Long getId() {
     return id;
   }
 
-  public void setId(Integer id) {
+  public void setId(Long id) {
     this.id = id;
   }
 

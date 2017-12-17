@@ -572,6 +572,7 @@ definitions:
     properties:
       id:
         type: integer
+        format: int64
       workflowId:
         type: integer
       jobGroupId:

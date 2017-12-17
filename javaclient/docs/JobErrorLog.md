@@ -4,7 +4,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **Integer** |  |  [optional]
+**id** | **Long** |  |  [optional]
 **workflowId** | **Integer** |  |  [optional]
 **jobGroupId** | **Integer** |  |  [optional]
 **jobId** | **Integer** |  |  [optional]
