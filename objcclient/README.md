@@ -47,12 +47,14 @@ Import the following:
 #import <LJob/LJobJob.h>
 #import <LJob/LJobJobErrorLog.h>
 #import <LJob/LJobJobGroup.h>
+#import <LJob/LJobRule.h>
 #import <LJob/LJobTestResponse.h>
 #import <LJob/LJobWorkFlow.h>
 // load API classes for accessing endpoints
 #import <LJob/LJobAuthApi.h>
 #import <LJob/LJobExecutorGroupApi.h>
 #import <LJob/LJobJobApi.h>
+#import <LJob/LJobRulesApi.h>
 #import <LJob/LJobTestApi.h>
 
 ```
@@ -117,6 +119,10 @@ Class | Method | HTTP request | Description
 *LJobJobApi* | [**workflowsWorkFlowIdResumePost**](docs/LJobJobApi.md#workflowsworkflowidresumepost) | **POST** /workflows/{workFlowId}/resume | 从失败处执行这个workflow
 *LJobJobApi* | [**workflowsWorkFlowIdRunPost**](docs/LJobJobApi.md#workflowsworkflowidrunpost) | **POST** /workflows/{workFlowId}/run | 从头执行这个workflow
 *LJobJobApi* | [**workflowsWorkFlowIdStopPost**](docs/LJobJobApi.md#workflowsworkflowidstoppost) | **POST** /workflows/{workFlowId}/stop | 停止这个workflow
+*LJobRulesApi* | [**rulesGet**](docs/LJobRulesApi.md#rulesget) | **GET** /rules | 
+*LJobRulesApi* | [**rulesPost**](docs/LJobRulesApi.md#rulespost) | **POST** /rules | 添加规则
+*LJobRulesApi* | [**rulesRuleIdDelete**](docs/LJobRulesApi.md#rulesruleiddelete) | **DELETE** /rules/{ruleId} | 删除规则
+*LJobRulesApi* | [**rulesRuleIdPut**](docs/LJobRulesApi.md#rulesruleidput) | **PUT** /rules/{ruleId} | 修改规则
 *LJobTestApi* | [**testInfoGet**](docs/LJobTestApi.md#testinfoget) | **GET** /test/info | 测试接口
 
 
@@ -128,6 +134,7 @@ Class | Method | HTTP request | Description
  - [LJobJob](docs/LJobJob.md)
  - [LJobJobErrorLog](docs/LJobJobErrorLog.md)
  - [LJobJobGroup](docs/LJobJobGroup.md)
+ - [LJobRule](docs/LJobRule.md)
  - [LJobTestResponse](docs/LJobTestResponse.md)
  - [LJobWorkFlow](docs/LJobWorkFlow.md)
 

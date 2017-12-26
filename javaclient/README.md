@@ -118,6 +118,10 @@ Class | Method | HTTP request | Description
 *JobApi* | [**workflowsWorkFlowIdResumePost**](docs/JobApi.md#workflowsWorkFlowIdResumePost) | **POST** /workflows/{workFlowId}/resume | 从失败处执行这个workflow
 *JobApi* | [**workflowsWorkFlowIdRunPost**](docs/JobApi.md#workflowsWorkFlowIdRunPost) | **POST** /workflows/{workFlowId}/run | 从头执行这个workflow
 *JobApi* | [**workflowsWorkFlowIdStopPost**](docs/JobApi.md#workflowsWorkFlowIdStopPost) | **POST** /workflows/{workFlowId}/stop | 停止这个workflow
+*RulesApi* | [**rulesGet**](docs/RulesApi.md#rulesGet) | **GET** /rules | 
+*RulesApi* | [**rulesPost**](docs/RulesApi.md#rulesPost) | **POST** /rules | 添加规则
+*RulesApi* | [**rulesRuleIdDelete**](docs/RulesApi.md#rulesRuleIdDelete) | **DELETE** /rules/{ruleId} | 删除规则
+*RulesApi* | [**rulesRuleIdPut**](docs/RulesApi.md#rulesRuleIdPut) | **PUT** /rules/{ruleId} | 修改规则
 *TestApi* | [**testInfoGet**](docs/TestApi.md#testInfoGet) | **GET** /test/info | 测试接口
 
 
@@ -129,6 +133,7 @@ Class | Method | HTTP request | Description
  - [Job](docs/Job.md)
  - [JobErrorLog](docs/JobErrorLog.md)
  - [JobGroup](docs/JobGroup.md)
+ - [Rule](docs/Rule.md)
  - [TestResponse](docs/TestResponse.md)
  - [WorkFlow](docs/WorkFlow.md)
 

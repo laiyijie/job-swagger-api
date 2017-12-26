@@ -77,6 +77,66 @@ paths:
         200: 
           description: ok
   
+ 
+  /rules:
+    get:
+      tags:
+        - Rules
+      responses:
+        200:
+          description: ok
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Rule'
+   
+    post:
+      tags:
+        - Rules
+      summary: 添加规则
+      parameters:
+        - name: rule
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/Rule'
+      responses:
+        200:
+          description: ok
+  
+  /rules/{ruleId}:
+    put:
+      tags:
+        - Rules
+      summary: 修改规则
+      parameters:
+        - name: ruleId
+          in: path
+          required: true
+          type: string
+        - name: rule
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/Rule'
+      responses:
+        200:
+          description: ok
+          
+          
+    delete:
+      summary: 删除规则
+      tags:
+        - Rules
+      parameters:
+        - name: ruleId
+          in: path
+          type: string
+          required: true
+      responses:
+        200:
+          description: ok
+  
   /executor/groups:
     get:
       tags:
@@ -488,6 +548,19 @@ paths:
               $ref: '#/definitions/JobErrorLog'      
   
 definitions:
+  Rule:
+    type: object
+    properties:
+      script:
+        type: string
+        description: 脚本名称
+      pattern:
+        type: string
+        description: 匹配的字符串
+      retryTimes:
+        type: number
+        description: 重试次数
+
   Executor:
     type: object
     properties:
