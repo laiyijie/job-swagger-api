@@ -105,7 +105,7 @@ No authorization required
 
 
 RulesApi apiInstance = new RulesApi();
-String ruleId = "ruleId_example"; // String | 
+Integer ruleId = 56; // Integer | 
 try {
     apiInstance.rulesRuleIdDelete(ruleId);
 } catch (ApiException e) {
@@ -118,7 +118,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ruleId** | **String**|  |
+ **ruleId** | **Integer**|  |
 
 ### Return type
 
@@ -147,7 +147,7 @@ No authorization required
 
 
 RulesApi apiInstance = new RulesApi();
-String ruleId = "ruleId_example"; // String | 
+Integer ruleId = 56; // Integer | 
 Rule rule = new Rule(); // Rule | 
 try {
     apiInstance.rulesRuleIdPut(ruleId, rule);
@@ -161,7 +161,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ruleId** | **String**|  |
+ **ruleId** | **Integer**|  |
  **rule** | [**Rule**](Rule.md)|  |
 
 ### Return type

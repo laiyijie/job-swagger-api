@@ -52,7 +52,7 @@ public interface RulesApi {
         produces = { "application/json", "text/plain; charset=utf-8" }, 
         consumes = { "application/x-www-form-urlencoded", "application/json", "multipart/form-data", "text/plain; charset=utf-8", "*/*" },
         method = RequestMethod.DELETE)
-    ResponseEntity<Void> rulesRuleIdDelete(@ApiParam(value = "",required=true ) @PathVariable("ruleId") String ruleId, HttpServletRequest request, HttpServletResponse response) throws Exception;
+    ResponseEntity<Void> rulesRuleIdDelete(@ApiParam(value = "",required=true ) @PathVariable("ruleId") Integer ruleId, HttpServletRequest request, HttpServletResponse response) throws Exception;
 
 
     @ApiOperation(value = "修改规则", notes = "", response = Void.class, tags={ "Rules", })
@@ -63,6 +63,6 @@ public interface RulesApi {
         produces = { "application/json", "text/plain; charset=utf-8" }, 
         consumes = { "application/x-www-form-urlencoded", "application/json", "multipart/form-data", "text/plain; charset=utf-8", "*/*" },
         method = RequestMethod.PUT)
-    ResponseEntity<Void> rulesRuleIdPut(@ApiParam(value = "",required=true ) @PathVariable("ruleId") String ruleId,@ApiParam(value = "" ,required=true )  @Valid @RequestBody Rule rule, HttpServletRequest request, HttpServletResponse response) throws Exception;
+    ResponseEntity<Void> rulesRuleIdPut(@ApiParam(value = "",required=true ) @PathVariable("ruleId") Integer ruleId,@ApiParam(value = "" ,required=true )  @Valid @RequestBody Rule rule, HttpServletRequest request, HttpServletResponse response) throws Exception;
 
 }

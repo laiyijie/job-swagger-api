@@ -54,7 +54,7 @@ extern NSInteger kLJobRulesApiMissingParamErrorCode;
 ///  code:200 message:"ok"
 ///
 /// @return 
--(NSURLSessionTask*) rulesRuleIdDeleteWithRuleId: (NSString*) ruleId
+-(NSURLSessionTask*) rulesRuleIdDeleteWithRuleId: (NSNumber*) ruleId
     completionHandler: (void (^)(NSError* error)) handler;
 
 
@@ -67,7 +67,7 @@ extern NSInteger kLJobRulesApiMissingParamErrorCode;
 ///  code:200 message:"ok"
 ///
 /// @return 
--(NSURLSessionTask*) rulesRuleIdPutWithRuleId: (NSString*) ruleId
+-(NSURLSessionTask*) rulesRuleIdPutWithRuleId: (NSNumber*) ruleId
     rule: (LJobRule*) rule
     completionHandler: (void (^)(NSError* error)) handler;
 

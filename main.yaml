@@ -113,7 +113,7 @@ paths:
         - name: ruleId
           in: path
           required: true
-          type: string
+          type: integer
         - name: rule
           in: body
           required: true
@@ -131,7 +131,7 @@ paths:
       parameters:
         - name: ruleId
           in: path
-          type: string
+          type: integer
           required: true
       responses:
         200:
@@ -551,6 +551,9 @@ definitions:
   Rule:
     type: object
     properties:
+      id:
+        type: integer
+        description: id
       script:
         type: string
         description: 脚本名称

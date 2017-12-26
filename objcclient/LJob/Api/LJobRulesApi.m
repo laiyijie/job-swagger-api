@@ -174,7 +174,7 @@ NSInteger kLJobRulesApiMissingParamErrorCode = 234513;
 ///
 ///  @returns void
 ///
--(NSURLSessionTask*) rulesRuleIdDeleteWithRuleId: (NSString*) ruleId
+-(NSURLSessionTask*) rulesRuleIdDeleteWithRuleId: (NSNumber*) ruleId
     completionHandler: (void (^)(NSError* error)) handler {
     // verify the required parameter 'ruleId' is set
     if (ruleId == nil) {
@@ -244,7 +244,7 @@ NSInteger kLJobRulesApiMissingParamErrorCode = 234513;
 ///
 ///  @returns void
 ///
--(NSURLSessionTask*) rulesRuleIdPutWithRuleId: (NSString*) ruleId
+-(NSURLSessionTask*) rulesRuleIdPutWithRuleId: (NSNumber*) ruleId
     rule: (LJobRule*) rule
     completionHandler: (void (^)(NSError* error)) handler {
     // verify the required parameter 'ruleId' is set

@@ -3,6 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**_id** | **NSNumber*** | id | [optional] 
 **script** | **NSString*** | 脚本名称 | [optional] 
 **pattern** | **NSString*** | 匹配的字符串 | [optional] 
 **retryTimes** | **NSNumber*** | 重试次数 | [optional] 

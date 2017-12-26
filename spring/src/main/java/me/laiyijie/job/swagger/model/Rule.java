@@ -15,6 +15,9 @@ import javax.validation.constraints.*;
 public class Rule  implements Serializable {
   private static final long serialVersionUID = 1L;
 
+  @JsonProperty("id")
+  private Integer id = null;
+
   @JsonProperty("script")
   private String script = null;
 
@@ -23,6 +26,24 @@ public class Rule  implements Serializable {
 
   @JsonProperty("retryTimes")
   private BigDecimal retryTimes = null;
+
+  public Rule id(Integer id) {
+    this.id = id;
+    return this;
+  }
+
+   /**
+   * id
+   * @return id
+  **/
+  @ApiModelProperty(value = "id")
+  public Integer getId() {
+    return id;
+  }
+
+  public void setId(Integer id) {
+    this.id = id;
+  }
 
   public Rule script(String script) {
     this.script = script;
@@ -88,14 +109,15 @@ public class Rule  implements Serializable {
       return false;
     }
     Rule rule = (Rule) o;
-    return Objects.equals(this.script, rule.script) &&
+    return Objects.equals(this.id, rule.id) &&
+        Objects.equals(this.script, rule.script) &&
         Objects.equals(this.pattern, rule.pattern) &&
         Objects.equals(this.retryTimes, rule.retryTimes);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(script, pattern, retryTimes);
+    return Objects.hash(id, script, pattern, retryTimes);
   }
 
   @Override
@@ -103,6 +125,7 @@ public class Rule  implements Serializable {
     StringBuilder sb = new StringBuilder();
     sb.append("class Rule {\n");
     
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    script: ").append(toIndentedString(script)).append("\n");
     sb.append("    pattern: ").append(toIndentedString(pattern)).append("\n");
     sb.append("    retryTimes: ").append(toIndentedString(retryTimes)).append("\n");

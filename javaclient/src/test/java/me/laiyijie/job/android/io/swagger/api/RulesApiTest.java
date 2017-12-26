@@ -73,7 +73,7 @@ public class RulesApiTest {
      */
     @Test
     public void rulesRuleIdDeleteTest() throws ApiException {
-        String ruleId = null;
+        Integer ruleId = null;
         api.rulesRuleIdDelete(ruleId);
 
         // TODO: test validations
@@ -89,7 +89,7 @@ public class RulesApiTest {
      */
     @Test
     public void rulesRuleIdPutTest() throws ApiException {
-        String ruleId = null;
+        Integer ruleId = null;
         Rule rule = null;
         api.rulesRuleIdPut(ruleId, rule);
 

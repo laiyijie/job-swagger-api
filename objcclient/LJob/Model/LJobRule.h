@@ -21,6 +21,9 @@
 
 @interface LJobRule : LJobObject
 
+/* id [optional]
+ */
+@property(nonatomic) NSNumber* _id;
 /* 脚本名称 [optional]
  */
 @property(nonatomic) NSString* script;

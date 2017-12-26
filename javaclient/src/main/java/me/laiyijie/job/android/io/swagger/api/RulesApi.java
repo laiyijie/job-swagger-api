@@ -299,7 +299,7 @@ public class RulesApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call rulesRuleIdDeleteCall(String ruleId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call rulesRuleIdDeleteCall(Integer ruleId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
         
         // create path and map variables
@@ -341,7 +341,7 @@ public class RulesApi {
     }
     
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call rulesRuleIdDeleteValidateBeforeCall(String ruleId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call rulesRuleIdDeleteValidateBeforeCall(Integer ruleId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'ruleId' is set
         if (ruleId == null) {
@@ -364,7 +364,7 @@ public class RulesApi {
      * @param ruleId  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void rulesRuleIdDelete(String ruleId) throws ApiException {
+    public void rulesRuleIdDelete(Integer ruleId) throws ApiException {
         rulesRuleIdDeleteWithHttpInfo(ruleId);
     }
 
@@ -375,7 +375,7 @@ public class RulesApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> rulesRuleIdDeleteWithHttpInfo(String ruleId) throws ApiException {
+    public ApiResponse<Void> rulesRuleIdDeleteWithHttpInfo(Integer ruleId) throws ApiException {
         com.squareup.okhttp.Call call = rulesRuleIdDeleteValidateBeforeCall(ruleId, null, null);
         return apiClient.execute(call);
     }
@@ -388,7 +388,7 @@ public class RulesApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call rulesRuleIdDeleteAsync(String ruleId, final ApiCallback<Void> callback) throws ApiException {
+    public com.squareup.okhttp.Call rulesRuleIdDeleteAsync(Integer ruleId, final ApiCallback<Void> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -422,7 +422,7 @@ public class RulesApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call rulesRuleIdPutCall(String ruleId, Rule rule, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call rulesRuleIdPutCall(Integer ruleId, Rule rule, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = rule;
         
         // create path and map variables
@@ -464,7 +464,7 @@ public class RulesApi {
     }
     
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call rulesRuleIdPutValidateBeforeCall(String ruleId, Rule rule, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call rulesRuleIdPutValidateBeforeCall(Integer ruleId, Rule rule, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'ruleId' is set
         if (ruleId == null) {
@@ -493,7 +493,7 @@ public class RulesApi {
      * @param rule  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void rulesRuleIdPut(String ruleId, Rule rule) throws ApiException {
+    public void rulesRuleIdPut(Integer ruleId, Rule rule) throws ApiException {
         rulesRuleIdPutWithHttpInfo(ruleId, rule);
     }
 
@@ -505,7 +505,7 @@ public class RulesApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> rulesRuleIdPutWithHttpInfo(String ruleId, Rule rule) throws ApiException {
+    public ApiResponse<Void> rulesRuleIdPutWithHttpInfo(Integer ruleId, Rule rule) throws ApiException {
         com.squareup.okhttp.Call call = rulesRuleIdPutValidateBeforeCall(ruleId, rule, null, null);
         return apiClient.execute(call);
     }
@@ -519,7 +519,7 @@ public class RulesApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call rulesRuleIdPutAsync(String ruleId, Rule rule, final ApiCallback<Void> callback) throws ApiException {
+    public com.squareup.okhttp.Call rulesRuleIdPutAsync(Integer ruleId, Rule rule, final ApiCallback<Void> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;

@@ -100,7 +100,7 @@ No authorization required
 
 # **rulesRuleIdDelete**
 ```objc
--(NSURLSessionTask*) rulesRuleIdDeleteWithRuleId: (NSString*) ruleId
+-(NSURLSessionTask*) rulesRuleIdDeleteWithRuleId: (NSNumber*) ruleId
         completionHandler: (void (^)(NSError* error)) handler;
 ```
 
@@ -109,7 +109,7 @@ No authorization required
 ### Example 
 ```objc
 
-NSString* ruleId = @"ruleId_example"; // 
+NSNumber* ruleId = @56; // 
 
 LJobRulesApi*apiInstance = [[LJobRulesApi alloc] init];
 
@@ -126,7 +126,7 @@ LJobRulesApi*apiInstance = [[LJobRulesApi alloc] init];
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ruleId** | **NSString***|  | 
+ **ruleId** | **NSNumber***|  | 
 
 ### Return type
 
@@ -145,7 +145,7 @@ No authorization required
 
 # **rulesRuleIdPut**
 ```objc
--(NSURLSessionTask*) rulesRuleIdPutWithRuleId: (NSString*) ruleId
+-(NSURLSessionTask*) rulesRuleIdPutWithRuleId: (NSNumber*) ruleId
     rule: (LJobRule*) rule
         completionHandler: (void (^)(NSError* error)) handler;
 ```
@@ -155,7 +155,7 @@ No authorization required
 ### Example 
 ```objc
 
-NSString* ruleId = @"ruleId_example"; // 
+NSNumber* ruleId = @56; // 
 LJobRule* rule = [[LJobRule alloc] init]; // 
 
 LJobRulesApi*apiInstance = [[LJobRulesApi alloc] init];
@@ -174,7 +174,7 @@ LJobRulesApi*apiInstance = [[LJobRulesApi alloc] init];
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ruleId** | **NSString***|  | 
+ **ruleId** | **NSNumber***|  | 
  **rule** | [**LJobRule***](LJobRule*.md)|  | 
 
 ### Return type
