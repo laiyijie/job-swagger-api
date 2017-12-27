@@ -561,7 +561,7 @@ definitions:
         type: string
         description: 匹配的字符串
       retryTimes:
-        type: number
+        type: integer
         description: 重试次数
 
   Executor:

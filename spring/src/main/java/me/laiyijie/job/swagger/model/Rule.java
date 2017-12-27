@@ -5,7 +5,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import java.math.BigDecimal;
 import java.io.Serializable;
 import javax.validation.constraints.*;
 /**
@@ -25,7 +24,7 @@ public class Rule  implements Serializable {
   private String pattern = null;
 
   @JsonProperty("retryTimes")
-  private BigDecimal retryTimes = null;
+  private Integer retryTimes = null;
 
   public Rule id(Integer id) {
     this.id = id;
@@ -81,7 +80,7 @@ public class Rule  implements Serializable {
     this.pattern = pattern;
   }
 
-  public Rule retryTimes(BigDecimal retryTimes) {
+  public Rule retryTimes(Integer retryTimes) {
     this.retryTimes = retryTimes;
     return this;
   }
@@ -91,11 +90,11 @@ public class Rule  implements Serializable {
    * @return retryTimes
   **/
   @ApiModelProperty(value = "重试次数")
-  public BigDecimal getRetryTimes() {
+  public Integer getRetryTimes() {
     return retryTimes;
   }
 
-  public void setRetryTimes(BigDecimal retryTimes) {
+  public void setRetryTimes(Integer retryTimes) {
     this.retryTimes = retryTimes;
   }
 
