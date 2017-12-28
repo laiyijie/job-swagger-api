@@ -17,28 +17,28 @@ import javax.validation.constraints.*;
 public class ErrorLogResponse  implements Serializable {
   private static final long serialVersionUID = 1L;
 
-  @JsonProperty("totalPage")
-  private Integer totalPage = null;
+  @JsonProperty("totalRows")
+  private Integer totalRows = null;
 
   @JsonProperty("logs")
   private List<JobErrorLog> logs = null;
 
-  public ErrorLogResponse totalPage(Integer totalPage) {
-    this.totalPage = totalPage;
+  public ErrorLogResponse totalRows(Integer totalRows) {
+    this.totalRows = totalRows;
     return this;
   }
 
    /**
-   * Get totalPage
-   * @return totalPage
+   * Get totalRows
+   * @return totalRows
   **/
   @ApiModelProperty(value = "")
-  public Integer getTotalPage() {
-    return totalPage;
+  public Integer getTotalRows() {
+    return totalRows;
   }
 
-  public void setTotalPage(Integer totalPage) {
-    this.totalPage = totalPage;
+  public void setTotalRows(Integer totalRows) {
+    this.totalRows = totalRows;
   }
 
   public ErrorLogResponse logs(List<JobErrorLog> logs) {
@@ -77,13 +77,13 @@ public class ErrorLogResponse  implements Serializable {
       return false;
     }
     ErrorLogResponse errorLogResponse = (ErrorLogResponse) o;
-    return Objects.equals(this.totalPage, errorLogResponse.totalPage) &&
+    return Objects.equals(this.totalRows, errorLogResponse.totalRows) &&
         Objects.equals(this.logs, errorLogResponse.logs);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(totalPage, logs);
+    return Objects.hash(totalRows, logs);
   }
 
   @Override
@@ -91,7 +91,7 @@ public class ErrorLogResponse  implements Serializable {
     StringBuilder sb = new StringBuilder();
     sb.append("class ErrorLogResponse {\n");
     
-    sb.append("    totalPage: ").append(toIndentedString(totalPage)).append("\n");
+    sb.append("    totalRows: ").append(toIndentedString(totalRows)).append("\n");
     sb.append("    logs: ").append(toIndentedString(logs)).append("\n");
     sb.append("}");
     return sb.toString();

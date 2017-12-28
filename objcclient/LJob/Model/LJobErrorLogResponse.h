@@ -23,7 +23,7 @@
 @interface LJobErrorLogResponse : LJobObject
 
 
-@property(nonatomic) NSNumber* totalPage;
+@property(nonatomic) NSNumber* totalRows;
 
 @property(nonatomic) NSArray<LJobJobErrorLog>* logs;
 

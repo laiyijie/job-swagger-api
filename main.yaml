@@ -537,7 +537,7 @@ paths:
             type: object
             title: ErrorLogResponse
             properties:
-              totalPage:
+              totalRows:
                 type: integer 
               logs:
                 type: array

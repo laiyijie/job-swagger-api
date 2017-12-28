@@ -4,7 +4,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**totalPage** | **Integer** |  |  [optional]
+**totalRows** | **Integer** |  |  [optional]
 **logs** | [**List&lt;JobErrorLog&gt;**](JobErrorLog.md) |  |  [optional]
 
 
