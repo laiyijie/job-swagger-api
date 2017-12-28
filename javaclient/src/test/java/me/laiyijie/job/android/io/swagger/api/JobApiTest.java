@@ -16,7 +16,6 @@ package me.laiyijie.job.android.io.swagger.api;
 import me.laiyijie.job.android.io.swagger.ApiException;
 import me.laiyijie.job.android.io.swagger.model.ErrorLogResponse;
 import me.laiyijie.job.android.io.swagger.model.Job;
-import me.laiyijie.job.android.io.swagger.model.JobErrorLog;
 import me.laiyijie.job.android.io.swagger.model.JobGroup;
 import me.laiyijie.job.android.io.swagger.model.WorkFlow;
 import org.junit.Test;
@@ -150,24 +149,6 @@ public class JobApiTest {
     public void jobsJobIdDeleteTest() throws ApiException {
         Integer jobId = null;
         api.jobsJobIdDelete(jobId);
-
-        // TODO: test validations
-    }
-    
-    /**
-     * 根据jobid来查错误日志
-     *
-     * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
-     */
-    @Test
-    public void jobsJobIdErrorLogGetTest() throws ApiException {
-        Integer jobId = null;
-        Integer pageSize = null;
-        Integer pageNum = null;
-        List<JobErrorLog> response = api.jobsJobIdErrorLogGet(jobId, pageSize, pageNum);
 
         // TODO: test validations
     }

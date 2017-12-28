@@ -1,7 +1,6 @@
 #import <Foundation/Foundation.h>
 #import "LJobErrorLogResponse.h"
 #import "LJobJob.h"
-#import "LJobJobErrorLog.h"
 #import "LJobJobGroup.h"
 #import "LJobWorkFlow.h"
 #import "LJobApi.h"
@@ -121,22 +120,6 @@ extern NSInteger kLJobJobApiMissingParamErrorCode;
 /// @return 
 -(NSURLSessionTask*) jobsJobIdDeleteWithJobId: (NSNumber*) jobId
     completionHandler: (void (^)(NSError* error)) handler;
-
-
-/// 根据jobid来查错误日志
-/// 
-///
-/// @param jobId 
-/// @param pageSize 
-/// @param pageNum 
-/// 
-///  code:200 message:"ok"
-///
-/// @return NSArray<LJobJobErrorLog>*
--(NSURLSessionTask*) jobsJobIdErrorLogGetWithJobId: (NSNumber*) jobId
-    pageSize: (NSNumber*) pageSize
-    pageNum: (NSNumber*) pageNum
-    completionHandler: (void (^)(NSArray<LJobJobErrorLog>* output, NSError* error)) handler;
 
 
 /// 

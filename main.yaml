@@ -499,31 +499,6 @@ paths:
       responses:
         200:
           description: ok
-  /jobs/{jobId}/error/log:
-    get:
-      tags:
-        - Job
-      summary: 根据jobid来查错误日志
-      parameters:
-        - name: jobId
-          type: integer
-          required: true
-          in: path
-        - name: pageSize
-          type: integer
-          required: true
-          in: query
-        - name: pageNum
-          type: integer
-          required: true
-          in: query
-      responses:
-        200:
-          description: ok
-          schema:
-            type: array
-            items:
-              $ref: '#/definitions/JobErrorLog'
               
   /job/error/logs:
     get:

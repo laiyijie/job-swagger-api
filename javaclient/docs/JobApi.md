@@ -11,7 +11,6 @@ Method | HTTP request | Description
 [**jobGroupsGroupIdPost**](JobApi.md#jobGroupsGroupIdPost) | **POST** /job/groups/{groupId} | 修改jobgroup信息 只能修改 名字、第几步、描述
 [**jobGroupsPost**](JobApi.md#jobGroupsPost) | **POST** /job/groups | 创建一个jobgroup 名字、第几步、描述
 [**jobsJobIdDelete**](JobApi.md#jobsJobIdDelete) | **DELETE** /jobs/{jobId} | 
-[**jobsJobIdErrorLogGet**](JobApi.md#jobsJobIdErrorLogGet) | **GET** /jobs/{jobId}/error/log | 根据jobid来查错误日志
 [**jobsJobIdGet**](JobApi.md#jobsJobIdGet) | **GET** /jobs/{jobId} | 
 [**jobsJobIdPost**](JobApi.md#jobsJobIdPost) | **POST** /jobs/{jobId} | 修改job 信息 只能修改 名字、描述、脚本、使用的执行机组
 [**jobsJobIdRunPost**](JobApi.md#jobsJobIdRunPost) | **POST** /jobs/{jobId}/run | 
@@ -327,53 +326,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 null (empty response body)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: application/x-www-form-urlencoded, application/json, multipart/form-data, text/plain; charset=utf-8, */*
- - **Accept**: application/json, text/plain; charset=utf-8
-
-<a name="jobsJobIdErrorLogGet"></a>
-# **jobsJobIdErrorLogGet**
-> List&lt;JobErrorLog&gt; jobsJobIdErrorLogGet(jobId, pageSize, pageNum)
-
-根据jobid来查错误日志
-
-### Example
-```java
-// Import classes:
-//import me.laiyijie.job.android.io.swagger.ApiException;
-//import me.laiyijie.job.android.io.swagger.api.JobApi;
-
-
-JobApi apiInstance = new JobApi();
-Integer jobId = 56; // Integer | 
-Integer pageSize = 56; // Integer | 
-Integer pageNum = 56; // Integer | 
-try {
-    List<JobErrorLog> result = apiInstance.jobsJobIdErrorLogGet(jobId, pageSize, pageNum);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling JobApi#jobsJobIdErrorLogGet");
-    e.printStackTrace();
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **jobId** | **Integer**|  |
- **pageSize** | **Integer**|  |
- **pageNum** | **Integer**|  |
-
-### Return type
-
-[**List&lt;JobErrorLog&gt;**](JobErrorLog.md)
 
 ### Authorization
 

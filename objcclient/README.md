@@ -105,7 +105,6 @@ Class | Method | HTTP request | Description
 *LJobJobApi* | [**jobGroupsGroupIdPost**](docs/LJobJobApi.md#jobgroupsgroupidpost) | **POST** /job/groups/{groupId} | 修改jobgroup信息 只能修改 名字、第几步、描述
 *LJobJobApi* | [**jobGroupsPost**](docs/LJobJobApi.md#jobgroupspost) | **POST** /job/groups | 创建一个jobgroup 名字、第几步、描述
 *LJobJobApi* | [**jobsJobIdDelete**](docs/LJobJobApi.md#jobsjobiddelete) | **DELETE** /jobs/{jobId} | 
-*LJobJobApi* | [**jobsJobIdErrorLogGet**](docs/LJobJobApi.md#jobsjobiderrorlogget) | **GET** /jobs/{jobId}/error/log | 根据jobid来查错误日志
 *LJobJobApi* | [**jobsJobIdGet**](docs/LJobJobApi.md#jobsjobidget) | **GET** /jobs/{jobId} | 
 *LJobJobApi* | [**jobsJobIdPost**](docs/LJobJobApi.md#jobsjobidpost) | **POST** /jobs/{jobId} | 修改job 信息 只能修改 名字、描述、脚本、使用的执行机组
 *LJobJobApi* | [**jobsJobIdRunPost**](docs/LJobJobApi.md#jobsjobidrunpost) | **POST** /jobs/{jobId}/run | 
