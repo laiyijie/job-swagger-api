@@ -27,6 +27,7 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
+import me.laiyijie.job.android.io.swagger.model.ErrorLogResponse;
 import me.laiyijie.job.android.io.swagger.model.Job;
 import me.laiyijie.job.android.io.swagger.model.JobErrorLog;
 import me.laiyijie.job.android.io.swagger.model.JobGroup;
@@ -61,12 +62,16 @@ public class JobApi {
      * Build call for jobErrorLogsGet
      * @param pageSize  (required)
      * @param pageNum  (required)
+     * @param startTime  (required)
+     * @param endTime  (required)
+     * @param jobId  (optional)
+     * @param workflowId  (optional)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call jobErrorLogsGetCall(Integer pageSize, Integer pageNum, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call jobErrorLogsGetCall(Integer pageSize, Integer pageNum, Long startTime, Long endTime, Integer jobId, Integer workflowId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
         
         // create path and map variables
@@ -77,6 +82,14 @@ public class JobApi {
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "pageSize", pageSize));
         if (pageNum != null)
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "pageNum", pageNum));
+        if (startTime != null)
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "startTime", startTime));
+        if (endTime != null)
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "endTime", endTime));
+        if (jobId != null)
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "jobId", jobId));
+        if (workflowId != null)
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "workflowId", workflowId));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
@@ -111,7 +124,7 @@ public class JobApi {
     }
     
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call jobErrorLogsGetValidateBeforeCall(Integer pageSize, Integer pageNum, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call jobErrorLogsGetValidateBeforeCall(Integer pageSize, Integer pageNum, Long startTime, Long endTime, Integer jobId, Integer workflowId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'pageSize' is set
         if (pageSize == null) {
@@ -123,8 +136,18 @@ public class JobApi {
             throw new ApiException("Missing the required parameter 'pageNum' when calling jobErrorLogsGet(Async)");
         }
         
+        // verify the required parameter 'startTime' is set
+        if (startTime == null) {
+            throw new ApiException("Missing the required parameter 'startTime' when calling jobErrorLogsGet(Async)");
+        }
         
-        com.squareup.okhttp.Call call = jobErrorLogsGetCall(pageSize, pageNum, progressListener, progressRequestListener);
+        // verify the required parameter 'endTime' is set
+        if (endTime == null) {
+            throw new ApiException("Missing the required parameter 'endTime' when calling jobErrorLogsGet(Async)");
+        }
+        
+        
+        com.squareup.okhttp.Call call = jobErrorLogsGetCall(pageSize, pageNum, startTime, endTime, jobId, workflowId, progressListener, progressRequestListener);
         return call;
 
         
@@ -138,11 +161,15 @@ public class JobApi {
      * 
      * @param pageSize  (required)
      * @param pageNum  (required)
-     * @return List&lt;JobErrorLog&gt;
+     * @param startTime  (required)
+     * @param endTime  (required)
+     * @param jobId  (optional)
+     * @param workflowId  (optional)
+     * @return ErrorLogResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public List<JobErrorLog> jobErrorLogsGet(Integer pageSize, Integer pageNum) throws ApiException {
-        ApiResponse<List<JobErrorLog>> resp = jobErrorLogsGetWithHttpInfo(pageSize, pageNum);
+    public ErrorLogResponse jobErrorLogsGet(Integer pageSize, Integer pageNum, Long startTime, Long endTime, Integer jobId, Integer workflowId) throws ApiException {
+        ApiResponse<ErrorLogResponse> resp = jobErrorLogsGetWithHttpInfo(pageSize, pageNum, startTime, endTime, jobId, workflowId);
         return resp.getData();
     }
 
@@ -151,12 +178,16 @@ public class JobApi {
      * 
      * @param pageSize  (required)
      * @param pageNum  (required)
-     * @return ApiResponse&lt;List&lt;JobErrorLog&gt;&gt;
+     * @param startTime  (required)
+     * @param endTime  (required)
+     * @param jobId  (optional)
+     * @param workflowId  (optional)
+     * @return ApiResponse&lt;ErrorLogResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<List<JobErrorLog>> jobErrorLogsGetWithHttpInfo(Integer pageSize, Integer pageNum) throws ApiException {
-        com.squareup.okhttp.Call call = jobErrorLogsGetValidateBeforeCall(pageSize, pageNum, null, null);
-        Type localVarReturnType = new TypeToken<List<JobErrorLog>>(){}.getType();
+    public ApiResponse<ErrorLogResponse> jobErrorLogsGetWithHttpInfo(Integer pageSize, Integer pageNum, Long startTime, Long endTime, Integer jobId, Integer workflowId) throws ApiException {
+        com.squareup.okhttp.Call call = jobErrorLogsGetValidateBeforeCall(pageSize, pageNum, startTime, endTime, jobId, workflowId, null, null);
+        Type localVarReturnType = new TypeToken<ErrorLogResponse>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
@@ -165,11 +196,15 @@ public class JobApi {
      * 
      * @param pageSize  (required)
      * @param pageNum  (required)
+     * @param startTime  (required)
+     * @param endTime  (required)
+     * @param jobId  (optional)
+     * @param workflowId  (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call jobErrorLogsGetAsync(Integer pageSize, Integer pageNum, final ApiCallback<List<JobErrorLog>> callback) throws ApiException {
+    public com.squareup.okhttp.Call jobErrorLogsGetAsync(Integer pageSize, Integer pageNum, Long startTime, Long endTime, Integer jobId, Integer workflowId, final ApiCallback<ErrorLogResponse> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -190,8 +225,8 @@ public class JobApi {
             };
         }
 
-        com.squareup.okhttp.Call call = jobErrorLogsGetValidateBeforeCall(pageSize, pageNum, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<List<JobErrorLog>>(){}.getType();
+        com.squareup.okhttp.Call call = jobErrorLogsGetValidateBeforeCall(pageSize, pageNum, startTime, endTime, jobId, workflowId, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<ErrorLogResponse>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }

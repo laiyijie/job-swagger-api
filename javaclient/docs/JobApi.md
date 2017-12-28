@@ -30,7 +30,7 @@ Method | HTTP request | Description
 
 <a name="jobErrorLogsGet"></a>
 # **jobErrorLogsGet**
-> List&lt;JobErrorLog&gt; jobErrorLogsGet(pageSize, pageNum)
+> ErrorLogResponse jobErrorLogsGet(pageSize, pageNum, startTime, endTime, jobId, workflowId)
 
 所有的错误日志
 
@@ -44,8 +44,12 @@ Method | HTTP request | Description
 JobApi apiInstance = new JobApi();
 Integer pageSize = 56; // Integer | 
 Integer pageNum = 56; // Integer | 
+Long startTime = 789L; // Long | 
+Long endTime = 789L; // Long | 
+Integer jobId = 56; // Integer | 
+Integer workflowId = 56; // Integer | 
 try {
-    List<JobErrorLog> result = apiInstance.jobErrorLogsGet(pageSize, pageNum);
+    ErrorLogResponse result = apiInstance.jobErrorLogsGet(pageSize, pageNum, startTime, endTime, jobId, workflowId);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling JobApi#jobErrorLogsGet");
@@ -59,10 +63,14 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **pageSize** | **Integer**|  |
  **pageNum** | **Integer**|  |
+ **startTime** | **Long**|  |
+ **endTime** | **Long**|  |
+ **jobId** | **Integer**|  | [optional]
+ **workflowId** | **Integer**|  | [optional]
 
 ### Return type
 
-[**List&lt;JobErrorLog&gt;**](JobErrorLog.md)
+[**ErrorLogResponse**](ErrorLogResponse.md)
 
 ### Authorization
 

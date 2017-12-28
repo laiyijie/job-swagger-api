@@ -42,6 +42,7 @@ Import the following:
 #import <LJob/LJobDefaultConfiguration.h>
 // load models
 #import <LJob/LJobErrorInfo.h>
+#import <LJob/LJobErrorLogResponse.h>
 #import <LJob/LJobExecutor.h>
 #import <LJob/LJobExecutorGroup.h>
 #import <LJob/LJobJob.h>
@@ -129,6 +130,7 @@ Class | Method | HTTP request | Description
 ## Documentation For Models
 
  - [LJobErrorInfo](docs/LJobErrorInfo.md)
+ - [LJobErrorLogResponse](docs/LJobErrorLogResponse.md)
  - [LJobExecutor](docs/LJobExecutor.md)
  - [LJobExecutorGroup](docs/LJobExecutorGroup.md)
  - [LJobJob](docs/LJobJob.md)

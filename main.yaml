@@ -539,13 +539,35 @@ paths:
           type: integer
           required: true
           in: query
+        - name: startTime
+          type: integer
+          format: int64
+          required: true
+          in: query
+        - name: endTime
+          type: integer
+          format: int64
+          required: true
+          in: query
+        - name: jobId
+          type: integer
+          in: query
+        - name: workflowId
+          type: integer
+          in: query
       responses:
         200:
           description: ok
           schema:
-            type: array
-            items:
-              $ref: '#/definitions/JobErrorLog'      
+            type: object
+            title: ErrorLogResponse
+            properties:
+              totalPage:
+                type: integer 
+              logs:
+                type: array
+                items:
+                  $ref: '#/definitions/JobErrorLog'      
   
 definitions:
   Rule:

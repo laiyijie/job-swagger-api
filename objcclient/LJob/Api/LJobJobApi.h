@@ -1,4 +1,5 @@
 #import <Foundation/Foundation.h>
+#import "LJobErrorLogResponse.h"
 #import "LJobJob.h"
 #import "LJobJobErrorLog.h"
 #import "LJobJobGroup.h"
@@ -31,13 +32,21 @@ extern NSInteger kLJobJobApiMissingParamErrorCode;
 ///
 /// @param pageSize 
 /// @param pageNum 
+/// @param startTime 
+/// @param endTime 
+/// @param jobId  (optional)
+/// @param workflowId  (optional)
 /// 
 ///  code:200 message:"ok"
 ///
-/// @return NSArray<LJobJobErrorLog>*
+/// @return LJobErrorLogResponse*
 -(NSURLSessionTask*) jobErrorLogsGetWithPageSize: (NSNumber*) pageSize
     pageNum: (NSNumber*) pageNum
-    completionHandler: (void (^)(NSArray<LJobJobErrorLog>* output, NSError* error)) handler;
+    startTime: (NSNumber*) startTime
+    endTime: (NSNumber*) endTime
+    jobId: (NSNumber*) jobId
+    workflowId: (NSNumber*) workflowId
+    completionHandler: (void (^)(LJobErrorLogResponse* output, NSError* error)) handler;
 
 
 /// 删除jobgroup

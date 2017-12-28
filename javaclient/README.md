@@ -128,6 +128,7 @@ Class | Method | HTTP request | Description
 ## Documentation for Models
 
  - [ErrorInfo](docs/ErrorInfo.md)
+ - [ErrorLogResponse](docs/ErrorLogResponse.md)
  - [Executor](docs/Executor.md)
  - [ExecutorGroup](docs/ExecutorGroup.md)
  - [Job](docs/Job.md)

@@ -32,7 +32,11 @@ Method | HTTP request | Description
 ```objc
 -(NSURLSessionTask*) jobErrorLogsGetWithPageSize: (NSNumber*) pageSize
     pageNum: (NSNumber*) pageNum
-        completionHandler: (void (^)(NSArray<LJobJobErrorLog>* output, NSError* error)) handler;
+    startTime: (NSNumber*) startTime
+    endTime: (NSNumber*) endTime
+    jobId: (NSNumber*) jobId
+    workflowId: (NSNumber*) workflowId
+        completionHandler: (void (^)(LJobErrorLogResponse* output, NSError* error)) handler;
 ```
 
 所有的错误日志
@@ -42,13 +46,21 @@ Method | HTTP request | Description
 
 NSNumber* pageSize = @56; // 
 NSNumber* pageNum = @56; // 
+NSNumber* startTime = @789; // 
+NSNumber* endTime = @789; // 
+NSNumber* jobId = @56; //  (optional)
+NSNumber* workflowId = @56; //  (optional)
 
 LJobJobApi*apiInstance = [[LJobJobApi alloc] init];
 
 // 所有的错误日志
 [apiInstance jobErrorLogsGetWithPageSize:pageSize
               pageNum:pageNum
-          completionHandler: ^(NSArray<LJobJobErrorLog>* output, NSError* error) {
+              startTime:startTime
+              endTime:endTime
+              jobId:jobId
+              workflowId:workflowId
+          completionHandler: ^(LJobErrorLogResponse* output, NSError* error) {
                         if (output) {
                             NSLog(@"%@", output);
                         }
@@ -64,10 +76,14 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **pageSize** | **NSNumber***|  | 
  **pageNum** | **NSNumber***|  | 
+ **startTime** | **NSNumber***|  | 
+ **endTime** | **NSNumber***|  | 
+ **jobId** | **NSNumber***|  | [optional] 
+ **workflowId** | **NSNumber***|  | [optional] 
 
 ### Return type
 
-[**NSArray<LJobJobErrorLog>***](LJobJobErrorLog.md)
+[**LJobErrorLogResponse***](LJobErrorLogResponse.md)
 
 ### Authorization
 

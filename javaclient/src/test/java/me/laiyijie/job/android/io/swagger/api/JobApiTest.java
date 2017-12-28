@@ -14,6 +14,7 @@
 package me.laiyijie.job.android.io.swagger.api;
 
 import me.laiyijie.job.android.io.swagger.ApiException;
+import me.laiyijie.job.android.io.swagger.model.ErrorLogResponse;
 import me.laiyijie.job.android.io.swagger.model.Job;
 import me.laiyijie.job.android.io.swagger.model.JobErrorLog;
 import me.laiyijie.job.android.io.swagger.model.JobGroup;
@@ -47,7 +48,11 @@ public class JobApiTest {
     public void jobErrorLogsGetTest() throws ApiException {
         Integer pageSize = null;
         Integer pageNum = null;
-        List<JobErrorLog> response = api.jobErrorLogsGet(pageSize, pageNum);
+        Long startTime = null;
+        Long endTime = null;
+        Integer jobId = null;
+        Integer workflowId = null;
+        ErrorLogResponse response = api.jobErrorLogsGet(pageSize, pageNum, startTime, endTime, jobId, workflowId);
 
         // TODO: test validations
     }

@@ -1,6 +1,7 @@
 #import "LJobJobApi.h"
 #import "LJobQueryParamCollection.h"
 #import "LJobApiClient.h"
+#import "LJobErrorLogResponse.h"
 #import "LJobJob.h"
 #import "LJobJobErrorLog.h"
 #import "LJobJobGroup.h"
@@ -59,11 +60,23 @@ NSInteger kLJobJobApiMissingParamErrorCode = 234513;
 ///
 ///  @param pageNum  
 ///
-///  @returns NSArray<LJobJobErrorLog>*
+///  @param startTime  
+///
+///  @param endTime  
+///
+///  @param jobId  (optional)
+///
+///  @param workflowId  (optional)
+///
+///  @returns LJobErrorLogResponse*
 ///
 -(NSURLSessionTask*) jobErrorLogsGetWithPageSize: (NSNumber*) pageSize
     pageNum: (NSNumber*) pageNum
-    completionHandler: (void (^)(NSArray<LJobJobErrorLog>* output, NSError* error)) handler {
+    startTime: (NSNumber*) startTime
+    endTime: (NSNumber*) endTime
+    jobId: (NSNumber*) jobId
+    workflowId: (NSNumber*) workflowId
+    completionHandler: (void (^)(LJobErrorLogResponse* output, NSError* error)) handler {
     // verify the required parameter 'pageSize' is set
     if (pageSize == nil) {
         NSParameterAssert(pageSize);
@@ -86,6 +99,28 @@ NSInteger kLJobJobApiMissingParamErrorCode = 234513;
         return nil;
     }
 
+    // verify the required parameter 'startTime' is set
+    if (startTime == nil) {
+        NSParameterAssert(startTime);
+        if(handler) {
+            NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"startTime"] };
+            NSError* error = [NSError errorWithDomain:kLJobJobApiErrorDomain code:kLJobJobApiMissingParamErrorCode userInfo:userInfo];
+            handler(nil, error);
+        }
+        return nil;
+    }
+
+    // verify the required parameter 'endTime' is set
+    if (endTime == nil) {
+        NSParameterAssert(endTime);
+        if(handler) {
+            NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"endTime"] };
+            NSError* error = [NSError errorWithDomain:kLJobJobApiErrorDomain code:kLJobJobApiMissingParamErrorCode userInfo:userInfo];
+            handler(nil, error);
+        }
+        return nil;
+    }
+
     NSMutableString* resourcePath = [NSMutableString stringWithFormat:@"/job/error/logs"];
 
     NSMutableDictionary *pathParams = [[NSMutableDictionary alloc] init];
@@ -96,6 +131,18 @@ NSInteger kLJobJobApiMissingParamErrorCode = 234513;
     }
     if (pageNum != nil) {
         queryParams[@"pageNum"] = pageNum;
+    }
+    if (startTime != nil) {
+        queryParams[@"startTime"] = startTime;
+    }
+    if (endTime != nil) {
+        queryParams[@"endTime"] = endTime;
+    }
+    if (jobId != nil) {
+        queryParams[@"jobId"] = jobId;
+    }
+    if (workflowId != nil) {
+        queryParams[@"workflowId"] = workflowId;
     }
     NSMutableDictionary* headerParams = [NSMutableDictionary dictionaryWithDictionary:self.apiClient.configuration.defaultHeaders];
     [headerParams addEntriesFromDictionary:self.defaultHeaders];
@@ -129,10 +176,10 @@ NSInteger kLJobJobApiMissingParamErrorCode = 234513;
                               authSettings: authSettings
                         requestContentType: requestContentType
                        responseContentType: responseContentType
-                              responseType: @"NSArray<LJobJobErrorLog>*"
+                              responseType: @"LJobErrorLogResponse*"
                            completionBlock: ^(id data, NSError *error) {
                                 if(handler) {
-                                    handler((NSArray<LJobJobErrorLog>*)data, error);
+                                    handler((LJobErrorLogResponse*)data, error);
                                 }
                             }];
 }
