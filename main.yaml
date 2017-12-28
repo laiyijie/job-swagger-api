@@ -538,7 +538,8 @@ paths:
             title: ErrorLogResponse
             properties:
               totalRows:
-                type: integer 
+                type: integer
+                format: int64 
               logs:
                 type: array
                 items:

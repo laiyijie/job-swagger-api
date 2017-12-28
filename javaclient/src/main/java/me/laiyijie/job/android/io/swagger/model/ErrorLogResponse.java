@@ -30,12 +30,12 @@ public class ErrorLogResponse implements Serializable {
   private static final long serialVersionUID = 1L;
 
   @SerializedName("totalRows")
-  private Integer totalRows = null;
+  private Long totalRows = null;
 
   @SerializedName("logs")
   private List<JobErrorLog> logs = null;
 
-  public ErrorLogResponse totalRows(Integer totalRows) {
+  public ErrorLogResponse totalRows(Long totalRows) {
     this.totalRows = totalRows;
     return this;
   }
@@ -45,11 +45,11 @@ public class ErrorLogResponse implements Serializable {
    * @return totalRows
   **/
   @ApiModelProperty(value = "")
-  public Integer getTotalRows() {
+  public Long getTotalRows() {
     return totalRows;
   }
 
-  public void setTotalRows(Integer totalRows) {
+  public void setTotalRows(Long totalRows) {
     this.totalRows = totalRows;
   }
 
