@@ -10,6 +10,7 @@ Method | HTTP request | Description
 [**jobGroupsGroupIdJobsGet**](JobApi.md#jobGroupsGroupIdJobsGet) | **GET** /job/groups/{groupId}/jobs | 
 [**jobGroupsGroupIdPost**](JobApi.md#jobGroupsGroupIdPost) | **POST** /job/groups/{groupId} | 修改jobgroup信息 只能修改 名字、第几步、描述
 [**jobGroupsPost**](JobApi.md#jobGroupsPost) | **POST** /job/groups | 创建一个jobgroup 名字、第几步、描述
+[**jobsGet**](JobApi.md#jobsGet) | **GET** /jobs | 获取任务列表
 [**jobsJobIdDelete**](JobApi.md#jobsJobIdDelete) | **DELETE** /jobs/{jobId} | 
 [**jobsJobIdGet**](JobApi.md#jobsJobIdGet) | **GET** /jobs/{jobId} | 
 [**jobsJobIdPost**](JobApi.md#jobsJobIdPost) | **POST** /jobs/{jobId} | 修改job 信息 只能修改 名字、描述、脚本、使用的执行机组
@@ -284,6 +285,45 @@ Name | Type | Description  | Notes
 ### Return type
 
 null (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/x-www-form-urlencoded, application/json, multipart/form-data, text/plain; charset=utf-8, */*
+ - **Accept**: application/json, text/plain; charset=utf-8
+
+<a name="jobsGet"></a>
+# **jobsGet**
+> List&lt;Job&gt; jobsGet()
+
+获取任务列表
+
+### Example
+```java
+// Import classes:
+//import me.laiyijie.job.android.io.swagger.ApiException;
+//import me.laiyijie.job.android.io.swagger.api.JobApi;
+
+
+JobApi apiInstance = new JobApi();
+try {
+    List<Job> result = apiInstance.jobsGet();
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling JobApi#jobsGet");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**List&lt;Job&gt;**](Job.md)
 
 ### Authorization
 

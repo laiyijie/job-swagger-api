@@ -10,6 +10,7 @@ Method | HTTP request | Description
 [**jobGroupsGroupIdJobsGet**](LJobJobApi.md#jobgroupsgroupidjobsget) | **GET** /job/groups/{groupId}/jobs | 
 [**jobGroupsGroupIdPost**](LJobJobApi.md#jobgroupsgroupidpost) | **POST** /job/groups/{groupId} | 修改jobgroup信息 只能修改 名字、第几步、描述
 [**jobGroupsPost**](LJobJobApi.md#jobgroupspost) | **POST** /job/groups | 创建一个jobgroup 名字、第几步、描述
+[**jobsGet**](LJobJobApi.md#jobsget) | **GET** /jobs | 获取任务列表
 [**jobsJobIdDelete**](LJobJobApi.md#jobsjobiddelete) | **DELETE** /jobs/{jobId} | 
 [**jobsJobIdGet**](LJobJobApi.md#jobsjobidget) | **GET** /jobs/{jobId} | 
 [**jobsJobIdPost**](LJobJobApi.md#jobsjobidpost) | **POST** /jobs/{jobId} | 修改job 信息 只能修改 名字、描述、脚本、使用的执行机组
@@ -317,6 +318,50 @@ Name | Type | Description  | Notes
 ### Return type
 
 void (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/x-www-form-urlencoded, application/json, multipart/form-data, text/plain; charset=utf-8, */*
+ - **Accept**: application/json, text/plain; charset=utf-8
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **jobsGet**
+```objc
+-(NSURLSessionTask*) jobsGetWithCompletionHandler: 
+        (void (^)(NSArray<LJobJob>* output, NSError* error)) handler;
+```
+
+获取任务列表
+
+### Example 
+```objc
+
+
+LJobJobApi*apiInstance = [[LJobJobApi alloc] init];
+
+// 获取任务列表
+[apiInstance jobsGetWithCompletionHandler: 
+          ^(NSArray<LJobJob>* output, NSError* error) {
+                        if (output) {
+                            NSLog(@"%@", output);
+                        }
+                        if (error) {
+                            NSLog(@"Error calling LJobJobApi->jobsGet: %@", error);
+                        }
+                    }];
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**NSArray<LJobJob>***](LJobJob.md)
 
 ### Authorization
 

@@ -138,6 +138,21 @@ public class JobApiTest {
     }
     
     /**
+     * 获取任务列表
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void jobsGetTest() throws ApiException {
+        List<Job> response = api.jobsGet();
+
+        // TODO: test validations
+    }
+    
+    /**
      * 
      *
      * 

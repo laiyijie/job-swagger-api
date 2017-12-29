@@ -110,6 +110,17 @@ extern NSInteger kLJobJobApiMissingParamErrorCode;
     completionHandler: (void (^)(NSError* error)) handler;
 
 
+/// 获取任务列表
+/// 
+///
+/// 
+///  code:200 message:"ok"
+///
+/// @return NSArray<LJobJob>*
+-(NSURLSessionTask*) jobsGetWithCompletionHandler: 
+    (void (^)(NSArray<LJobJob>* output, NSError* error)) handler;
+
+
 /// 
 /// 
 ///

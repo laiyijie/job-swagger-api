@@ -22,6 +22,17 @@ import javax.validation.Valid;
 @Api(value = "jobs", description = "the jobs API")
 public interface JobsApi {
 
+    @ApiOperation(value = "获取任务列表", notes = "", response = Job.class, responseContainer = "List", tags={ "Job", })
+    @ApiResponses(value = { 
+        @ApiResponse(code = 200, message = "ok", response = Job.class) })
+    
+    @RequestMapping(value = "/jobs",
+        produces = { "application/json", "text/plain; charset=utf-8" }, 
+        consumes = { "application/x-www-form-urlencoded", "application/json", "multipart/form-data", "text/plain; charset=utf-8", "*/*" },
+        method = RequestMethod.GET)
+    ResponseEntity<List<Job>> jobsGet( HttpServletRequest request, HttpServletResponse response) throws Exception;
+
+
     @ApiOperation(value = "", notes = "", response = Void.class, tags={ "Job", })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "ok", response = Void.class) })

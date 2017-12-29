@@ -418,6 +418,17 @@ paths:
               $ref: '#/definitions/Job'
             
   /jobs:
+    get:
+      tags:
+        - Job
+      summary: 获取任务列表
+      responses:
+        200:
+          description: ok
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Job'
     post:
       tags:
         - Job
