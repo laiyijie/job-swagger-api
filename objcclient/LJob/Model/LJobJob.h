@@ -32,6 +32,8 @@
 
 @property(nonatomic) NSString* status;
 
+@property(nonatomic) NSString* type;
+
 @property(nonatomic) NSNumber* jobGroupId;
 
 @property(nonatomic) NSString* retryRegex;

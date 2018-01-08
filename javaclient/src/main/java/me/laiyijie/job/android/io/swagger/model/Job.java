@@ -40,6 +40,9 @@ public class Job implements Serializable {
   @SerializedName("status")
   private String status = null;
 
+  @SerializedName("type")
+  private String type = null;
+
   @SerializedName("jobGroupId")
   private Integer jobGroupId = null;
 
@@ -131,6 +134,24 @@ public class Job implements Serializable {
 
   public void setStatus(String status) {
     this.status = status;
+  }
+
+  public Job type(String type) {
+    this.type = type;
+    return this;
+  }
+
+   /**
+   * Get type
+   * @return type
+  **/
+  @ApiModelProperty(value = "")
+  public String getType() {
+    return type;
+  }
+
+  public void setType(String type) {
+    this.type = type;
   }
 
   public Job jobGroupId(Integer jobGroupId) {
@@ -273,6 +294,7 @@ public class Job implements Serializable {
         Objects.equals(this.name, job.name) &&
         Objects.equals(this.description, job.description) &&
         Objects.equals(this.status, job.status) &&
+        Objects.equals(this.type, job.type) &&
         Objects.equals(this.jobGroupId, job.jobGroupId) &&
         Objects.equals(this.retryRegex, job.retryRegex) &&
         Objects.equals(this.maxRetryTimes, job.maxRetryTimes) &&
@@ -284,7 +306,7 @@ public class Job implements Serializable {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name, description, status, jobGroupId, retryRegex, maxRetryTimes, currentRetryTimes, executorGroup, currentExecutor, script);
+    return Objects.hash(id, name, description, status, type, jobGroupId, retryRegex, maxRetryTimes, currentRetryTimes, executorGroup, currentExecutor, script);
   }
 
 
@@ -297,6 +319,7 @@ public class Job implements Serializable {
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
+    sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    jobGroupId: ").append(toIndentedString(jobGroupId)).append("\n");
     sb.append("    retryRegex: ").append(toIndentedString(retryRegex)).append("\n");
     sb.append("    maxRetryTimes: ").append(toIndentedString(maxRetryTimes)).append("\n");

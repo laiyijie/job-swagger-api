@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **name** | **NSString*** |  | [optional] 
 **_description** | **NSString*** |  | [optional] 
 **status** | **NSString*** |  | [optional] 
+**type** | **NSString*** |  | [optional] 
 **jobGroupId** | **NSNumber*** |  | [optional] 
 **retryRegex** | **NSString*** |  | [optional] 
 **maxRetryTimes** | **NSNumber*** |  | [optional] 

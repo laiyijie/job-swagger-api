@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **name** | **String** |  |  [optional]
 **description** | **String** |  |  [optional]
 **status** | **String** |  |  [optional]
+**type** | **String** |  |  [optional]
 **jobGroupId** | **Integer** |  |  [optional]
 **retryRegex** | **String** |  |  [optional]
 **maxRetryTimes** | **Integer** |  |  [optional]
