@@ -47,5 +47,8 @@
 @property(nonatomic) LJobExecutor* currentExecutor;
 
 @property(nonatomic) NSString* script;
+/* ALL_ONLINE_EXECUTOR 代表所有的机器都执行 [optional]
+ */
+@property(nonatomic) NSString* algorithm;
 
 @end

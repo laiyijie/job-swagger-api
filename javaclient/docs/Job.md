@@ -16,6 +16,7 @@ Name | Type | Description | Notes
 **executorGroup** | [**ExecutorGroup**](ExecutorGroup.md) |  |  [optional]
 **currentExecutor** | [**Executor**](Executor.md) |  |  [optional]
 **script** | **String** |  |  [optional]
+**algorithm** | **String** | ALL_ONLINE_EXECUTOR 代表所有的机器都执行 |  [optional]
 
 
 

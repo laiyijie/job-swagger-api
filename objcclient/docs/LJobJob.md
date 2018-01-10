@@ -15,6 +15,7 @@ Name | Type | Description | Notes
 **executorGroup** | [**LJobExecutorGroup***](LJobExecutorGroup.md) |  | [optional] 
 **currentExecutor** | [**LJobExecutor***](LJobExecutor.md) |  | [optional] 
 **script** | **NSString*** |  | [optional] 
+**algorithm** | **NSString*** | ALL_ONLINE_EXECUTOR 代表所有的机器都执行 | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

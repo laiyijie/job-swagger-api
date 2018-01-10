@@ -64,6 +64,9 @@ public class Job implements Serializable {
   @SerializedName("script")
   private String script = null;
 
+  @SerializedName("algorithm")
+  private String algorithm = null;
+
   public Job id(Integer id) {
     this.id = id;
     return this;
@@ -280,6 +283,24 @@ public class Job implements Serializable {
     this.script = script;
   }
 
+  public Job algorithm(String algorithm) {
+    this.algorithm = algorithm;
+    return this;
+  }
+
+   /**
+   * ALL_ONLINE_EXECUTOR 代表所有的机器都执行
+   * @return algorithm
+  **/
+  @ApiModelProperty(value = "ALL_ONLINE_EXECUTOR 代表所有的机器都执行")
+  public String getAlgorithm() {
+    return algorithm;
+  }
+
+  public void setAlgorithm(String algorithm) {
+    this.algorithm = algorithm;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -301,12 +322,13 @@ public class Job implements Serializable {
         Objects.equals(this.currentRetryTimes, job.currentRetryTimes) &&
         Objects.equals(this.executorGroup, job.executorGroup) &&
         Objects.equals(this.currentExecutor, job.currentExecutor) &&
-        Objects.equals(this.script, job.script);
+        Objects.equals(this.script, job.script) &&
+        Objects.equals(this.algorithm, job.algorithm);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name, description, status, type, jobGroupId, retryRegex, maxRetryTimes, currentRetryTimes, executorGroup, currentExecutor, script);
+    return Objects.hash(id, name, description, status, type, jobGroupId, retryRegex, maxRetryTimes, currentRetryTimes, executorGroup, currentExecutor, script, algorithm);
   }
 
 
@@ -327,6 +349,7 @@ public class Job implements Serializable {
     sb.append("    executorGroup: ").append(toIndentedString(executorGroup)).append("\n");
     sb.append("    currentExecutor: ").append(toIndentedString(currentExecutor)).append("\n");
     sb.append("    script: ").append(toIndentedString(script)).append("\n");
+    sb.append("    algorithm: ").append(toIndentedString(algorithm)).append("\n");
     sb.append("}");
     return sb.toString();
   }

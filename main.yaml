@@ -659,6 +659,9 @@ definitions:
         $ref: '#/definitions/Executor'
       script:
         type: string
+      algorithm:
+        type: string
+        description: ALL_ONLINE_EXECUTOR 代表所有的机器都执行
   
   JobErrorLog:
     type: object
